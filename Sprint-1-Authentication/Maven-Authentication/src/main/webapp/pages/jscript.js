@@ -6,10 +6,8 @@ document.addEventListener('DOMContentLoaded', () => {
     const emailError = document.getElementById('emailError');
     const passwordError = document.getElementById('passwordError');
 
-    // Regular expression for structural email verification
     const emailRegex = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
 
-    // Helper functions to inject error messages and toggle layouts
     function showError(input, errorSpan, message) {
         input.classList.add('invalid');
         errorSpan.textContent = message;
@@ -19,8 +17,6 @@ document.addEventListener('DOMContentLoaded', () => {
         input.classList.remove('invalid');
         errorSpan.textContent = '';
     }
-
-    // Email input field logic
     function validateEmail() {
         const value = emailInput.value.trim();
         if (!value) {
@@ -35,7 +31,6 @@ document.addEventListener('DOMContentLoaded', () => {
         }
     }
 
-    // Password input field logic
     function validatePassword() {
         const value = passwordInput.value.trim();
         if (!value) {
@@ -50,20 +45,19 @@ document.addEventListener('DOMContentLoaded', () => {
         }
     }
 
-    // Bind real-time input event listeners for instant validation feedback
     emailInput.addEventListener('input', validateEmail);
     passwordInput.addEventListener('input', validatePassword);
 
-    // Overarching form interception logic
+
     form.addEventListener('submit', (event) => {
-        event.preventDefault(); // Prevents default page refreshing on post flags
+        event.preventDefault();
 
         const isEmailValid = validateEmail();
         const isPasswordValid = validatePassword();
 
         if (isEmailValid && isPasswordValid) {
-            alert('Validation successful! Proceeding to background authentication.');
-            // This is where you pass user details securely over fetch/axios to your backend database APIs
+            alert('Validation successful!');
+        
             console.log('Authenticating payload data:', {
                 username: emailInput.value,
                 password: passwordInput.value
