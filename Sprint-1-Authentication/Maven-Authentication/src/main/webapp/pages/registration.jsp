@@ -18,131 +18,129 @@ body{
     justify-content:center;
     align-items:center;
     min-height:100vh;
-    background:linear-gradient(-45deg,#4facfe,#00f2fe,#43e97b,#38f9d7,#667eea,#764ba2);
+    background:linear-gradient(-45deg,
+    #00c6ff,
+    #0072ff,
+    #8e2de2,
+    #4a00e0,
+    #43cea2,
+    #185a9d);
     background-size:400% 400%;
-    animation:gradient 12s ease infinite;
+    animation:bg 12s ease infinite;
 }
 
-@keyframes gradient{
+@keyframes bg{
     0%{background-position:0% 50%;}
     50%{background-position:100% 50%;}
     100%{background-position:0% 50%;}
 }
 
 .container{
-    width:430px;
-    background:rgba(255,255,255,0.96);
+    width:420px;
+    background:rgba(255,255,255,.18);
+    backdrop-filter:blur(18px);
+    border:1px solid rgba(255,255,255,.3);
     padding:35px;
     border-radius:20px;
-    box-shadow:0 20px 40px rgba(0,0,0,0.25);
-    backdrop-filter:blur(15px);
-    transition:0.4s;
+    box-shadow:0 20px 50px rgba(0,0,0,.35);
 }
 
-.container:hover{
-    transform:translateY(-8px);
-    box-shadow:0 25px 50px rgba(0,0,0,.35);
-}
-
-h1{
+.container h1{
+    color:white;
     text-align:center;
-    color:#4b3ca7;
     margin-bottom:8px;
-    font-size:32px;
 }
 
-h3{
+.container h3{
+    color:#f1f1f1;
     text-align:center;
-    color:#555;
-    margin-bottom:20px;
+    margin-bottom:25px;
 }
 
 label{
+    color:white;
+    font-weight:600;
     display:block;
     margin-top:15px;
-    margin-bottom:6px;
-    font-weight:600;
-    color:#333;
+    margin-bottom:8px;
 }
 
-input,
-select{
+.input-box{
+    display:flex;
+    align-items:center;
+    background:white;
+    border-radius:12px;
+    overflow:hidden;
+    box-shadow:0 5px 15px rgba(0,0,0,.15);
+}
+
+.input-box i{
+    width:50px;
+    text-align:center;
+    color:#667eea;
+    font-size:18px;
+}
+
+.input-box input,
+.input-box select{
     width:100%;
-    padding:12px;
-    border:2px solid #ebf0d3;
-    border-radius:10px;
+    padding:14px;
+    border:none;
+    outline:none;
     font-size:15px;
-    transition:.3s;
-    background:#f8f9ff;
+    background:transparent;
 }
 
-input:focus,
-select:focus{
-    border-color:#667eea;
-    box-shadow:0 0 12px rgba(102,126,234,.35);
-    outline:none;
-    background:#fff;
+.input-box:focus-within{
+    box-shadow:0 0 15px #00e5ff;
 }
 
 .gender{
     display:flex;
-    justify-content:space-around;
+    justify-content:space-between;
     margin-top:10px;
 }
 
 .gender label{
+    color:white;
     display:flex;
     align-items:center;
     gap:5px;
-    font-weight:500;
 }
 
 button{
     width:100%;
     margin-top:25px;
-    padding:14px;
+    padding:15px;
     border:none;
-    border-radius:12px;
-    background:linear-gradient(90deg,#4facfe,#667eea,#764ba2);
-    color:rgb(243, 243, 243);
+    border-radius:30px;
+    background:linear-gradient(90deg,#00c6ff,#0072ff,#8e2de2);
+    color:white;
     font-size:18px;
     font-weight:bold;
     cursor:pointer;
-    transition:.3s;
+    transition:.4s;
 }
 
 button:hover{
-    transform:scale(1.03);
-    background:linear-gradient(90deg,#667eea,#764ba2,#4facfe);
+    transform:translateY(-4px);
+    box-shadow:0 10px 25px rgba(0,0,0,.35);
 }
 
 p{
-    text-align:center;
     margin-top:20px;
-    color:#555;
+    text-align:center;
+    color:white;
 }
 
 a{
-    color:#667eea;
-    text-decoration:none;
+    color:#fae20b;
     font-weight:bold;
+    text-decoration:none;
 }
 
 a:hover{
-    color:#764ba2;
     text-decoration:underline;
-}
-
-@media(max-width:500px){
-    .container{
-        width:90%;
-        padding:25px;
-    }
-
-    .gender{
-        flex-direction:column;
-        gap:10px;
-    }
 }
 </style>
 </head>
@@ -161,7 +159,7 @@ a:hover{
 type="text"
 id="fullname"
 name="fullname"
-placeholder="Enter Full Name"
+placeholder="Enter  Your Full Name"
 required>
 
 <label for="email">Email Address</label>
@@ -169,7 +167,7 @@ required>
 type="email"
 id="email"
 name="email"
-placeholder="Enter Email"
+placeholder="Enter Your Email"
 required>
 
 <label for="mobile">Contact Number</label>
@@ -177,7 +175,7 @@ required>
 type="tel"
 id="mobile"
 name="mobile"
-placeholder="Enter Mobile Number"
+placeholder="Enter Your Mobile Number"
 pattern="[0-9]{10}"
 required>
 
@@ -186,10 +184,21 @@ required>
 type="password"
 id="password"
 name="password"
-placeholder="Enter Password"
+placeholder="Enter Your Password"
 pattern="(?=.*[A-Za-z])(?=.*\d)(?=.*[@$!%*#?&]).{8,}"
 title="Password must contain at least 8 characters, one letter, one number, and one special character."
 required>
+
+<label for="comformpassword">Comfirm Password</label>
+<input
+type="comfirm password"
+id="comfirm password"
+name="comfirm password"
+placeholder="Enter comfirm password"
+pattern="(?=.*[A-Za-z])(?=.*\d)(?=.*[@$!%*#?&]).{8,}"
+title="Password must contain at least 8 characters, one letter, one number, and one special character."
+required>
+
 
 <label>Gender</label>
 
@@ -199,7 +208,7 @@ required>
 <label><input type="radio" name="gender" value="Other"> Other</label>
 </div>
 
-<label for="country">Country</label>
+<label for="country">City</label>
 
 <select id="city" name="City" required>
 <option value="">Select City</option>
