@@ -9,7 +9,7 @@
         * { box-sizing: border-box; margin: 0; padding: 0; font-family: 'Segoe UI', system-ui, -apple-system, sans-serif; }
         body { background-color: #f8fafc; color: #1e293b; line-height: 1.5; }
 
-        /* NAVBAR PRODUCTION STYLES */
+        
         .navbar {
             background-color: #0f172a;
             color: white;
