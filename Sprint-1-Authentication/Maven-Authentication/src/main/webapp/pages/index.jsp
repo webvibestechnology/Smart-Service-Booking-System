@@ -9,7 +9,7 @@
         * { box-sizing: border-box; margin: 0; padding: 0; font-family: 'Segoe UI', system-ui, -apple-system, sans-serif; }
         body { background-color: #f8fafc; color: #1e293b; line-height: 1.5; }
 
-        
+        /* NAVBAR PRODUCTION STYLES */
         .navbar {
             background-color: #0f172a;
             color: white;
@@ -52,7 +52,7 @@
         }
         .login-btn:hover { background-color: #1d4ed8; transform: translateY(-1px); }
 
-        
+        /* HERO SECTION */
         .hero-container {
             display: flex;
             padding: 60px;
@@ -80,7 +80,7 @@
         .search-box button { background-color: #2563eb; color: white; border: none; padding: 0 28px; border-radius: 6px; font-size: 14px; font-weight: 600; cursor: pointer; transition: background-color 0.2s; }
         .search-box button:hover { background-color: #1d4ed8; }
 
-        
+        /* HERO RIGHT: VECTOR ART REPLACEMENT */
         .hero-right { flex: 0.8; display: flex; justify-content: flex-end; }
         .hero-artwork {
             width: 320px;
@@ -144,7 +144,8 @@
             <li><a href="#">About Us</a></li>
             <li><a href="#">Contact Us</a></li>
         </ul>
-        <a href="${pageContext.request.contextPath}/login.jsp" class="login-btn">Login</a>
+        
+        <a href="${pageContext.request.contextPath}/pages/login.jsp" class="login-btn">Login</a>
     </nav>
 
     <header class="hero-container">
