@@ -4,7 +4,6 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Smart Service Booking System - Login</title>
-    <!-- Professional Icons (FontAwesome) -->
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
     <style>
         * { box-sizing: border-box; margin: 0; padding: 0; font-family: 'Segoe UI', system-ui, sans-serif; }
@@ -47,7 +46,6 @@
             background: #f8fafc;
         }
 
-        /* LEFT SIDE: FEATURE PANEL (PREMIUM GRADIENT LOOK) */
         .left-side { 
             flex: 1; 
             max-width: 520px;
@@ -137,7 +135,6 @@
 </head>
 <body>
 
-    <!-- Professional Top Header -->
     <nav class="navbar">
         <div class="brand-section">
             <div class="logo-icon"><i class="fa-solid fa-bolt-lightning"></i></div>
@@ -148,10 +145,7 @@
         </div>
     </nav>
 
-    <!-- Split Screen Container -->
     <main class="main-container">
-        
-        <!-- Left Side: Features Showcase -->
         <div class="left-side">
             <h2>Manage Your <span>Services Smarter</span></h2>
             <p>Access your dashboard to schedule, track, and manage all your residential and business service appointments effortlessly.</p>
@@ -181,13 +175,11 @@
             </div>
         </div>
 
-        <!-- Right Side: Interactive Login Form -->
         <div class="right-side">
             <div class="login-card">
                 <h2>Welcome Back!</h2>
                 <p class="subtitle">Login to your portal account</p>
 
-                <!-- PRODUCTION DYNAMIC ROUTE FOR SERVLET -->
                 <form action="${pageContext.request.contextPath}/LoginServlet" method="POST">
                     <div class="form-group">
                         <label class="form-label">Email Address</label>
@@ -210,13 +202,12 @@
                     </div>
 
                     <button type="submit" class="submit-btn">Sign In</button>
-                    <p class="register-text">Don't have an account? <a href="#">Register here</a></p>
+                    <p class="register-text">Don't have an account? <a href="${pageContext.request.contextPath}/pages/registration.jsp">Register here</a></p>
                 </form>
             </div>
         </div>
     </main>
 
-    <!-- Password Masking Toggle Logic -->
     <script>
         const passwordField = document.getElementById('passwordField');
         const passwordToggle = document.getElementById('passwordToggle');
