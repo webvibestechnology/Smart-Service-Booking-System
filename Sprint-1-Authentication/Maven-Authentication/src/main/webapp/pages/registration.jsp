@@ -3,232 +3,364 @@
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>Registration Form</title>
+<title>Smart Service - Register</title>
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
 
 <style>
 *{
-    margin:0;
-    padding:0;
-    box-sizing:border-box;
-    font-family:'Poppins',sans-serif;
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+    font-family: 'Poppins', sans-serif;
 }
 
-body{
-    display:flex;
-    justify-content:center;
-    align-items:center;
-    min-height:100vh;
-    background:linear-gradient(-45deg,
-    #00c6ff,
-    #0072ff,
-    #8e2de2,
-    #4a00e0,
-    #43cea2,
-    #185a9d);
-    background-size:400% 400%;
-    animation:bg 12s ease infinite;
+body {
+    background-color: #9fe0f6;
+    min-height: 100vh;
+    display: flex;
+    flex-direction: column;
 }
 
-@keyframes bg{
-    0%{background-position:0% 50%;}
-    50%{background-position:100% 50%;}
-    100%{background-position:0% 50%;}
+/* Header Navbar matching Mockup */
+header {
+    background-color: #03153d;
+    padding: 15px 50px;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    color: rgb(255, 255, 255);
 }
 
-.container{
-    width:420px;
-    background:rgba(255,255,255,.18);
-    backdrop-filter:blur(18px);
-    border:1px solid rgba(255,255,255,.3);
-    padding:35px;
-    border-radius:20px;
-    box-shadow:0 20px 50px rgba(0,0,0,.35);
+.logo-section {
+    display: flex;
+    align-items: center;
+    gap: 10px;
 }
 
-.container h1{
-    color:white;
-    text-align:center;
-    margin-bottom:8px;
+.logo-icon {
+    background-color: #3b82f6;
+    padding: 8px;
+    border-radius: 50%;
+    font-size: 14px;
 }
 
-.container h3{
-    color:#f1f1f1;
-    text-align:center;
-    margin-bottom:25px;
+.logo-text h2 {
+    font-size: 18px;
+    font-weight: 700;
 }
 
-label{
-    color:white;
-    font-weight:600;
-    display:block;
-    margin-top:15px;
-    margin-bottom:8px;
+.logo-text p {
+    font-size: 11px;
+    color: #cbd5e1;
 }
 
-.input-box{
-    display:flex;
-    align-items:center;
-    background:white;
-    border-radius:12px;
-    overflow:hidden;
-    box-shadow:0 5px 15px rgba(0,0,0,.15);
+/* Main Container Setup */
+.main-wrapper {
+    flex: 1;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    padding: 40px 20px;
 }
 
-.input-box i{
-    width:50px;
-    text-align:center;
-    color:#667eea;
-    font-size:18px;
+.container {
+    width: 900px;
+    background: #ffffff;
+    display: flex;
+    border-radius: 12px;
+    overflow: hidden;
+    box-shadow: 0 10px 30px rgba(0,0,0,0.08);
 }
 
-.input-box input,
-.input-box select{
-    width:100%;
-    padding:14px;
-    border:none;
-    outline:none;
-    font-size:15px;
-    background:transparent;
+/* Left Side Illustration Visual area */
+.left-banner {
+    width: 40%;
+    background-color: #e8f4f9;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    padding: 20px;
 }
 
-.input-box:focus-within{
-    box-shadow:0 0 15px #00e5ff;
+.left-banner img {
+    max-width: 110%;
+    height: auto;
 }
 
-.gender{
-    display:flex;
-    justify-content:space-between;
-    margin-top:10px;
+/* Right Side Form Content */
+.form-side {
+    width: 60%;
+    padding: 45px;
 }
 
-.gender label{
-    color:white;
-    display:flex;
-    align-items:center;
-    gap:5px;
+.form-side h1 {
+    color: #0f172a;
+    font-size: 26px;
+    text-align: center;
+    font-weight: 700;
+    margin-bottom: 5px;
 }
 
-button{
-    width:100%;
-    margin-top:25px;
-    padding:15px;
-    border:none;
-    border-radius:30px;
-    background:linear-gradient(90deg,#00c6ff,#0072ff,#8e2de2);
-    color:white;
-    font-size:18px;
-    font-weight:bold;
-    cursor:pointer;
-    transition:.4s;
+.form-side h3 {
+    color: #64748b;
+    font-size: 14px;
+    text-align: center;
+    font-weight: 400;
+    margin-bottom: 30px;
 }
 
-button:hover{
-    transform:translateY(-4px);
-    box-shadow:0 10px 25px rgba(0,0,0,.35);
+/* Form Two-Column Grid */
+.form-grid {
+    display: grid;
+    grid-template-columns: repeat(2, 1fr);
+    column-gap: 20px;
+    row-gap: 20px;
 }
 
-p{
-    margin-top:20px;
-    text-align:center;
-    color:white;
+.form-group {
+    display: flex;
+    flex-direction: column;
 }
 
-a{
-    color:#fae20b;
-    font-weight:bold;
-    text-decoration:none;
+label {
+    color: #334155;
+    font-weight: 500;
+    font-size: 14px;
+    margin-bottom: 8px;
 }
 
-a:hover{
-    text-decoration:underline;
+.input-box {
+    display: flex;
+    align-items: center;
+    background: #f8fafc;
+    border: 1px solid #e2e8f0;
+    border-radius: 8px;
+    overflow: hidden;
+    transition: 0.3s;
+}
+
+.input-box i:first-child {
+    padding-left: 15px;
+    color: #94a3b8;
+    font-size: 16px;
+}
+
+.input-box input {
+    width: 100%;
+    padding: 12px 14px;
+    border: none;
+    outline: none;
+    font-size: 14px;
+    background: transparent;
+    color: #334155;
+}
+
+.toggle-password {
+    padding-right: 15px;
+    cursor: pointer;
+    color: #94a3b8;
+    transition: 0.2s;
+}
+
+.toggle-password:hover {
+    color: #3b82f6;
+}
+
+.input-box:focus-within {
+    border-color: #3b82f6;
+    background: #ffffff;
+    box-shadow: 0 0 0 3px rgba(59, 130, 246, 0.15);
+}
+
+/* Action Elements styling */
+.btn-container {
+    grid-column: span 2;
+    margin-top: 15px;
+}
+
+button {
+    width: 100%;
+    padding: 14px;
+    border: none;
+    border-radius: 8px;
+    background-color: #1e40af;
+    color: white;
+    font-size: 16px;
+    font-weight: 600;
+    cursor: pointer;
+    transition: 0.2s;
+}
+
+button:hover {
+    background-color: #1d4ed8;
+}
+
+.footer-text {
+    grid-column: span 2;
+    margin-top: 20px;
+    text-align: center;
+    color: #64748b;
+    font-size: 14px;
+}
+
+.footer-text a {
+    color: #2563eb;
+    font-weight: 600;
+    text-decoration: none;
+}
+
+.footer-text a:hover {
+    text-decoration: underline;
+}
+
+/* Responsive adjustment for small screens */
+@media (max-width: 768px) {
+    .container {
+        flex-direction: column;
+        width: 100%;
+    }
+    .left-banner {
+        display: none;
+    }
+    .form-side {
+        width: 100%;
+        padding: 25px;
+    }
+    .form-grid {
+        grid-template-columns: 1fr;
+    }
+    .btn-container, .footer-text {
+        grid-column: span 1;
+    }
 }
 </style>
 </head>
-
 <body>
 
-<div class="container">
+<header>
+    <div class="logo-section">
+        <div class="logo-icon"><i class="fa-solid fa-gears"></i></div>
+        <div class="logo-text">
+            <h2>Smart Service</h2>
+            <p>Booking System</p>
+        </div>
+    </div>
+</header>
 
-<h1>samart service Booking</h1>
-<h3>User Registration</h3>
+<div class="main-wrapper">
+    <div class="container">
+        
+        <div class="left-banner">
+            <img src="c:\Users\ADMIN\Desktop\image.jpg" alt="Worker vector illustration">
+        </div>
 
-<form action="profile" method="post">
+        <div class="form-side">
+            <h1>Create an Account</h1>
+            <h3>Register to get started</h3>
 
-<label for="fullname">Full Name</label>
-<input
-type="text"
-id="fullname"
-name="fullname"
-placeholder="Enter  Your Full Name"
-required>
+            <form id="registrationForm" action="profile" method="post" class="form-grid">
 
-<label for="email">Email Address</label>
-<input
-type="email"
-id="email"
-name="email"
-placeholder="Enter Your Email"
-required>
+                <div class="form-group">
+                    <label for="fullname">Full Name</label>
+                    <div class="input-box">
+                        <i class="fa-regular fa-user"></i>
+                        <input type="text" id="fullname" name="fullname" placeholder="Enter full name" required>
+                    </div>
+                </div>
 
-<label for="mobile">Contact Number</label>
-<input
-type="tel"
-id="mobile"
-name="mobile"
-placeholder="Enter Your Mobile Number"
-pattern="[0-9]{10}"
-required>
+                <div class="form-group">
+                    <label for="email">Email</label>
+                    <div class="input-box">
+                        <i class="fa-regular fa-envelope"></i>
+                        <input type="email" id="email" name="email" placeholder="Enter email" required>
+                    </div>
+                </div>
 
-<label for="password">Password</label>
-<input
-type="password"
-id="password"
-name="password"
-placeholder="Enter Your Password"
-pattern="(?=.*[A-Za-z])(?=.*\d)(?=.*[@$!%*#?&]).{8,}"
-title="Password must contain at least 8 characters, one letter, one number, and one special character."
-required>
+                <div class="form-group">
+                    <label for="mobile">Mobile Number</label>
+                    <div class="input-box">
+                        <i class="fa-solid fa-phone"></i>
+                        <input type="tel" id="mobile" name="mobile" placeholder="Enter mobile number" pattern="[0-9]{10}" title="Please enter a valid 10-digit mobile number." required>
+                    </div>
+                </div>
 
-<label for="comformpassword">Comfirm Password</label>
-<input
-type="comfirm password"
-id="comfirm password"
-name="comfirm password"
-placeholder="Enter comfirm password"
-pattern="(?=.*[A-Za-z])(?=.*\d)(?=.*[@$!%*#?&]).{8,}"
-title="Password must contain at least 8 characters, one letter, one number, and one special character."
-required>
+                <div class="form-group">
+                    <label for="password">Password</label>
+                    <div class="input-box">
+                        <i class="fa-solid fa-lock"></i>
+                        <input type="password" id="password" name="password" placeholder="Enter password" 
+                               pattern="(?=.*[A-Za-z])(?=.*\d)(?=.*[@$!%*#?&]).{8,}" 
+                               title="Password must contain at least 8 characters, including one letter, one number, and one special character." required>
+                        <i class="fa-solid fa-eye-slash toggle-password" data-target="password"></i>
+                    </div>
+                </div>
 
+                <div class="form-group" style="grid-column: span 2;">
+                    <label for="confirm-password">Confirm Password</label>
+                    <div class="input-box">
+                        <i class="fa-solid fa-lock"></i>
+                        <input type="password" id="confirm-password" name="confirm-password" placeholder="Confirm password" required>
+                        <i class="fa-solid fa-eye-slash toggle-password" data-target="confirm-password"></i>
+                    </div>
+                </div>
 
-<label>Gender</label>
+                <div class="btn-container">
+                    <button type="submit">Register</button>
+                </div>
 
-<div class="gender">
-<label><input type="radio" name="gender" value="Male" required> Male</label>
-<label><input type="radio" name="gender" value="Female"> Female</label>
-<label><input type="radio" name="gender" value="Other"> Other</label>
+                <div class="footer-text">
+                    Already have an account? <a href="Login Form.html">Login here</a>
+                </div>
+
+            </form>
+        </div>
+
+    </div>
 </div>
 
-<label for="country">City</label>
+<script>
+    const form = document.getElementById('registrationForm');
+    const password = document.getElementById('password');
+    const confirmPassword = document.getElementById('confirm-password');
+    const toggleButtons = document.querySelectorAll('.toggle-password');
 
-<select id="city" name="City" required>
-<option value="">Select City</option>
-<option>Pune</option>
-<option>Mumbai</option>
-<option>Nashik</option>
-<option>Jalgaon</option>
-<option>pachora</option>
-</select>
+    // 1. Password Visibility Toggling Feature
+    toggleButtons.forEach(button => {
+        button.addEventListener('click', function() {
+            const targetId = this.getAttribute('data-target');
+            const inputField = document.getElementById(targetId);
+            
+            if (inputField.type === 'password') {
+                inputField.type = 'text';
+                this.classList.remove('fa-eye-slash');
+                this.classList.add('fa-eye');
+            } else {
+                inputField.type = 'password';
+                this.classList.remove('fa-eye');
+                this.classList.add('fa-eye-slash');
+            }
+        });
+    });
 
-<button type="submit">Register</button>
+    // 2. Form Field Matching Verification Rules
+    function validatePasswordMatch() {
+        if (password.value !== confirmPassword.value) {
+            confirmPassword.setCustomValidity("Passwords do not match");
+        } else {
+            confirmPassword.setCustomValidity(""); 
+        }
+    }
 
-<p>
-Already have an account?
-<a href="Login Form.html">Login Here</a>
-</p>
+    password.addEventListener('change', validatePasswordMatch);
+    confirmPassword.addEventListener('keyup', validatePasswordMatch);
 
-</form>
-
-</div>
+    form.addEventListener('submit', function(event) {
+        validatePasswordMatch();
+        if (!form.checkValidity()) {
+            event.preventDefault(); 
+        }
+    });
+</script>
 
 </body>
 </html>
