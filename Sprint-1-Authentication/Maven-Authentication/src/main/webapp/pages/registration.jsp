@@ -4,8 +4,7 @@
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 <title>Smart Service - Register</title>
-<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
-
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css">
 <style>
 *{
     margin: 0;
@@ -239,7 +238,7 @@ button:hover {
 
 <header>
     <div class="logo-section">
-        <div class="logo-icon"><i class="fa-solid fa-gears"></i></div>
+        <div class="logo-icon"><i class="fa-solid fa-bolt-lightning"></i></div>
         <div class="logo-text">
             <h2>Smart Service</h2>
             <p>Booking System</p>
@@ -251,7 +250,7 @@ button:hover {
     <div class="container">
         
         <div class="left-banner">
-            <img src="c:\Users\ADMIN\Desktop\image.jpg" alt="Worker vector illustration">
+            <img src="C:\Users\ADMIN\Pictures\Saved Pictures\registration  image.jpg">
         </div>
 
         <div class="form-side">
