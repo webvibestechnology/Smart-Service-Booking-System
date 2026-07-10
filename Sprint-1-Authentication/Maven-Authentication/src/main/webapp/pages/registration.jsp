@@ -323,7 +323,6 @@ button:hover {
     const password = document.getElementById('password');
     const confirmPassword = document.getElementById('confirm-password');
     const toggleButtons = document.querySelectorAll('.toggle-password');
-
     // 1. Password Visibility Toggling Feature
     toggleButtons.forEach(button => {
         button.addEventListener('click', function() {
