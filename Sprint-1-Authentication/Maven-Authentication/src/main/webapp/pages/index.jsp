@@ -12,7 +12,7 @@
         * { box-sizing: border-box; margin: 0; padding: 0; font-family: 'Segoe UI', system-ui, -apple-system, sans-serif; }
         body { background-color: #f8fafc; color: #1e293b; line-height: 1.5; min-height: 100vh; display: flex; flex-direction: column; }
 
-        /* PREMIUM NAVBAR */
+        
         .navbar {
             background-color: #0f172a;
             color: white;
