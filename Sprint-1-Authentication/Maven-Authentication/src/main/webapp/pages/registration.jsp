@@ -44,7 +44,7 @@ header {
 }
 
 .logo-text h2 {
-    font-size: 18px;
+    font-size: 20px;
     font-weight: 700;
 }
 
@@ -82,7 +82,7 @@ header {
 }
 
 .left-banner img {
-    max-width: 110%;
+    max-width: 100%;
     height: auto;
 }
 
@@ -250,7 +250,7 @@ button:hover {
     <div class="container">
         
         <div class="left-banner">
-            <img src="C:\Users\ADMIN\Pictures\Saved Pictures\registration  image.jpg">
+            <img src="C:\Users\ADMIN\Pictures\Saved Pictures\istockphoto-1468757785-612x612.jpg">
         </div>
 
         <div class="form-side">
