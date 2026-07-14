@@ -1,4 +1,3 @@
-<%@ page language="java" contentType="text/html; charset=UTF-8" pageEncoding="UTF-8"%>
 <!DOCTYPE html>
 <html lang="en">
 <head>
@@ -10,101 +9,128 @@
         * { box-sizing: border-box; margin: 0; padding: 0; font-family: 'Segoe UI', system-ui, sans-serif; }
         body { background-color: #f8fafc; min-height: 100vh; display: flex; flex-direction: column; }
 
-        /* NAVBAR STYLES */
+        /* PREMIUM GLASSMORPHIC NAVBAR */
         .navbar {
             background-color: #0f172a;
             color: white;
-            padding: 18px 60px;
+            padding: 16px 60px;
             display: flex;
             align-items: center;
-            box-shadow: 0 4px 6px -1px rgba(0, 0, 0, 0.1);
+            box-shadow: 0 10px 15px -3px rgba(15, 23, 42, 0.08);
+            border-bottom: 1px solid rgba(255, 255, 255, 0.05);
         }
-        .brand-section { display: flex; align-items: center; gap: 12px; }
+        .brand-section { display: flex; align-items: center; gap: 14px; }
         .logo-icon {
-            background-color: #2563eb;
+            background: linear-gradient(135deg, #3b82f6 0%, #1d4ed8 100%);
             color: white;
-            width: 40px;
-            height: 40px;
-            border-radius: 8px;
+            width: 44px;
+            height: 44px;
+            border-radius: 10px;
             display: flex;
             align-items: center;
             justify-content: center;
-            font-size: 20px;
+            font-size: 22px;
+            box-shadow: 0 4px 12px rgba(37, 99, 235, 0.25);
         }
-        .brand-name { font-size: 18px; font-weight: 700; letter-spacing: 0.5px; }
-        .brand-sub { font-size: 11px; color: #94a3b8; font-weight: 500; }
+        .brand-name { font-size: 19px; font-weight: 700; letter-spacing: 0.5px; background: linear-gradient(to right, #ffffff, #cbd5e1); -webkit-background-clip: text; -webkit-text-fill-color: transparent; }
+        .brand-sub { font-size: 11px; color: #38bdf8; font-weight: 600; letter-spacing: 1px; }
 
         /* SPLIT SCREEN MAIN CONTAINER */
         .main-container {
             display: flex;
             flex: 1;
-            padding: 50px 60px;
+            padding: 40px 60px;
             align-items: center;
             justify-content: center;
-            gap: 60px;
+            gap: 50px;
+            background: #f8fafc;
         }
 
-        /* LEFT SIDE: FEATURE PANEL (NO IMAGE RISK) */
         .left-side { 
             flex: 1; 
-            max-width: 500px;
+            max-width: 520px;
             background: linear-gradient(135deg, #0f172a 0%, #1e293b 100%);
-            padding: 45px;
-            border-radius: 16px;
+            padding: 50px;
+            border-radius: 24px;
             color: white;
-            box-shadow: 0 20px 25px -5px rgba(0, 0, 0, 0.1);
+            box-shadow: 0 25px 50px -12px rgba(15, 23, 42, 0.25);
+            position: relative;
+            overflow: hidden;
         }
-        .left-side h2 { font-size: 28px; font-weight: 800; margin-bottom: 16px; color: #ffffff; }
-        .left-side p { font-size: 15px; color: #94a3b8; line-height: 1.6; margin-bottom: 35px; }
+        .left-side::before {
+            content: ''; position: absolute; width: 200px; height: 200px; background: rgba(37, 99, 235, 0.15); filter: blur(80px); bottom: -30px; left: -30px; border-radius: 50%;
+        }
+        .left-side h2 { font-size: 32px; font-weight: 800; margin-bottom: 16px; line-height: 1.2; letter-spacing: -0.5px; }
+        .left-side h2 span { background: linear-gradient(to right, #38bdf8, #3b82f6); -webkit-background-clip: text; -webkit-text-fill-color: transparent; }
+        .left-side p { font-size: 15px; color: #94a3b8; line-height: 1.6; margin-bottom: 40px; }
         
-        .feature-item { display: flex; align-items: flex-start; gap: 16px; margin-bottom: 24px; }
+        .feature-item { display: flex; align-items: flex-start; gap: 18px; margin-bottom: 28px; transition: transform 0.2s; }
+        .feature-item:hover { transform: translateX(5px); }
         .feature-icon { 
-            background-color: rgba(37, 99, 235, 0.15); 
-            color: #3b82f6; 
-            width: 36px; 
-            height: 36px; 
-            border-radius: 8px; 
+            background: rgba(59, 130, 246, 0.12); 
+            color: #38bdf8; 
+            width: 42px; 
+            height: 42px; 
+            border-radius: 12px; 
             display: flex; 
             align-items: center; 
             justify-content: center; 
-            font-size: 16px;
+            font-size: 18px;
             flex-shrink: 0;
+            border: 1px solid rgba(59, 130, 246, 0.2);
         }
-        .feature-text h4 { font-size: 15px; font-weight: 600; color: #f1f5f9; margin-bottom: 4px; }
-        .feature-text p { font-size: 13px; color: #94a3b8; margin: 0; line-height: 1.4; }
+        .feature-text h4 { font-size: 16px; font-weight: 600; color: #f1f5f9; margin-bottom: 4px; }
+        .feature-text p { font-size: 13.5px; color: #94a3b8; margin: 0; line-height: 1.5; }
 
-        /* RIGHT SIDE: CLEAN LOGIN CARD */
+        /* RIGHT SIDE: CLEAN GLASS CARD */
         .right-side { flex: 1; display: flex; justify-content: center; }
         .login-card {
             background: white;
             width: 100%;
-            max-width: 440px;
-            padding: 40px;
-            border-radius: 16px;
-            box-shadow: 0 10px 25px rgba(0, 0, 0, 0.03);
+            max-width: 450px;
+            padding: 45px;
+            border-radius: 24px;
+            box-shadow: 0 20px 25px -5px rgba(0, 0, 0, 0.03), 0 10px 10px -5px rgba(0, 0, 0, 0.01);
             border: 1px solid #e2e8f0;
+            position: relative;
         }
-        .login-card h2 { font-size: 26px; color: #0f172a; font-weight: 700; margin-bottom: 6px; text-align: center; }
-        .login-card .subtitle { font-size: 14px; color: #64748b; margin-bottom: 32px; text-align: center; }
+        .login-card::before {
+            content: ''; position: absolute; top: 0; left: 0; right: 0; height: 5px;
+            background: linear-gradient(90deg, #3b82f6, #2563eb);
+            border-top-left-radius: 24px; border-top-right-radius: 24px;
+        }
+        .login-card h2 { font-size: 28px; color: #0f172a; font-weight: 800; margin-bottom: 8px; text-align: center; letter-spacing: -0.5px; }
+        .login-card .subtitle { font-size: 14px; color: #64748b; margin-bottom: 35px; text-align: center; }
 
-        /* FORM MANAGEMENT */
+        /* INPUT STYLES WITH GLOW EFFECTS */
         .form-group { margin-bottom: 24px; }
         .form-label { display: block; font-size: 14px; font-weight: 600; color: #334155; margin-bottom: 8px; }
-        .input-wrapper { position: relative; display: flex; align-items: center; }
-        .form-input { width: 100%; padding: 13px 16px; border: 1px solid #cbd5e1; border-radius: 8px; font-size: 14px; outline: none; color: #0f172a; }
-        .form-input:focus { border-color: #2563eb; box-shadow: 0 0 0 4px rgba(37, 99, 235, 0.1); }
-        .toggle-password { position: absolute; right: 16px; color: #64748b; cursor: pointer; }
+        .input-wrapper { position: relative; display: flex; align-items: center; width: 100%; }
+        .form-input { width: 100%; padding: 13px 16px; border: 1px solid #cbd5e1; border-radius: 10px; font-size: 14.5px; outline: none; color: #0f172a; transition: all 0.2s ease; }
+        .form-input:focus { border-color: #2563eb; box-shadow: 0 0 0 4px rgba(37, 99, 235, 0.12); }
+        .toggle-password { position: absolute; right: 16px; color: #64748b; cursor: pointer; font-size: 15px; transition: color 0.2s; }
+        .toggle-password:hover { color: #2563eb; }
 
-        /* UTILITIES */
-        .flex-options { display: flex; justify-content: space-between; align-items: center; font-size: 13px; margin-bottom: 28px; }
-        .checkbox-label { display: flex; align-items: center; gap: 6px; color: #475569; cursor: pointer; }
-        .forgot-link { color: #2563eb; text-decoration: none; font-weight: 600; }
+        /* REMEMBER ME & SUBMIT */
+        .flex-options { display: flex; justify-content: space-between; align-items: center; font-size: 13.5px; margin-bottom: 30px; }
+        .checkbox-label { display: flex; align-items: center; gap: 8px; color: #475569; cursor: pointer; font-weight: 500; }
+        .checkbox-label input { width: 16px; height: 16px; border-radius: 4px; border: 1px solid #cbd5e1; cursor: pointer; }
+        .forgot-link { color: #2563eb; text-decoration: none; font-weight: 600; transition: color 0.2s; }
+        .forgot-link:hover { color: #1d4ed8; text-decoration: underline; }
 
-        .submit-btn { width: 100%; background-color: #2563eb; color: white; border: none; padding: 14px; border-radius: 8px; font-size: 15px; font-weight: 600; cursor: pointer; transition: background 0.2s; }
-        .submit-btn:hover { background-color: #1d4ed8; }
+        .submit-btn { 
+            width: 100%; 
+            background: linear-gradient(135deg, #2563eb 0%, #1d4ed8 100%); 
+            color: white; border: none; padding: 14px; border-radius: 10px; 
+            font-size: 15px; font-weight: 600; cursor: pointer; 
+            box-shadow: 0 4px 14px rgba(37, 99, 235, 0.3);
+            transition: all 0.2s ease; 
+        }
+        .submit-btn:hover { background: linear-gradient(135deg, #1d4ed8 0%, #1e40af 100%); transform: translateY(-1px); box-shadow: 0 6px 20px rgba(37, 99, 235, 0.4); }
         
-        .register-text { text-align: center; font-size: 13px; color: #64748b; margin-top: 26px; }
-        .register-text a { color: #2563eb; text-decoration: none; font-weight: 700; }
+        .register-text { text-align: center; font-size: 14px; color: #64748b; margin-top: 28px; }
+        .register-text a { color: #2563eb; text-decoration: none; font-weight: 700; transition: color 0.2s; }
+        .register-text a:hover { color: #1d4ed8; text-decoration: underline; }
     </style>
 </head>
 <body>
@@ -120,9 +146,8 @@
     </nav>
 
     <main class="main-container">
-        
         <div class="left-side">
-            <h2>Manage Your Services Smarter</h2>
+            <h2>Manage Your <span>Services Smarter</span></h2>
             <p>Access your dashboard to schedule, track, and manage all your residential and business service appointments effortlessly.</p>
             
             <div class="feature-item">
@@ -134,7 +159,7 @@
             </div>
 
             <div class="feature-item">
-                <div class="feature-icon"><i class="fa-solid fa-shield-halved"></i></div>
+                <div class="feature-icon"><i class="fa-solid fa-user-shield"></i></div>
                 <div class="feature-text">
                     <h4>Verified Professionals</h4>
                     <p>Every single partner is background-checked and expert-certified.</p>
@@ -177,7 +202,7 @@
                     </div>
 
                     <button type="submit" class="submit-btn">Sign In</button>
-                    <p class="register-text">Don't have an account? <a href="#">Register here</a></p>
+                    <p class="register-text">Don't have an account? <a href="${pageContext.request.contextPath}/pages/registration.jsp">Register here</a></p>
                 </form>
             </div>
         </div>
