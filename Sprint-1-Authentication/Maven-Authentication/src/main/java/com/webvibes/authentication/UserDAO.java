@@ -6,8 +6,8 @@ import java.sql.ResultSet;
 
 public class UserDAO {
 	public String registerUser(User user) {
-		String checkEmailQuery = "SELECT email FROM user WHERE email = ? ";
-		String insertQuery = "INSERT INTO user (full_name, email, mobile, password, role) VALUES (?, ?, ?, ?, 'USER')";
+		String checkEmailQuery = "SELECT email FROM users WHERE email = ? ";
+		String insertQuery = "INSERT INTO users (full_name, email, mobile, password, role) VALUES (?, ?, ?, ?, 'USER')";
 		
 		try (Connection conn = DBConnection.getConnection()) {
 			

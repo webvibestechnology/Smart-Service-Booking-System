@@ -251,20 +251,20 @@ button:hover {
     <div class="container">
         
         <div class="left-banner">
-            <img src="c:\Users\ADMIN\Desktop\image.jpg" alt="Worker vector illustration">
+            <img src="https://images.unsplash.com/photo-1522202176988-66273c2fd55f?w=600" alt="Worker Illustration">
         </div>
 
         <div class="form-side">
             <h1>Create an Account</h1>
             <h3>Register to get started</h3>
 
-            <form id="registrationForm" action="profile" method="post" class="form-grid">
+         <form action="../profile" method="post" class="form-grid">
 
                 <div class="form-group">
                     <label for="fullname">Full Name</label>
                     <div class="input-box">
                         <i class="fa-regular fa-user"></i>
-                        <input type="text" id="fullname" name="fullname" placeholder="Enter full name" required>
+                       <input type="text" id="fullname" name="name" placeholder="Enter full name" required>
                     </div>
                 </div>
 
@@ -309,7 +309,7 @@ button:hover {
                 </div>
 
                 <div class="footer-text">
-                    Already have an account? <a href="Login Form.html">Login here</a>
+                    Already have an account? <a href="login.jsp">Login here</a>
                 </div>
 
             </form>
@@ -319,48 +319,62 @@ button:hover {
 </div>
 
 <script>
-    const form = document.getElementById('registrationForm');
-    const password = document.getElementById('password');
-    const confirmPassword = document.getElementById('confirm-password');
-    const toggleButtons = document.querySelectorAll('.toggle-password');
+document.addEventListener("DOMContentLoaded", function () {
 
-    // 1. Password Visibility Toggling Feature
-    toggleButtons.forEach(button => {
-        button.addEventListener('click', function() {
-            const targetId = this.getAttribute('data-target');
+    const form = document.getElementById("registrationForm");
+    const password = document.getElementById("password");
+    const confirmPassword = document.getElementById("confirm-password");
+    const toggleButtons = document.querySelectorAll(".toggle-password");
+
+    // Password Visibility Toggle
+    toggleButtons.forEach(function(button) {
+        button.addEventListener("click", function () {
+
+            const targetId = this.getAttribute("data-target");
             const inputField = document.getElementById(targetId);
-            
-            if (inputField.type === 'password') {
-                inputField.type = 'text';
-                this.classList.remove('fa-eye-slash');
-                this.classList.add('fa-eye');
-            } else {
-                inputField.type = 'password';
-                this.classList.remove('fa-eye');
-                this.classList.add('fa-eye-slash');
+
+            if (inputField) {
+                if (inputField.type === "password") {
+                    inputField.type = "text";
+                    this.classList.remove("fa-eye-slash");
+                    this.classList.add("fa-eye");
+                } else {
+                    inputField.type = "password";
+                    this.classList.remove("fa-eye");
+                    this.classList.add("fa-eye-slash");
+                }
             }
+
         });
     });
 
-    // 2. Form Field Matching Verification Rules
+    // Password Match Validation
     function validatePasswordMatch() {
         if (password.value !== confirmPassword.value) {
             confirmPassword.setCustomValidity("Passwords do not match");
         } else {
-            confirmPassword.setCustomValidity(""); 
+            confirmPassword.setCustomValidity("");
         }
     }
 
-    password.addEventListener('change', validatePasswordMatch);
-    confirmPassword.addEventListener('keyup', validatePasswordMatch);
+    if (password && confirmPassword) {
+        password.addEventListener("keyup", validatePasswordMatch);
+        confirmPassword.addEventListener("keyup", validatePasswordMatch);
+    }
 
-    form.addEventListener('submit', function(event) {
-        validatePasswordMatch();
-        if (!form.checkValidity()) {
-            event.preventDefault(); 
-        }
-    });
+    if (form) {
+        form.addEventListener("submit", function (event) {
+
+            validatePasswordMatch();
+
+            if (!form.checkValidity()) {
+                event.preventDefault();
+            }
+
+        });
+    }
+
+});
 </script>
-
 </body>
 </html>

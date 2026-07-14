@@ -4,9 +4,9 @@ import java.sql.Connection;
 import java.sql.DriverManager;
 
 public class DBConnection {
-    private static final String URL = "jdbc:mysql://localhost:3306/auto_DB";
+    private static final String URL = "jdbc:mysql://localhost:3306/auth_DB";
     private static final String USER = "root";
-    private static final String PASSWORD = "Divya@2604" ;
+    private static final String PASSWORD = "7447Swati@" ;
 
     public static Connection getConnection() {
         Connection conn = null ;
