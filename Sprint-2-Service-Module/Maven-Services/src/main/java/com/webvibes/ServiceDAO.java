@@ -2,25 +2,32 @@ package com.webvibes;
 
 import java.sql.Connection;
 import java.sql.PreparedStatement;
-import java.com.webvibes.DBConnection;
 
 public class ServiceDAO {
-	public boolean updateService(Service service) {
-		String query = "UPDATE service SET service_name = ? , price = ? , description = ? WHERE id = ?";
-		try (Connection conn = DBConnection.getConnection();
-				PreparedStatement ps = conn.prepareStatement(query)) {
-					
-					ps.setString(1, service.getServiceName());
-					ps.setDouble(2,  service.getPrice());
-					ps.setString(3,  service.getDescription());
-					ps.setInt(4, service.getId());
-					
-					int rows = ps.executeUpdate();
-					return rows > 0;
-				} catch (Exception e) {
-					e.printStackTrace();
-				}
-		return  false;  
-	}
-                                                      
+
+    public boolean addService(Service service) {
+
+        String query = "INSERT INTO service(service_name, category, description, price, status) VALUES (?, ?, ?, ?, ?)";
+
+        try (
+            Connection con = DBConnection.getConnection();
+            PreparedStatement ps = con.prepareStatement(query)
+        ) {
+
+            ps.setString(1, service.getServiceName());
+            ps.setString(2, service.getCategory());
+            ps.setString(3, service.getDescription());
+            ps.setDouble(4, service.getPrice());
+            ps.setString(5, service.getStatus());
+
+            int rows = ps.executeUpdate();
+
+            return rows > 0;
+
+        } catch (Exception e) {
+            e.printStackTrace();
+        }
+
+        return false;
+    }
 }
