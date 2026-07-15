@@ -1,5 +1,6 @@
 package com.webvibes;
 
-public class DBConnection {
+public class DBConnection 
+{
 
 }
