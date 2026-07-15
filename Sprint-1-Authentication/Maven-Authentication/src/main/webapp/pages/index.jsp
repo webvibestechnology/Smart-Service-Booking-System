@@ -1,3 +1,4 @@
+<%@ page language="java" contentType="text/html; charset=UTF-8" pageEncoding="UTF-8"%>
 <!DOCTYPE html>
 <html lang="en">
 <head>
@@ -27,17 +28,15 @@
         .login-btn { background: linear-gradient(135deg, #2563eb 0%, #1d4ed8 100%); color: white; padding: 11px 28px; text-decoration: none; border-radius: 8px; font-size: 14px; font-weight: 600; box-shadow: 0 4px 14px rgba(37, 99, 235, 0.3); transition: all 0.2s ease; display: flex; align-items: center; gap: 8px; }
         .login-btn:hover { background: linear-gradient(135deg, #1d4ed8 0%, #1e40af 100%); transform: translateY(-2px); box-shadow: 0 6px 20px rgba(37, 99, 235, 0.4); }
 
-        /* HERO LAYOUT */
+        /* HERO */
         .hero-container { display: flex; padding: 60px 60px; justify-content: space-between; align-items: center; background: linear-gradient(135deg, #0f172a 0%, #1e293b 100%); color: white; border-bottom-left-radius: 40px; border-bottom-right-radius: 40px; gap: 40px; }
         .hero-left { flex: 1.2; max-width: 620px; }
         .hero-left h1 { font-size: 52px; font-weight: 800; margin-bottom: 24px; }
         .hero-left h1 span { color: #38bdf8; }
         .hero-left p { font-size: 18px; color: #94a3b8; margin-bottom: 36px; }
-        
         .search-box { display: flex; background: rgba(255, 255, 255, 0.05); padding: 8px; border-radius: 12px; width: 100%; max-width: 520px; border: 1px solid rgba(255, 255, 255, 0.1); }
         .search-box input { flex: 1; border: none; padding: 12px 16px; outline: none; font-size: 16px; color: #ffffff; background: transparent; }
         .search-box button { background: #3b82f6; color: white; border: none; padding: 0 32px; border-radius: 8px; font-weight: 600; cursor: pointer; }
-
         .hero-right { flex: 0.8; display: flex; justify-content: center; }
         .hero-image-frame { width: 100%; max-width: 420px; height: 380px; overflow: hidden; border-radius: 24px; }
         .hero-image-frame img { width: 100%; height: 100%; object-fit: cover; }
@@ -48,13 +47,17 @@
         .services-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(220px, 1fr)); gap: 24px; }
         .service-card { background: white; padding: 35px 24px; border-radius: 20px; border: 1px solid #e2e8f0; display: flex; flex-direction: column; align-items: center; text-align: center; transition: all 0.3s; position: relative; }
         .service-card:hover { transform: translateY(-8px); box-shadow: 0 20px 25px -5px rgba(0, 0, 0, 0.05); }
+        .highlight-card { border: 3px solid #3b82f6 !important; transform: scale(1.05); }
         .icon-container { font-size: 38px; width: 70px; height: 70px; border-radius: 16px; margin-bottom: 24px; display: flex; align-items: center; justify-content: center; }
-        
         .ic-ac { background-color: #f1f5f9; color: #475569; }
         .ic-plumb { background-color: #eff6ff; color: #2563eb; }
         .ic-elec { background-color: #fffbeb; color: #ca8a04; }
         .ic-clean { background-color: #f0fdf4; color: #16a34a; }
         .ic-laptop { background-color: #e0e7ff; color: #4f46e5; }
+        
+        /* UPDATED SECTIONS */
+        .about-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(250px, 1fr)); gap: 20px; margin-top: 30px; }
+        .about-item { background: white; padding: 30px; border-radius: 20px; border: 1px solid #e2e8f0; }
     </style>
 </head>
 <body>
@@ -96,22 +99,30 @@
         </div>
     </main>
 
-    <section id="about" style="padding: 80px 60px; text-align: center; background: white;">
-        <h2>About Us</h2>
-        <p style="color: #64748b; margin-top: 15px;">We are a trusted platform connecting you with the best verified professionals.</p>
+    <section id="about" style="padding: 80px 60px; background: white;">
+        <h2 style="text-align: center; margin-bottom: 40px;">About Us</h2>
+        <div class="about-grid">
+            <div class="about-item"><h4>Our Mission</h4><p>Providing seamless service booking experiences by connecting users with top-tier professionals in their area with ease and trust.</p></div>
+            <div class="about-item"><h4>Verified Quality</h4><p>We ensure that every service partner on our platform goes through a strict background check to maintain high-quality standards for you.</p></div>
+            <div class="about-item"><h4>Reliable Support</h4><p>Our dedicated support team is available 24/7 to assist you with any booking or service-related queries you may have.</p></div>
+        </div>
     </section>
 
     <section id="contact" style="padding: 80px 60px; text-align: center; background: #0f172a; color: white;">
         <h2>Contact Us</h2>
         <p style="margin-top: 15px;">Email: support@smartservice.com | Phone: +91 98765 43210</p>
+        <p style="margin-top: 10px;">Address: Office No. 201, Tech Hub Building, Hinjewadi, Pune - 411057</p>
     </section>
 
     <script>
         function searchService() {
             var input = document.getElementById("searchInput").value.toLowerCase();
             var target = document.getElementById(input);
-            if(target) target.scrollIntoView({behavior: "smooth"});
-            else alert("Service not found!");
+            document.querySelectorAll('.service-card').forEach(card => card.classList.remove('highlight-card'));
+            if(target) {
+                target.classList.add('highlight-card');
+                target.scrollIntoView({behavior: "smooth"});
+            } else { alert("Service not found!"); }
         }
     </script>
 </body>

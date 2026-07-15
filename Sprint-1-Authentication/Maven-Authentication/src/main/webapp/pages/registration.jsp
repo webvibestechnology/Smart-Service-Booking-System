@@ -4,8 +4,7 @@
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 <title>Smart Service - Register</title>
-<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
-
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css">
 <style>
 *{
     margin: 0;
@@ -45,7 +44,7 @@ header {
 }
 
 .logo-text h2 {
-    font-size: 18px;
+    font-size: 20px;
     font-weight: 700;
 }
 
@@ -83,7 +82,7 @@ header {
 }
 
 .left-banner img {
-    max-width: 110%;
+    max-width: 100%;
     height: auto;
 }
 
@@ -239,7 +238,7 @@ button:hover {
 
 <header>
     <div class="logo-section">
-        <div class="logo-icon"><i class="fa-solid fa-gears"></i></div>
+        <div class="logo-icon"><i class="fa-solid fa-bolt-lightning"></i></div>
         <div class="logo-text">
             <h2>Smart Service</h2>
             <p>Booking System</p>
@@ -251,7 +250,11 @@ button:hover {
     <div class="container">
         
         <div class="left-banner">
+<<<<<<< HEAD
+            <img src="C:\Users\ADMIN\Pictures\Saved Pictures\istockphoto-1468757785-612x612.jpg">
+=======
             <img src="https://images.unsplash.com/photo-1522202176988-66273c2fd55f?w=600" alt="Worker Illustration">
+>>>>>>> 36175c0f8b0e565006655610fa06cd5f8237098e
         </div>
 
         <div class="form-side">
@@ -319,6 +322,16 @@ button:hover {
 </div>
 
 <script>
+<<<<<<< HEAD
+    const form = document.getElementById('registrationForm');
+    const password = document.getElementById('password');
+    const confirmPassword = document.getElementById('confirm-password');
+    const toggleButtons = document.querySelectorAll('.toggle-password');
+    // 1. Password Visibility Toggling Feature
+    toggleButtons.forEach(button => {
+        button.addEventListener('click', function() {
+            const targetId = this.getAttribute('data-target');
+=======
 document.addEventListener("DOMContentLoaded", function () {
 
     const form = document.getElementById("registrationForm");
@@ -331,6 +344,7 @@ document.addEventListener("DOMContentLoaded", function () {
         button.addEventListener("click", function () {
 
             const targetId = this.getAttribute("data-target");
+>>>>>>> 36175c0f8b0e565006655610fa06cd5f8237098e
             const inputField = document.getElementById(targetId);
 
             if (inputField) {
