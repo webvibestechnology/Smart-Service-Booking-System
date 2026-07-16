@@ -2,7 +2,6 @@ package com.webvibes;
 
 import java.sql.Connection;
 import java.sql.PreparedStatement;
-import java.com.webvibes.DBConnection;
 
 public class ServiceDAO {
 	public boolean updateService(Service service) {
