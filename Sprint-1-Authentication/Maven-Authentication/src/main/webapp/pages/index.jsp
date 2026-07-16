@@ -5,7 +5,8 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Smart Service Booking System - Home</title>
-    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+  <link rel="stylesheet"
+href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.6.0/css/all.min.css">
     
     <style>
         html { scroll-behavior: smooth; }
@@ -69,19 +70,40 @@
 <body>
 
     <nav class="navbar">
-        <div class="brand-section">
-            <div class="logo-icon"><i class="fa-solid fa-bolt-lightning"></i></div>
-            <div><div class="brand-name">Smart Service</div><div class="brand-sub">BOOKING SYSTEM</div></div>
+    <div class="brand-section">
+        <div class="logo-icon">
+            <i class="fa-solid fa-bolt-lightning"></i>
         </div>
-        <ul class="nav-links">
-            <li><a href="#home">Home</a></li>
-            <li><a href="#services">Services</a></li>
-            <li><a href="#about">About Us</a></li>
-            <li><a href="#contact">Contact Us</a></li>
-        </ul>
-        <a href="login.jsp" id="loginLink" class="login-btn"><i class="fa-solid fa-user-lock"></i> Login</a>
-    </nav>
 
+        <div>
+            <div class="brand-name">Smart Service</div>
+            <div class="brand-sub">BOOKING SYSTEM</div>
+        </div>
+    </div>
+
+    <ul class="nav-links">
+        <li><a href="#home">Home</a></li>
+        <li><a href="#services">Services</a></li>
+        <li><a href="#about">About Us</a></li>
+        <li><a href="#contact">Contact Us</a></li>
+    </ul>
+
+    <div style="display:flex;gap:12px;">
+
+        <a href="login.jsp" class="login-btn">
+            <i class="fa-solid fa-user-lock"></i>
+            Login
+        </a>
+
+        <a href="registration.jsp"
+           class="login-btn"
+           style="background:#16a34a;">
+            <i class="fa-solid fa-user-plus"></i>
+            Register
+        </a>
+
+    </div>
+</nav>
     <header class="hero-container" id="home">
         <div class="hero-left">
             <h1>Book Trusted <span>Services Easily</span></h1>
@@ -97,11 +119,43 @@
     <main class="services-section" id="services">
         <h2>Popular Services</h2>
         <div class="services-grid">
-            <div class="service-card" id="ac"><div class="icon-container ic-ac"><i class="fa-solid fa-snowflake"></i></div><h3>AC Repair</h3><p>Starting at ₹499</p></div>
-            <div class="service-card" id="plumbing"><div class="icon-container ic-plumb"><i class="fa-solid fa-faucet"></i></div><h3>Plumbing</h3><p>Starting at ₹299</p></div>
-            <div class="service-card" id="electrician"><div class="icon-container ic-elec"><i class="fa-solid fa-plug"></i></div><h3>Electrician</h3><p>Starting at ₹199</p></div>
-            <div class="service-card" id="cleaning"><div class="icon-container ic-clean"><i class="fa-solid fa-broom"></i></div><h3>Cleaning</h3><p>Starting at ₹149</p></div>
-            <div class="service-card" id="laptop"><div class="icon-container ic-laptop"><i class="fa-solid fa-laptop"></i></div><h3>Laptop Repair</h3><p>Starting at ₹399</p></div>
+           <div class="service-card"
+     id="ac"
+     onclick="openService('AC Repair')">
+
+    <div class="icon-container ic-ac">
+        <i class="fa-solid fa-snowflake"></i>
+    </div>
+
+    <h3>AC Repair</h3>
+    <p>Starting at ₹499</p>
+
+</div>
+        <div class="service-card"
+     id="plumbing"
+     onclick="openService('Plumbing')">
+
+    <div class="icon-container ic-ac">
+        <i class="fa-solid fa-snowflake"></i>
+    </div>
+
+    <h3>Plumbing </h3>
+    <p>Starting at ₹499</p>
+
+</div>
+          <div class="service-card"
+     id="electrician"
+     onclick="openService('Electrician')">
+
+    <div class="icon-container ic-ac">
+        <i class="fa-solid fa-snowflake"></i>
+    </div>
+
+    <h3>Electrician</h3>
+    <p>Starting at ₹499</p>
+
+</div>
+ 
         </div>
     </main>
 
@@ -119,17 +173,56 @@
         <p style="margin-top: 15px;">Email: support@smartservice.com | Phone: +91 98765 43210</p>
         <p style="margin-top: 10px;">Address: Office No. 201, Tech Hub Building, Hinjewadi, Pune - 411057</p>
     </section>
+<footer
+style="
+background:#020617;
+color:white;
+text-align:center;
+padding:20px;">
 
+    © 2026 Smart Service Booking System |
+    All Rights Reserved.
+
+</footer>
     <script>
-        function searchService() {
-            var input = document.getElementById("searchInput").value.toLowerCase();
-            var target = document.getElementById(input);
-            document.querySelectorAll('.service-card').forEach(card => card.classList.remove('highlight-card'));
-            if(target) {
-                target.classList.add('highlight-card');
-                target.scrollIntoView({behavior: "smooth"});
-            } else { alert("Service not found!"); }
+    function searchService() {
+
+        let input = document.getElementById("searchInput")
+                        .value
+                        .trim()
+                        .toLowerCase();
+
+        let target = document.getElementById(input);
+
+        document.querySelectorAll(".service-card")
+            .forEach(card => card.classList.remove("highlight-card"));
+
+        if (target) {
+
+            target.classList.add("highlight-card");
+
+            target.scrollIntoView({
+                behavior: "smooth",
+                block: "center"
+            });
+
+        } else {
+
+            alert("Service not found!");
+
         }
+    }
+
+    function openService(serviceName){
+
+        // Sprint-2
+        // Redirect to Service Details page
+
+        window.location.href =
+                "serviceDetails.jsp?service=" +
+                encodeURIComponent(serviceName);
+
+    }
     </script>
 </body>
 </html>

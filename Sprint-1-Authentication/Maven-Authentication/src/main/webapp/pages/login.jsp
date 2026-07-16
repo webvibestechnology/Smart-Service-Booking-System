@@ -180,7 +180,7 @@
                 <h2>Welcome Back!</h2>
                 <p class="subtitle">Login to your portal account</p>
 
-                <form action="${pageContext.request.contextPath}/LoginServlet" method="POST">
+                <form action="${pageContext.request.contextPath}/login" method="POST">
                     <div class="form-group">
                         <label class="form-label">Email Address</label>
                         <input type="email" name="email" class="form-input" placeholder="name@company.com" required>

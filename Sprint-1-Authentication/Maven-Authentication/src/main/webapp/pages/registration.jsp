@@ -250,11 +250,7 @@ button:hover {
     <div class="container">
         
         <div class="left-banner">
-<<<<<<< HEAD
-            <img src="C:\Users\ADMIN\Pictures\Saved Pictures\istockphoto-1468757785-612x612.jpg">
-=======
             <img src="https://images.unsplash.com/photo-1522202176988-66273c2fd55f?w=600" alt="Worker Illustration">
->>>>>>> 36175c0f8b0e565006655610fa06cd5f8237098e
         </div>
 
         <div class="form-side">
@@ -322,19 +318,9 @@ button:hover {
 </div>
 
 <script>
-<<<<<<< HEAD
-    const form = document.getElementById('registrationForm');
-    const password = document.getElementById('password');
-    const confirmPassword = document.getElementById('confirm-password');
-    const toggleButtons = document.querySelectorAll('.toggle-password');
-    // 1. Password Visibility Toggling Feature
-    toggleButtons.forEach(button => {
-        button.addEventListener('click', function() {
-            const targetId = this.getAttribute('data-target');
-=======
 document.addEventListener("DOMContentLoaded", function () {
 
-    const form = document.getElementById("registrationForm");
+    const form = document.querySelector("form");
     const password = document.getElementById("password");
     const confirmPassword = document.getElementById("confirm-password");
     const toggleButtons = document.querySelectorAll(".toggle-password");
@@ -344,7 +330,6 @@ document.addEventListener("DOMContentLoaded", function () {
         button.addEventListener("click", function () {
 
             const targetId = this.getAttribute("data-target");
->>>>>>> 36175c0f8b0e565006655610fa06cd5f8237098e
             const inputField = document.getElementById(targetId);
 
             if (inputField) {
