@@ -12,6 +12,7 @@ import jakarta.servlet.http.HttpSession;
 @WebServlet("/login")
 public class LoginServlet extends HttpServlet {
 
+    @Override
     protected void doPost(HttpServletRequest request,
                           HttpServletResponse response)
             throws ServletException, IOException {
@@ -29,19 +30,24 @@ public class LoginServlet extends HttpServlet {
             session.setAttribute("user", user);
 
             if (user.getRole().equalsIgnoreCase("ADMIN")) {
-                response.sendRedirect("pages/adminDashboard.jsp");
+                response.sendRedirect(request.getContextPath() + "/pages/adminDashboard.jsp");
 
             } else if (user.getRole().equalsIgnoreCase("USER")) {
-                response.sendRedirect("pages/userDashboard.jsp");
+                response.sendRedirect(request.getContextPath() + "/pages/userDashboard.jsp");
 
             } else if (user.getRole().equalsIgnoreCase("PROVIDER")) {
-                response.sendRedirect("pages/providerDashboard.jsp");
+                response.sendRedirect(request.getContextPath() + "/pages/providerDashboard.jsp");
+
+            } else {
+                // Unknown role — send to login with error
+                request.setAttribute("error", "Unknown role: " + user.getRole());
+                request.getRequestDispatcher("/pages/login.jsp").forward(request, response);
             }
 
         } else {
 
             request.setAttribute("error", "Invalid Email or Password");
-            request.getRequestDispatcher("pages/login.jsp")
+            request.getRequestDispatcher("/pages/login.jsp")
                    .forward(request, response);
         }
     }

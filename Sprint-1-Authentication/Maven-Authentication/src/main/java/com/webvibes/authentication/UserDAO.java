@@ -11,7 +11,7 @@ public class UserDAO {
      */
     public User login(String email, String password) {
 
-        String query = "SELECT user_id, full_name, email, mobile, password, role "
+        String query = "SELECT id, full_name, email, mobile, password, role "
                      + "FROM users WHERE email = ? AND password = ?";
 
         try (Connection conn = DBConnection.getConnection();
@@ -23,7 +23,7 @@ public class UserDAO {
             try (ResultSet rs = ps.executeQuery()) {
                 if (rs.next()) {
                     User user = new User();
-                    user.setUserId(rs.getInt("user_id"));
+                    user.setUserId(rs.getInt("id"));
                     user.setName(rs.getString("full_name"));
                     user.setEmail(rs.getString("email"));
                     user.setMobile(rs.getString("mobile"));

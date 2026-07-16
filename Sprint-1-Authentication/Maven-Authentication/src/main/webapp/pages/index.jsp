@@ -1,4 +1,5 @@
-<%@ page language="java" contentType="text/html; charset=UTF-8" pageEncoding="UTF-8"%>
+<%@ page language="java" contentType="text/html; charset=UTF-8" pageEncoding="UTF-8" %>
+<%@ page import="com.webvibes.authentication.User" %>
 <!DOCTYPE html>
 <html lang="en">
 <head>
@@ -90,12 +91,12 @@ href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.6.0/css/all.min.css"
 
     <div style="display:flex;gap:12px;">
 
-        <a href="login.jsp" class="login-btn">
+        <a href="${pageContext.request.contextPath}/pages/login.jsp" class="login-btn">
             <i class="fa-solid fa-user-lock"></i>
             Login
         </a>
 
-        <a href="registration.jsp"
+        <a href="${pageContext.request.contextPath}/pages/registration.jsp"
            class="login-btn"
            style="background:#16a34a;">
             <i class="fa-solid fa-user-plus"></i>

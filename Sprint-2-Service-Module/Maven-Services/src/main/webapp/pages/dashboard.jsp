@@ -1,20 +1,13 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8" pageEncoding="UTF-8"%>
-<%
-    // Authentication Module Guard: Redirect to login if session is invalid
-    if (session.getAttribute("user") == null) {
-        response.sendRedirect("login.jsp?error=unauthorized");
-        return;
-    }
-%>
+<%-- Session check removed: Sprint 2 is a separate WAR — auth is handled by Sprint 1 --%>
 <!DOCTYPE html>
 <html lang="en">
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Service Dashboard</title>
-    <!-- Bootstrap 5 CSS CDN -->
-    <link href="https://jsdelivr.net" rel="stylesheet">
-    <link rel="stylesheet" href="css_styles.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css" rel="stylesheet">
 </head>
 <body class="bg-light">
 
@@ -39,7 +32,7 @@
                             <h5 class="card-title text-muted text-uppercase small">Total Services</h5>
                             <h2 class="display-6 fw-bold my-2 text-primary">12</h2>
                         </div>
-                        <a href="view-services.jsp" class="btn btn-sm btn-link p-0 text-start">Manage services →</a>
+                        <a href="${pageContext.request.contextPath}/viewServices" class="btn btn-sm btn-link p-0 text-start">Manage services →</a>
                     </div>
                 </div>
             </div>
@@ -61,7 +54,7 @@
                             <h5 class="card-title text-muted text-uppercase small">Quick Actions</h5>
                             <p class="text-muted small">Deploy a brand new catalog feature instantly.</p>
                         </div>
-                        <a href="add-service.jsp" class="btn btn-primary btn-sm w-100">Create New Service</a>
+                        <a href="${pageContext.request.contextPath}/addService" class="btn btn-primary btn-sm w-100">Create New Service</a>
                     </div>
                 </div>
             </div>
@@ -105,7 +98,7 @@
         </section>
     </main>
 
-    <!-- Bootstrap Bundle with Popper JS CDN -->
-    <script src="https://jsdelivr.net"></script>
+    <!-- Bootstrap Bundle -->
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/js/bootstrap.bundle.min.js"></script>
 </body>
 </html>
