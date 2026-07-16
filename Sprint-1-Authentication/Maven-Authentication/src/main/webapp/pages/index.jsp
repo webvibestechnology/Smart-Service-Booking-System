@@ -55,9 +55,15 @@
         .ic-clean { background-color: #f0fdf4; color: #16a34a; }
         .ic-laptop { background-color: #e0e7ff; color: #4f46e5; }
         
-        /* UPDATED SECTIONS */
-        .about-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(250px, 1fr)); gap: 20px; margin-top: 30px; }
-        .about-item { background: white; padding: 30px; border-radius: 20px; border: 1px solid #e2e8f0; }
+        /* UPDATED ABOUT SECTION */
+        .about-section { padding: 80px 60px; background: white; }
+        .about-title { font-size: 28px; font-weight: 800; text-align: center; margin-bottom: 50px; color: #0f172a; }
+        .about-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(250px, 1fr)); gap: 30px; }
+        .about-item { padding: 30px; border-radius: 20px; border: 1px solid #e2e8f0; transition: all 0.3s ease; text-align: center; }
+        .about-item:hover { transform: translateY(-5px); border-color: #3b82f6; box-shadow: 0 10px 20px rgba(0,0,0,0.05); }
+        .about-item i { font-size: 30px; color: #3b82f6; margin-bottom: 15px; }
+        .about-item h4 { margin-bottom: 10px; color: #0f172a; }
+        .about-item p { color: #64748b; font-size: 14px; }
     </style>
 </head>
 <body>
@@ -99,12 +105,12 @@
         </div>
     </main>
 
-    <section id="about" style="padding: 80px 60px; background: white;">
-        <h2 style="text-align: center; margin-bottom: 40px;">About Us</h2>
+    <section class="about-section" id="about">
+        <h2 class="about-title">About Us</h2>
         <div class="about-grid">
-            <div class="about-item"><h4>Our Mission</h4><p>Providing seamless service booking experiences by connecting users with top-tier professionals in their area with ease and trust.</p></div>
-            <div class="about-item"><h4>Verified Quality</h4><p>We ensure that every service partner on our platform goes through a strict background check to maintain high-quality standards for you.</p></div>
-            <div class="about-item"><h4>Reliable Support</h4><p>Our dedicated support team is available 24/7 to assist you with any booking or service-related queries you may have.</p></div>
+            <div class="about-item"><i class="fa-solid fa-rocket"></i><h4>Our Mission</h4><p>Providing seamless service booking experiences by connecting users with top-tier professionals in their area with ease and trust.</p></div>
+            <div class="about-item"><i class="fa-solid fa-shield-halved"></i><h4>Verified Quality</h4><p>We ensure that every service partner on our platform goes through a strict background check to maintain high-quality standards for you.</p></div>
+            <div class="about-item"><i class="fa-solid fa-headset"></i><h4>Reliable Support</h4><p>Our dedicated support team is available 24/7 to assist you with any booking or service-related queries you may have.</p></div>
         </div>
     </section>
 
