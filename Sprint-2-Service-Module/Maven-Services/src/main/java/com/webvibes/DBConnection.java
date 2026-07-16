@@ -4,6 +4,8 @@ import java.sql.Connection;
 import java.sql.DriverManager;
 
 public class DBConnection {
+public class DBConnection 
+{
 
     private static final String URL = "jdbc:mysql://localhost:3306/service_module_db";
     private static final String USERNAME = "root";
