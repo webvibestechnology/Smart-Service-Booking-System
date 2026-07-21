@@ -12,7 +12,6 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Service Dashboard</title>
-    <!-- Bootstrap 5 CSS CDN -->
     <link href="https://jsdelivr.net" rel="stylesheet">
     <link rel="stylesheet" href="css_styles.css">
 </head>
@@ -21,7 +20,6 @@
     <!-- Include Navbar -->
     <%@ include file="navbar.jsp" %>
 
-    <!-- Main Content Container -->
     <main class="container my-5">
         <header class="row mb-4">
             <div class="col">
@@ -30,7 +28,6 @@
             </div>
         </header>
 
-        <!-- Quick Summary Cards -->
         <section class="row g-4 mb-5">
             <div class="col-md-4">
                 <div class="card border-0 shadow-sm h-100">
@@ -67,7 +64,6 @@
             </div>
         </section>
 
-        <!-- Recent Activity Table Section -->
         <section class="row">
             <div class="col-12">
                 <div class="card border-0 shadow-sm">
@@ -105,7 +101,6 @@
         </section>
     </main>
 
-    <!-- Bootstrap Bundle with Popper JS CDN -->
     <script src="https://jsdelivr.net"></script>
 </body>
 </html>
