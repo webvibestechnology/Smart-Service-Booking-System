@@ -1,10 +1,3 @@
-<%@ page language="java" contentType="text/html; charset=UTF-8" pageEncoding="UTF-8" %>
-<%-- BOOK-02: Book Service Page (Screen 7 in mockup)
-     This page shows a booking form for a selected service.
-     Fields: Service Date, Time Slot (dropdown), Address, Additional Notes
-     On submit → POST to /bookService servlet
-     Reference: mockup screen 7
---%>
 <!DOCTYPE html>
 <html lang="en">
 <head>
@@ -15,12 +8,18 @@
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
     
     <style>
-        body {
-            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+        /* सोयीसाठी आणि फुटर तळाशी ठेवण्यासाठी flexbox चा वापर */
+        html, body {
+            height: 100%;
             margin: 0;
             padding: 0;
+        }
+        body {
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
             background-color: #f4f7fc;
             color: #333;
+            display: flex;
+            flex-direction: column;
         }
 
         /* 1. Header & Logo Styling */
@@ -86,6 +85,9 @@
             max-width: 1200px;
             margin: 0 auto;
             padding: 20px 40px;
+            flex: 1; /* हे कंटेंटला जागा व्यापण्यास मदत करेल जेणेकरून फुटर नेहमी खाली राहील */
+            width: 100%;
+            box-sizing: border-box;
         }
 
         /* Breadcrumbs */
@@ -128,9 +130,9 @@
 
         /* Left Side Card: Service Image Thumbnail */
         .service-thumbnail-container {
-            width: 150px;
-            height: 95px;
-            background-color: #e2e8f0;
+            width: 190px;
+            height: 100px;
+            background-color: #c2d8f4;
             border-radius: 6px;
             overflow: hidden;
             margin-bottom: 20px;
@@ -219,6 +221,29 @@
         .btn-submit-booking:hover {
             background-color: #004085;
         }
+
+        /* नवीन जोडलेले Footer Styling */
+        footer {
+            background-color: #1a295f;
+            color: #a5b4fc;
+            text-align: center;
+            padding: 15px 0;
+            font-size: 13px;
+            margin-top: auto; /* मुख्य भाग संपल्यावर तळाशी राहण्यासाठी */
+            border-top: 3px solid #3b82f6;
+        }
+        footer p {
+            margin: 0;
+        }
+        footer a {
+            color: #fff;
+            text-decoration: none;
+            margin: 0 10px;
+        }
+        footer a:hover {
+            text-decoration: underline;
+            color: #4584eb;
+        }
     </style>
 </head>
 <body>
@@ -246,9 +271,9 @@
             <!-- 2. Left Panel: Service Details -->
             <div class="card">
                 <h3 class="card-title">Service Details</h3>
-                <!--image path-->
+            
                 <div class="service-thumbnail-container">
-                    <img src="file:///C:/Users/ADMIN/Pictures/Saved%20Pictures/service-ac.jpg" alt="Service Preview" onerror="this.src='https://via.placeholder.com/140x95?text=AC+Repair';">
+                    <img src="https://media.istockphoto.com/id/2058341644/photo/air-conditioner-maintenance-and-repair-hvac-service-technician-at-work.jpg?s=612x612&w=0&k=20&c=ooYvoL31rISR-2yeOhVpZBb9ojjFWUDdjYPiDbm9dfY=" alt="Service Preview" onerror="this.src='https://via.placeholder.com/140x95?text=AC+Repair';">
                 </div>
                 
                 <h4 class="service-title-text">AC Repaire<c:out value="${not empty service.name ? service.name : 'AC Repair'}"/></h4>
@@ -267,7 +292,7 @@
                 
                 <form action="${pageContext.request.contextPath}/bookService" method="POST">
                     
-                    <!-- Servlet hidden -->
+                    <!-- Servlet  -->
                     <input type="hidden" name="serviceId" value="${not empty service.id ? service.id : '1001'}" />
                     <input type="hidden" name="serviceName" value="${not empty service.name ? service.name : 'AC Repair'}" />
                     <input type="hidden" name="amount" value="${not empty service.price ? service.price : '499'}" />
@@ -308,6 +333,17 @@
 
         </div>
     </div>
+
+    <!--4. Footer Section -->
+    <footer>
+        <p>&copy; 2026 Smart Service Booking System. All rights reserved.</p>
+        <p style="margin-top: 5px;">
+            <a href="home">Home</a> | 
+            <a href="services">Services</a> | 
+            <a href="about">About Us</a> | 
+            <a href="contact">Contact Support</a>
+        </p>
+    </footer>
 
     <script>
         (function() {
