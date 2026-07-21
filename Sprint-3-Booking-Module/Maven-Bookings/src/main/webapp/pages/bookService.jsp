@@ -222,7 +222,7 @@
             background-color: #004085;
         }
 
-        /* नवीन जोडलेले Footer Styling */
+        /* Footer Styling */
         footer {
             background-color: #1a295f;
             color: #a5b4fc;
