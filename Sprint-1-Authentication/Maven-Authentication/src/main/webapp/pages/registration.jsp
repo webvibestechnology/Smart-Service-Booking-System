@@ -1,3 +1,4 @@
+<%@ page language="java" contentType="text/html; charset=UTF-8" pageEncoding="UTF-8" %>
 <!DOCTYPE html>
 <html lang="en">
 <head>
@@ -6,7 +7,7 @@
 <title>Smart Service - Register</title>
 <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css">
 <style>
-*{
+* {
     margin: 0;
     padding: 0;
     box-sizing: border-box;
@@ -20,7 +21,7 @@ body {
     flex-direction: column;
 }
 
-/* Header Navbar matching Mockup */
+/* Header Navbar */
 header {
     background-color: #03153d;
     padding: 15px 50px;
@@ -53,7 +54,7 @@ header {
     color: #cbd5e1;
 }
 
-/* Main Container Setup */
+/* Main Container */
 .main-wrapper {
     flex: 1;
     display: flex;
@@ -71,7 +72,7 @@ header {
     box-shadow: 0 10px 30px rgba(0,0,0,0.08);
 }
 
-/* Left Side Illustration Visual area */
+/* Left Side Illustration */
 .left-banner {
     width: 40%;
     background-color: #e8f4f9;
@@ -86,7 +87,7 @@ header {
     height: auto;
 }
 
-/* Right Side Form Content */
+/* Right Side Form */
 .form-side {
     width: 60%;
     padding: 45px;
@@ -105,7 +106,30 @@ header {
     font-size: 14px;
     text-align: center;
     font-weight: 400;
-    margin-bottom: 30px;
+    margin-bottom: 20px;
+}
+
+/* Alert banners */
+.alert {
+    padding: 11px 16px;
+    border-radius: 8px;
+    font-size: 13.5px;
+    font-weight: 500;
+    margin-bottom: 18px;
+    display: flex;
+    align-items: center;
+    gap: 8px;
+    grid-column: span 2;
+}
+.alert-error {
+    background: #fef2f2;
+    border: 1px solid #fecaca;
+    color: #dc2626;
+}
+.alert-success {
+    background: #f0fdf4;
+    border: 1px solid #bbf7d0;
+    color: #16a34a;
 }
 
 /* Form Two-Column Grid */
@@ -171,7 +195,7 @@ label {
     box-shadow: 0 0 0 3px rgba(59, 130, 246, 0.15);
 }
 
-/* Action Elements styling */
+/* Button */
 .btn-container {
     grid-column: span 2;
     margin-top: 15px;
@@ -212,7 +236,7 @@ button:hover {
     text-decoration: underline;
 }
 
-/* Responsive adjustment for small screens */
+/* Responsive */
 @media (max-width: 768px) {
     .container {
         flex-direction: column;
@@ -228,7 +252,7 @@ button:hover {
     .form-grid {
         grid-template-columns: 1fr;
     }
-    .btn-container, .footer-text {
+    .btn-container, .footer-text, .alert {
         grid-column: span 1;
     }
 }
@@ -248,26 +272,41 @@ button:hover {
 
 <div class="main-wrapper">
     <div class="container">
-        
+
         <div class="left-banner">
-<<<<<<< HEAD
-            <img src="C:\Users\ADMIN\Pictures\Saved Pictures\istockphoto-1468757785-612x612.jpg">
-=======
             <img src="https://images.unsplash.com/photo-1522202176988-66273c2fd55f?w=600" alt="Worker Illustration">
->>>>>>> 36175c0f8b0e565006655610fa06cd5f8237098e
         </div>
 
         <div class="form-side">
             <h1>Create an Account</h1>
             <h3>Register to get started</h3>
 
-         <form action="../profile" method="post" class="form-grid">
+            <form action="${pageContext.request.contextPath}/profile" method="post" class="form-grid">
+
+                <%-- Show feedback messages from servlet redirect params --%>
+                <% String error = request.getParameter("error"); %>
+                <% if ("emailexists".equals(error)) { %>
+                    <div class="alert alert-error">
+                        <i class="fa-solid fa-circle-exclamation"></i>
+                        This email is already registered. Please <a href="login.jsp" style="color:#dc2626;font-weight:700;">log in</a>.
+                    </div>
+                <% } else if ("emptyfield".equals(error)) { %>
+                    <div class="alert alert-error">
+                        <i class="fa-solid fa-circle-exclamation"></i>
+                        All fields are required. Please fill in the form completely.
+                    </div>
+                <% } else if ("servererror".equals(error)) { %>
+                    <div class="alert alert-error">
+                        <i class="fa-solid fa-circle-exclamation"></i>
+                        A server error occurred. Please try again later.
+                    </div>
+                <% } %>
 
                 <div class="form-group">
                     <label for="fullname">Full Name</label>
                     <div class="input-box">
                         <i class="fa-regular fa-user"></i>
-                       <input type="text" id="fullname" name="name" placeholder="Enter full name" required>
+                        <input type="text" id="fullname" name="name" placeholder="Enter full name" required>
                     </div>
                 </div>
 
@@ -283,7 +322,8 @@ button:hover {
                     <label for="mobile">Mobile Number</label>
                     <div class="input-box">
                         <i class="fa-solid fa-phone"></i>
-                        <input type="tel" id="mobile" name="mobile" placeholder="Enter mobile number" pattern="[0-9]{10}" title="Please enter a valid 10-digit mobile number." required>
+                        <input type="tel" id="mobile" name="mobile" placeholder="Enter mobile number"
+                               pattern="[0-9]{10}" title="Please enter a valid 10-digit mobile number." required>
                     </div>
                 </div>
 
@@ -291,9 +331,9 @@ button:hover {
                     <label for="password">Password</label>
                     <div class="input-box">
                         <i class="fa-solid fa-lock"></i>
-                        <input type="password" id="password" name="password" placeholder="Enter password" 
-                               pattern="(?=.*[A-Za-z])(?=.*\d)(?=.*[@$!%*#?&]).{8,}" 
-                               title="Password must contain at least 8 characters, including one letter, one number, and one special character." required>
+                        <input type="password" id="password" name="password" placeholder="Enter password"
+                               pattern="(?=.*[A-Za-z])(?=.*\d)(?=.*[@$!%*#?&amp;]).{8,}"
+                               title="Password must be at least 8 characters with a letter, number, and special character." required>
                         <i class="fa-solid fa-eye-slash toggle-password" data-target="password"></i>
                     </div>
                 </div>
@@ -312,7 +352,7 @@ button:hover {
                 </div>
 
                 <div class="footer-text">
-                    Already have an account? <a href="login.jsp">Login here</a>
+                    Already have an account? <a href="${pageContext.request.contextPath}/pages/login.jsp">Login here</a>
                 </div>
 
             </form>
@@ -322,19 +362,9 @@ button:hover {
 </div>
 
 <script>
-<<<<<<< HEAD
-    const form = document.getElementById('registrationForm');
-    const password = document.getElementById('password');
-    const confirmPassword = document.getElementById('confirm-password');
-    const toggleButtons = document.querySelectorAll('.toggle-password');
-    // 1. Password Visibility Toggling Feature
-    toggleButtons.forEach(button => {
-        button.addEventListener('click', function() {
-            const targetId = this.getAttribute('data-target');
-=======
 document.addEventListener("DOMContentLoaded", function () {
 
-    const form = document.getElementById("registrationForm");
+    const form = document.querySelector("form");
     const password = document.getElementById("password");
     const confirmPassword = document.getElementById("confirm-password");
     const toggleButtons = document.querySelectorAll(".toggle-password");
@@ -342,11 +372,8 @@ document.addEventListener("DOMContentLoaded", function () {
     // Password Visibility Toggle
     toggleButtons.forEach(function(button) {
         button.addEventListener("click", function () {
-
             const targetId = this.getAttribute("data-target");
->>>>>>> 36175c0f8b0e565006655610fa06cd5f8237098e
             const inputField = document.getElementById(targetId);
-
             if (inputField) {
                 if (inputField.type === "password") {
                     inputField.type = "text";
@@ -358,7 +385,6 @@ document.addEventListener("DOMContentLoaded", function () {
                     this.classList.add("fa-eye-slash");
                 }
             }
-
         });
     });
 
@@ -378,13 +404,10 @@ document.addEventListener("DOMContentLoaded", function () {
 
     if (form) {
         form.addEventListener("submit", function (event) {
-
             validatePasswordMatch();
-
             if (!form.checkValidity()) {
                 event.preventDefault();
             }
-
         });
     }
 

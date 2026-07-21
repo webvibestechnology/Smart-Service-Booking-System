@@ -31,7 +31,11 @@ public class RegisterServlet extends HttpServlet {
             return;
         }
 
-        User user = new User(name, email, mobile, password);
+        // Default role for every new registration
+        String role = "USER";
+
+        User user = new User(name, email, mobile, password, role);
+
         UserDAO userDAO = new UserDAO();
 
         String result = userDAO.registerUser(user);

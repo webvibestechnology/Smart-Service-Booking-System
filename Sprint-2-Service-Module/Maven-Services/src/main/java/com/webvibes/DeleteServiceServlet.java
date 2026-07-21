@@ -1,63 +1,58 @@
 package com.webvibes;
 
 import java.io.IOException;
-import java.sql.Connection;
-import java.sql.PreparedStatement;
-
 import jakarta.servlet.ServletException;
 import jakarta.servlet.annotation.WebServlet;
 import jakarta.servlet.http.HttpServlet;
 import jakarta.servlet.http.HttpServletRequest;
 import jakarta.servlet.http.HttpServletResponse;
-import jakarta.servlet.http.HttpSession;
 
-@WebServlet("/DeleteServiceServlet")
+@WebServlet("/deleteService")
 public class DeleteServiceServlet extends HttpServlet {
 
     private static final long serialVersionUID = 1L;
+
+    // Admin role check helper
+    private boolean isAdmin(HttpServletRequest request) {
+        jakarta.servlet.http.HttpSession s = request.getSession(false);
+        return s != null && "ADMIN".equals(s.getAttribute("role"));
+    }
 
     @Override
     protected void doGet(HttpServletRequest request, HttpServletResponse response)
             throws ServletException, IOException {
 
-        
+        if (!isAdmin(request)) {
+            response.sendRedirect(request.getContextPath() + "/viewServices");
+            return;
+        }
+
+        String idParam = request.getParameter("id");
+        if (idParam == null) {
+            response.sendRedirect(request.getContextPath() + "/viewServices");
+            return;
+        }
+
         try {
-        	int serviceId = Integer.parseInt(request.getParameter("serviceId"));
+            int id = Integer.parseInt(idParam);
+            ServiceDAO dao = new ServiceDAO();
+            boolean deleted = dao.deleteService(id);
 
-            Connection con = DBConnection.getConnection();
-
-            String sql = "DELETE FROM services WHERE service_id = ?";
-
-            PreparedStatement ps = con.prepareStatement(sql);
-            ps.setInt(1, serviceId);
-
-            int result = ps.executeUpdate();
-
-            HttpSession session = request.getSession();
-
-            if (result > 0) {
-                session.setAttribute("message", "Service deleted successfully.");
+            if (deleted) {
+                response.sendRedirect(request.getContextPath() + "/manageServices?msg=deletesuccess");
             } else {
-                session.setAttribute("message", "Service not found.");
+                response.sendRedirect(request.getContextPath() + "/manageServices?error=deletefailed");
             }
-
-            ps.close();
-            con.close();
 
         } catch (Exception e) {
             e.printStackTrace();
-            request.getSession().setAttribute("message", "Error deleting service.");
+            response.sendRedirect(request.getContextPath() + "/viewServices?error=exception");
         }
-
-        response.sendRedirect("ServiceListServlet");
     }
 
     @Override
     protected void doPost(HttpServletRequest request, HttpServletResponse response)
             throws ServletException, IOException {
-
         doGet(request, response);
     }
 }
-
-
