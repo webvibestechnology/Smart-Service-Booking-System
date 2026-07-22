@@ -1,18 +1,10 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8" pageEncoding="UTF-8" %>
-<%@ page import="com.webvibes.Service" %>
-<%
-    Service service = (Service) request.getAttribute("service");
-    if (service == null) {
-        response.sendRedirect(request.getContextPath() + "/viewServices");
-        return;
-    }
-%>
 <!DOCTYPE html>
 <html lang="en">
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Edit Service - Smart Service</title>
+    <title>Add Service - Smart Service</title>
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
     <style>
         * { box-sizing: border-box; margin: 0; padding: 0; font-family: 'Segoe UI', system-ui, sans-serif; }
@@ -23,8 +15,11 @@
         .logo-icon { background: linear-gradient(135deg,#3b82f6,#1d4ed8); width: 40px; height: 40px; border-radius: 10px; display: flex; align-items: center; justify-content: center; font-size: 18px; color: white; }
         .brand-name { font-size: 18px; font-weight: 700; }
         .brand-sub  { font-size: 11px; color: #38bdf8; letter-spacing: 1px; }
-        .nav-btn { padding: 9px 20px; border-radius: 8px; text-decoration: none; font-size: 13px; font-weight: 600; display: flex; align-items: center; gap: 6px; border: 1px solid #334155; color: #94a3b8; }
-        .nav-btn:hover { background: #1e293b; color: white; }
+        .nav-actions { display: flex; gap: 12px; align-items: center; }
+        .nav-btn { padding: 9px 20px; border-radius: 8px; text-decoration: none; font-size: 13px; font-weight: 600; display: flex; align-items: center; gap: 6px; }
+        .btn-outline { border: 1px solid #334155; color: #94a3b8; }
+        .btn-outline:hover { background: #1e293b; color: white; }
+        .btn-primary-nav { background: linear-gradient(135deg,#2563eb,#1d4ed8); color: white; }
 
         .main { flex: 1; display: flex; justify-content: center; align-items: flex-start; padding: 50px 20px; }
         .card {
@@ -32,12 +27,16 @@
             border-radius: 20px; border: 1px solid #e2e8f0;
             box-shadow: 0 8px 24px rgba(0,0,0,0.05); overflow: hidden;
         }
-        .card-header { background: linear-gradient(135deg,#1e3a5f,#0f172a); padding: 28px 36px; color: white; }
+        .card-header {
+            background: linear-gradient(135deg,#0f172a,#1e293b);
+            padding: 28px 36px; color: white;
+        }
         .card-header h2 { font-size: 22px; font-weight: 700; margin-bottom: 4px; }
         .card-header p  { color: #94a3b8; font-size: 13px; }
         .card-body { padding: 36px; }
 
-        .alert-error { background:#fef2f2; border:1px solid #fecaca; color:#dc2626; padding:12px 16px; border-radius:8px; margin-bottom:20px; font-size:13.5px; display:flex; align-items:center; gap:8px; }
+        .alert-error   { background:#fef2f2; border:1px solid #fecaca; color:#dc2626; padding:12px 16px; border-radius:8px; margin-bottom:20px; font-size:13.5px; display:flex; align-items:center; gap:8px; }
+        .alert-success { background:#f0fdf4; border:1px solid #bbf7d0; color:#16a34a; padding:12px 16px; border-radius:8px; margin-bottom:20px; font-size:13.5px; display:flex; align-items:center; gap:8px; }
 
         .form-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 20px; }
         .form-group { display: flex; flex-direction: column; }
@@ -76,76 +75,76 @@
             <div class="brand-sub">ADMIN PANEL</div>
         </div>
     </a>
-    <a href="${pageContext.request.contextPath}/viewServices" class="nav-btn">
-        <i class="fa-solid fa-list"></i> View Services
-    </a>
+    <div class="nav-actions">
+        <a href="${pageContext.request.contextPath}/viewServices" class="nav-btn btn-outline">
+            <i class="fa-solid fa-list"></i> View Services
+        </a>
+    </div>
 </nav>
 
 <main class="main">
     <div class="card">
         <div class="card-header">
-            <h2><i class="fa-solid fa-pen-to-square" style="color:#38bdf8;margin-right:10px;"></i>Edit Service</h2>
-            <p>Update the details for: <strong><%= service.getServiceName() %></strong></p>
+            <h2><i class="fa-solid fa-circle-plus" style="color:#38bdf8;margin-right:10px;"></i>Add New Service</h2>
+            <p>Fill in the details to add a new service to the platform.</p>
         </div>
         <div class="card-body">
 
-            <% String errorParam = request.getParameter("error"); %>
-            <% if ("updatefailed".equals(errorParam)) { %>
-                <div class="alert-error"><i class="fa-solid fa-circle-exclamation"></i> Update failed. Please try again.</div>
+            <% String error = (String) request.getAttribute("error"); %>
+            <% if (error != null) { %>
+                <div class="alert-error"><i class="fa-solid fa-circle-exclamation"></i> <%= error %></div>
             <% } %>
 
-            <form action="${pageContext.request.contextPath}/updateService" method="post" class="form-grid">
-
-                <%-- Hidden ID --%>
-                <input type="hidden" name="id" value="<%= service.getServiceId() %>">
+            <form action="${pageContext.request.contextPath}/addService" method="post" class="form-grid">
 
                 <div class="form-group full">
                     <label for="serviceName">Service Name</label>
-                    <input type="text" id="serviceName" name="serviceName"
-                           value="<%= service.getServiceName() %>" required>
+                    <input type="text" id="serviceName" name="serviceName" placeholder="e.g. AC Repair" required>
                 </div>
 
                 <div class="form-group">
                     <label for="category">Category</label>
                     <select id="category" name="category" required>
-                        <option value="AC Maintenance"      <%= "AC Maintenance".equals(service.getCategory())      ? "selected" : "" %>>AC Maintenance</option>
-                        <option value="Plumbing Services"   <%= "Plumbing Services".equals(service.getCategory())   ? "selected" : "" %>>Plumbing Services</option>
-                        <option value="Electrical Services" <%= "Electrical Services".equals(service.getCategory()) ? "selected" : "" %>>Electrical Services</option>
-                        <option value="Cleaning Services"   <%= "Cleaning Services".equals(service.getCategory())   ? "selected" : "" %>>Cleaning Services</option>
-                        <option value="IT & Repair"         <%= "IT & Repair".equals(service.getCategory())         ? "selected" : "" %>>IT &amp; Repair</option>
-                        <option value="Painting Services"   <%= "Painting Services".equals(service.getCategory())   ? "selected" : "" %>>Painting Services</option>
-                        <option value="Other"               <%= "Other".equals(service.getCategory())               ? "selected" : "" %>>Other</option>
+                        <option value="" disabled selected>Select category</option>
+                        <option value="AC Maintenance">AC Maintenance</option>
+                        <option value="Plumbing Services">Plumbing Services</option>
+                        <option value="Electrical Services">Electrical Services</option>
+                        <option value="Cleaning Services">Cleaning Services</option>
+                        <option value="IT & Repair">IT &amp; Repair</option>
+                        <option value="Painting Services">Painting Services</option>
+                        <option value="Other">Other</option>
                     </select>
                 </div>
 
                 <div class="form-group">
                     <label for="price">Price (₹)</label>
-                    <input type="number" id="price" name="price"
-                           value="<%= service.getPrice() %>" min="0" step="0.01" required>
+                    <input type="number" id="price" name="price" placeholder="e.g. 499" min="0" step="0.01" required>
                 </div>
 
                 <div class="form-group full">
                     <label for="description">Description</label>
-                    <textarea id="description" name="description"><%= service.getDescription() != null ? service.getDescription() : "" %></textarea>
+                    <textarea id="description" name="description" placeholder="Brief description of the service..."></textarea>
                 </div>
 
                 <div class="form-group">
                     <label for="status">Status</label>
                     <select id="status" name="status" required>
-                        <option value="Active"   <%= "Active".equals(service.getStatus())   ? "selected" : "" %>>Active</option>
-                        <option value="Inactive" <%= "Inactive".equals(service.getStatus()) ? "selected" : "" %>>Inactive</option>
+                        <option value="Active" selected>Active</option>
+                        <option value="Inactive">Inactive</option>
                     </select>
                 </div>
 
-                <div class="form-group" style="align-self:end;"></div>
+                <div class="form-group" style="align-self:end;">
+                    <!-- spacer -->
+                </div>
 
                 <button type="submit" class="btn-submit">
-                    <i class="fa-solid fa-floppy-disk"></i> &nbsp;Update Service
+                    <i class="fa-solid fa-floppy-disk"></i> &nbsp;Save Service
                 </button>
             </form>
 
             <p class="back-link">
-                <a href="${pageContext.request.contextPath}/viewServices">
+                <a href="${pageContext.request.contextPath}/manageServices">
                     <i class="fa-solid fa-arrow-left"></i> Back to Services List
                 </a>
             </p>
