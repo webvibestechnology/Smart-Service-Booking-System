@@ -5,10 +5,12 @@ import java.sql.*;
 import java.util.ArrayList;
 import java.util.List;
 
-public class BookingDAO {
+public class BookingDAO 
+{
 
     // 1. createBooking(Booking booking)
-    public boolean createBooking(Booking booking) {
+    public boolean createBooking(Booking booking) 
+    {
         String sql = "INSERT INTO bookings (user_id, service_id, service_name, booking_date, time_slot, address, amount, status) VALUES (?, ?, ?, ?, ?, ?, ?, ?)";
         try (Connection conn = DBConnection.getConnection();
              PreparedStatement pstmt = conn.prepareStatement(sql)) {

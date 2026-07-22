@@ -10,3 +10,12 @@ password VARCHAR(255) NOT NULL,
 role VARCHAR(20),
 created_at TIMESTAMP DEFAULT CURRENT_TIMESTAMP
 );
+
+-- Test ADMIN user
+INSERT INTO users (full_name, email, mobile, password, role)
+VALUES ('Admin User', 'admin@test.com', '9999999999', 'Admin@123', 'ADMIN');
+
+-- Test PROVIDER user  
+INSERT INTO users (full_name, email, mobile, password, role)
+VALUES ('Provider User', 'provider@test.com', '8888888888', 'Provider@123', 'PROVIDER');
+

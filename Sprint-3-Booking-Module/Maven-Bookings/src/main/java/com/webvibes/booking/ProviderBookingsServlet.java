@@ -25,6 +25,8 @@ public class ProviderBookingsServlet extends HttpServlet {
             response.sendRedirect(request.getContextPath() + "/login.jsp");
             return;
         }
+public class ProviderBookingsServlet  
+{
 
         String providerService = (String) session.getAttribute("serviceType"); 
         List<Booking> allBookings = bookingDAO.getBookingsByService(providerService);
