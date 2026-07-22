@@ -6,7 +6,8 @@ package com.webvibes.booking;
 // GET  /manageBookings → show all bookings in manageBookings.jsp
 // POST /manageBookings → update booking status, redirect back
 
-public class ManageBookingsServlet  {
+public class ManageBookingsServlet  
+{
 
     
 }

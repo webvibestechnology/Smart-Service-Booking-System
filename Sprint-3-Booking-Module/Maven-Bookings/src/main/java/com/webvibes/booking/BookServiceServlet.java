@@ -6,7 +6,8 @@ package com.webvibes.booking;
 // GET  /bookService?serviceId=X  → show bookService.jsp
 // POST /bookService               → insert booking, redirect to /myBookings
 
-public class BookServiceServlet  {
+public class BookServiceServlet 
+{
 
   
 }
