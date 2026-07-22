@@ -5,6 +5,7 @@ package com.webvibes.booking;
 // GET  /providerBookings → show bookings for this provider's services
 // POST /providerBookings → mark booking as Completed
 
-public class ProviderBookingsServlet  {
+public class ProviderBookingsServlet  
+{
 
 }
