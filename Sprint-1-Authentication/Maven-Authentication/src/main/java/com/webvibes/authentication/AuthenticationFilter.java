@@ -12,7 +12,12 @@ import jakarta.servlet.http.HttpServletRequest;
 import jakarta.servlet.http.HttpServletResponse;
 import jakarta.servlet.http.HttpSession;
 
-@WebFilter("/Dashboard.jsp")
+// Protects all dashboard pages under /pages/
+@WebFilter({
+    "/pages/adminDashboard.jsp",
+    "/pages/userDashboard.jsp",
+    "/pages/providerDashboard.jsp"
+})
 public class AuthenticationFilter implements Filter {
 
     @Override
@@ -21,13 +26,14 @@ public class AuthenticationFilter implements Filter {
                          FilterChain chain)
             throws IOException, ServletException {
 
-        HttpServletRequest req = (HttpServletRequest) request;
+        HttpServletRequest req  = (HttpServletRequest) request;
         HttpServletResponse res = (HttpServletResponse) response;
 
         HttpSession session = req.getSession(false);
 
-        if (session == null || session.getAttribute("userId") == null) {
-        	res.sendRedirect(req.getContextPath() + "/pages/login.jsp");
+        // Session key must match what LoginServlet sets: "user"
+        if (session == null || session.getAttribute("user") == null) {
+            res.sendRedirect(req.getContextPath() + "/pages/login.jsp");
             return;
         }
 
