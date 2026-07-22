@@ -4,11 +4,11 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Smart Service - Book Service</title>
-    <!-- Font Awesome Link (For Lightning Icon) -->
+
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
     
     <style>
-        /* सोयीसाठी आणि फुटर तळाशी ठेवण्यासाठी flexbox चा वापर */
+
         html, body {
             height: 100%;
             margin: 0;
@@ -16,7 +16,7 @@
         }
         body {
             font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
-            background-color: #f4f7fc;
+            background-color: #ecf5fb;
             color: #333;
             display: flex;
             flex-direction: column;
@@ -85,7 +85,7 @@
             max-width: 1200px;
             margin: 0 auto;
             padding: 20px 40px;
-            flex: 1; /* हे कंटेंटला जागा व्यापण्यास मदत करेल जेणेकरून फुटर नेहमी खाली राहील */
+            flex: 1; 
             width: 100%;
             box-sizing: border-box;
         }
@@ -121,7 +121,7 @@
             border: 1px solid #eef2f5;
         }
         .card-title {
-            font-size: 16px;
+            font-size: 25px;
             font-weight: 600;
             margin-top: 0;
             margin-bottom: 20px;
@@ -130,9 +130,9 @@
 
         /* Left Side Card: Service Image Thumbnail */
         .service-thumbnail-container {
-            width: 190px;
-            height: 100px;
-            background-color: #c2d8f4;
+            width: 225px;
+            height: 150px;
+            background-color: #aac3e4;
             border-radius: 6px;
             overflow: hidden;
             margin-bottom: 20px;
@@ -146,29 +146,29 @@
 
         /* Typography for details */
         .service-title-text {
-            font-size: 16px;
+            font-size: 20px;
             font-weight: 700;
             margin: 0 0 6px 0;
             color: #111;
         }
         .service-price-text {
-            font-size: 14px;
-            color: #333;
+            font-size: 16px;
+            color: #111;
             margin: 0 0 6px 0;
         }
         .service-id-text {
-            font-size: 13px;
-            color: #777;
+            font-size: 16px;
+            color: #111;
             margin: 0 0 20px 0;
         }
         .section-heading-small {
-            font-size: 14px;
+            font-size: 20px;
             font-weight: 600;
             color: #111;
             margin: 0 0 6px 0;
         }
         .service-description-body {
-            font-size: 13px;
+            font-size: 16px;
             color: #555;
             line-height: 1.5;
             margin: 0;
@@ -180,9 +180,9 @@
         }
         .form-group label {
             display: block;
-            font-size: 13px;
+            font-size: 20px;
             font-weight: 600;
-            color: #444;
+            color: #111;
             margin-bottom: 8px;
         }
         .form-group input, 
@@ -190,7 +190,7 @@
         .form-group textarea {
             width: 100%;
             padding: 10px 12px;
-            border: 1px solid #c4e0fc;
+            border: 1px solid #b5d5f6;
             border-radius: 6px;
             box-sizing: border-box;
             font-size: 13px;
@@ -229,7 +229,7 @@
             text-align: center;
             padding: 15px 0;
             font-size: 13px;
-            margin-top: auto; /* मुख्य भाग संपल्यावर तळाशी राहण्यासाठी */
+            margin-top: auto; 
             border-top: 3px solid #3b82f6;
         }
         footer p {

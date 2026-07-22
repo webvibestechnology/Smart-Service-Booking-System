@@ -4,9 +4,6 @@ package com.webvibes.booking;
 // POST /bookService               → insert booking, redirect to /myBookings
 import java.io.IOException;
 import java.sql.SQLException;
-
-
-
 import jakarta.servlet.ServletException;
 import jakarta.servlet.annotation.WebServlet;
 import jakarta.servlet.http.HttpServlet;
@@ -24,7 +21,7 @@ public class BookServiceServlet extends HttpServlet
 
     @Override
     public void init() throws ServletException
-     {
+    {
         bookingDAO = new BookingDAO();
     }
 
@@ -94,7 +91,7 @@ public class BookServiceServlet extends HttpServlet
                     response.sendRedirect(request.getContextPath() + "/myBookings");
                 }
                  else
-                  {
+                {
               
                     request.setAttribute("errorMessage");
                     request.getRequestDispatcher("bookService.jsp").forward(request, response);
