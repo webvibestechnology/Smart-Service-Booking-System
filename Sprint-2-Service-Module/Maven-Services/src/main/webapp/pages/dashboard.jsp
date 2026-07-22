@@ -6,10 +6,20 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Service Dashboard</title>
+<<<<<<< HEAD
+<<<<<<< HEAD
+    <link href="https://jsdelivr.net" rel="stylesheet">
+    <link rel="stylesheet" href="css_styles.css">
+=======
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css" rel="stylesheet">
+>>>>>>> fdac6674939b6affad4b732834ae5683b822b7c9
+=======
     <link href="https://jsdelivr.net" rel="stylesheet">
     <link rel="stylesheet" href="css_styles.css">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
     <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css" rel="stylesheet">
+>>>>>>> 11578efe37ec866f52f2d4e8c2dbad0a055e63e3
 </head>
 <body class="bg-light">
 
@@ -97,8 +107,17 @@
         </section>
     </main>
 
+<<<<<<< HEAD
+<<<<<<< HEAD
+    <script src="https://jsdelivr.net"></script>
+=======
+    <!-- Bootstrap Bundle -->
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/js/bootstrap.bundle.min.js"></script>
+>>>>>>> fdac6674939b6affad4b732834ae5683b822b7c9
+=======
     <script src="https://jsdelivr.net"></script>
     <!-- Bootstrap Bundle -->
     <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/js/bootstrap.bundle.min.js"></script>
+>>>>>>> 11578efe37ec866f52f2d4e8c2dbad0a055e63e3
 </body>
 </html>

@@ -1,4 +1,4 @@
-// BOOK-02 to BOOK-06: Data access layer for bookings table
+
 package com.webvibes.booking;
 
 import java.sql.*;
