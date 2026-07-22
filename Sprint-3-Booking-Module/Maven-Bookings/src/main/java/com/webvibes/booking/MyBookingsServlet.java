@@ -16,7 +16,8 @@ import jakarta.servlet.http.HttpSession;
 
 
 @WebServlet("/myBookings")
-public class MyBookingsServlet extends HttpServlet {
+public class MyBookingsServlet extends HttpServlet 
+{
 
     private static final long serialVersionUID = 1L;
 
@@ -29,7 +30,8 @@ public class MyBookingsServlet extends HttpServlet {
 
         HttpSession session = request.getSession(false);
 
-        if (session == null || session.getAttribute("userId") == null) {
+        if (session == null || session.getAttribute("userId") == null) 
+        {
             response.sendRedirect("login.jsp");
             return;
         }
