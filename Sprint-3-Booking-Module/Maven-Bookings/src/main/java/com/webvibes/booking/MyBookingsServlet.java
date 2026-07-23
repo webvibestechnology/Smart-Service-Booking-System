@@ -1,5 +1,6 @@
 package com.webvibes.booking;
 
+<<<<<<< HEAD
 import java.io.IOException;
 import java.util.List;
 
@@ -46,3 +47,17 @@ public class MyBookingsServlet extends HttpServlet
         rd.forward(request, response);
     }
 }
+=======
+
+// BOOK-03: Shows all bookings for the logged-in user
+// GET /myBookings → fetch user bookings from DB → forward to myBookings.jsp
+
+public class MyBookingsServlet  
+{
+
+        // TODO: Get userId from session attribute "userId"
+        // TODO: Call BookingDAO.getBookingsByUser(userId)
+        // TODO: Set result as request attribute "bookingList"
+        // TODO: Forward to /pages/myBookings.jsp
+    }
+>>>>>>> c686a1086cb7f136d49bf6fcb9c36af1183213cf

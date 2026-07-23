@@ -6,15 +6,35 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Service Dashboard</title>
+<<<<<<< HEAD
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
     <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css" rel="stylesheet">
+=======
+<<<<<<< HEAD
+<<<<<<< HEAD
+    <link href="https://jsdelivr.net" rel="stylesheet">
+    <link rel="stylesheet" href="css_styles.css">
+=======
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css" rel="stylesheet">
+>>>>>>> fdac6674939b6affad4b732834ae5683b822b7c9
+=======
+    <link href="https://jsdelivr.net" rel="stylesheet">
+    <link rel="stylesheet" href="css_styles.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css" rel="stylesheet">
+>>>>>>> 11578efe37ec866f52f2d4e8c2dbad0a055e63e3
+>>>>>>> c686a1086cb7f136d49bf6fcb9c36af1183213cf
 </head>
 <body class="bg-light">
 
     <!-- Include Navbar -->
     <%@ include file="navbar.jsp" %>
 
+<<<<<<< HEAD
     <!-- Main Content Container -->
+=======
+>>>>>>> c686a1086cb7f136d49bf6fcb9c36af1183213cf
     <main class="container my-5">
         <header class="row mb-4">
             <div class="col">
@@ -23,7 +43,10 @@
             </div>
         </header>
 
+<<<<<<< HEAD
         <!-- Quick Summary Cards -->
+=======
+>>>>>>> c686a1086cb7f136d49bf6fcb9c36af1183213cf
         <section class="row g-4 mb-5">
             <div class="col-md-4">
                 <div class="card border-0 shadow-sm h-100">
@@ -60,7 +83,10 @@
             </div>
         </section>
 
+<<<<<<< HEAD
         <!-- Recent Activity Table Section -->
+=======
+>>>>>>> c686a1086cb7f136d49bf6fcb9c36af1183213cf
         <section class="row">
             <div class="col-12">
                 <div class="card border-0 shadow-sm">
@@ -98,7 +124,22 @@
         </section>
     </main>
 
+<<<<<<< HEAD
     <!-- Bootstrap Bundle -->
     <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/js/bootstrap.bundle.min.js"></script>
+=======
+<<<<<<< HEAD
+<<<<<<< HEAD
+    <script src="https://jsdelivr.net"></script>
+=======
+    <!-- Bootstrap Bundle -->
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/js/bootstrap.bundle.min.js"></script>
+>>>>>>> fdac6674939b6affad4b732834ae5683b822b7c9
+=======
+    <script src="https://jsdelivr.net"></script>
+    <!-- Bootstrap Bundle -->
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/js/bootstrap.bundle.min.js"></script>
+>>>>>>> 11578efe37ec866f52f2d4e8c2dbad0a055e63e3
+>>>>>>> c686a1086cb7f136d49bf6fcb9c36af1183213cf
 </body>
 </html>
