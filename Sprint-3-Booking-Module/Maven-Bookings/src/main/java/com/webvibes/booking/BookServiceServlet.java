@@ -16,23 +16,28 @@ import jakarta.servlet.http.HttpSession;
 
 
 @WebServlet("/BookServiceServlet")
-public class BookServiceServlet extends HttpServlet {
+public class BookServiceServlet extends HttpServlet
+ {
     private static final long serialVersionUID = 1L;
   
     private BookingDAO bookingDAO;
 
     @Override
-    public void init() throws ServletException {
+    public void init() throws ServletException
+     {
         bookingDAO = new BookingDAO();
     }
 
     protected void doGet(HttpServletRequest request, HttpServletResponse response) 
-            throws ServletException, IOException {
+            throws ServletException, IOException
+             {
         
-        try {
+        try
+         {
             String serviceIdStr = request.getParameter("serviceId");
             
-            if (serviceIdStr != null && !serviceIdStr.isEmpty()) {
+            if (serviceIdStr != null && !serviceIdStr.isEmpty())
+             {
                 int serviceId = Integer.parseInt(serviceIdStr);
             
                 Service serviceInfo = ServiceDAO.getServiceById(serviceId); 
@@ -42,14 +47,16 @@ public class BookServiceServlet extends HttpServlet {
             
             request.getRequestDispatcher("bookService.jsp").forward(request, response);
             
-        } catch (Exception e) {
+        } catch (Exception e) 
+        {
             e.printStackTrace();
             response.sendRedirect("error.jsp"); 
         }
     }
 
     protected void doPost(HttpServletRequest request, HttpServletResponse response) 
-            throws ServletException, IOException {
+            throws ServletException, IOException
+             {
         
         String serviceIdStr = request.getParameter("serviceId");
         String serviceName = request.getParameter("serviceName");
@@ -60,7 +67,8 @@ public class BookServiceServlet extends HttpServlet {
         
         HttpSession session = request.getSession(false);
         
-        if (session != null && session.getAttribute("userId") != null) {
+        if (session != null && session.getAttribute("userId") != null) 
+        {
             int userId = (int) session.getAttribute("userId"); 
            
             int serviceId = Integer.parseInt(serviceIdStr);
@@ -75,25 +83,33 @@ public class BookServiceServlet extends HttpServlet {
             newBooking.setAmount(amount);
             newBooking.setUserId(userId);
             
-            try {
+            try
+             {
               
                 boolean isSaved = bookingDAO.createBooking(newBooking);
                 
-                if (isSaved) {
+                if (isSaved)
+                {
                   
                     response.sendRedirect(request.getContextPath() + "/myBookings");
-                } else {
+                }
+                 else
+                  {
               
                     request.setAttribute("errorMessage");
                     request.getRequestDispatcher("bookService.jsp").forward(request, response);
                 }
                 
-            } catch (SQLException e) {
+            } 
+            catch (SQLException e)
+             {
                 e.printStackTrace();
                 throw new ServletException("Database error during booking creation", e);
             }
             
-        } else {
+        } 
+        else
+         {
             response.sendRedirect("login.jsp");
         }
     }
