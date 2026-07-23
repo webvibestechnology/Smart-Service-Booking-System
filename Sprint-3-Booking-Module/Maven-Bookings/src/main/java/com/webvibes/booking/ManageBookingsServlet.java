@@ -61,6 +61,7 @@ public class ManageBookingsServlet
         String newStatus = request.getParameter("newStatus");
 
         Connection conn = null;
+     
         PreparedStatement ps = null;
 
         try {
