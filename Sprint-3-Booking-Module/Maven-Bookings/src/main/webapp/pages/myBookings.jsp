@@ -1,5 +1,4 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8" pageEncoding="UTF-8" %>
-<%@ page import="com.webvibes.booking.Booking, java.util.List" %>
 <!DOCTYPE html>
 <html>
 <head>
@@ -312,6 +311,10 @@ td{
                 <li class="nav-item">
                     <a class="nav-link" href="services.jsp">Services</a>
                 </li>
+                
+                <li class="nav-item">
+					<a class="nav-link" href="#">About</a>
+				</li>
 
                 <li class="nav-item">
                     <a class="nav-link" href="contact.jsp">Contact</a>
