@@ -102,7 +102,8 @@ body{
     background:#0f172a;
     color:white;
     border:none;
-    padding:16px;
+    padding:12px;
+    text-align:center;
 }
 
 .table tbody td{
@@ -187,14 +188,10 @@ nav a:hover{
 .user{
     font-size:16px;
 }
-
-
-.container h2{
-    margin-bottom:30px;
-    color:#222;
+.container {
+width:100%;
+max-width:1600px;
 }
-
-
 table{
     width:100%;
     border-collapse:collapse;
@@ -361,7 +358,7 @@ td{
 
                 <tr>
                     <td>#101</td>
-                    <td>AC Repair</td>
+                    <td><i class="fa-solid fa-fan text-primary"></i> AC Repair</td>
                     <td>20 May 2026</td>
                     <td>10:00 AM - 12:00 PM</td>
                     <td>₹450</td>
@@ -370,17 +367,16 @@ td{
                 </tr>              
                 <tr> 
                     <td>#102</td>
-                    <td>Plumbing</td> 
+                    <td><i class="fa-solid fa-faucet-drip text-info"></i> Plumbing</td>
                     <td>18 May 2026</td> 
                     <td>02:00 PM - 04:00 PM</td> 
                     <td>₹290</td>
-                    
                     <td><span class="badge bg-success px-3 py-2">Completed</span></td>
                     <td><a href="#" class="viewBtn">View</a></td> 
                 </tr> 
                 <tr> 
                     <td>#103</td> 
-                	<td>Electrician</td> 
+                    <td><i class="fa-solid fa-bolt text-warning"></i> Electrician</td>
                 	<td>15 May 2026</td> 
                 	<td>11:00 AM - 01:00 PM</td> 
                 	<td>₹199</td> 
@@ -389,23 +385,21 @@ td{
                 </tr> 
                 <tr> 
                 	<td>#104</td> 
-                	<td>Cleaning</td> 
+                	<td><i class="fa-solid fa-broom text-success"></i> Cleaning</td>
                 	<td>10 May 2026</td> 
                 	<td>09:00 AM - 11:00 AM</td> 
                 	<td>₹149</td> 
                 	<td><span class="badge bg-danger px-3 py-2"> Cancelled</span></td>
                 	<td><a href="#" class="viewBtn">View</a></td> 
-
                  </tr> 
                  <tr> 
                  	<td>#105</td> 
-                 	<td>Laptop Repair</td> 
+                 	<td><i class="fa-solid fa-laptop text-dark"></i> Laptop Repair</td>
                  	<td>05 May 2026</td> 
                  	<td>03:00 PM - 05:00 PM</td> 
                  	<td>₹350</td> 
                  	<td><span class="badge bg-success px-3 py-2">Completed</span></td>
                  	<td><a href="#" class="viewBtn">View</a></td> 
-                 	
                  </tr>
 
             </tbody>
