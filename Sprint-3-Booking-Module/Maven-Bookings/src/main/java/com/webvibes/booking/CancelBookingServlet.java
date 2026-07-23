@@ -18,9 +18,10 @@ public class CancelBookingServlet extends HttpServlet
 
     @Override
     protected void doGet(HttpServletRequest request, HttpServletResponse response)
-            throws ServletException, IOException {
-
-        try {
+            throws ServletException, IOException 
+    {
+      try 
+        {
  
             int bookingId = Integer.parseInt(request.getParameter("id"));
 
@@ -29,15 +30,20 @@ public class CancelBookingServlet extends HttpServlet
             boolean isCancelled = bookingDAO.cancelBooking(bookingId);
 
 
-            if (isCancelled) {
+            if (isCancelled)
+             {
                 response.sendRedirect("myBookings?msg=cancelled");
-             } else {
+             } 
+             else 
+             {
                 response.sendRedirect("myBookings?error=cannotcancel");
-   }
-
-        } catch (Exception e) {
+             }
+        } 
+        
+        catch (Exception e)
+         {
             e.printStackTrace();
             response.sendRedirect("myBookings?error=cannotcancel");
-     }
-   }
+         }
+    }
 }                
