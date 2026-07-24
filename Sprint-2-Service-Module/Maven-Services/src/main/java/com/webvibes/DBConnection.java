@@ -7,7 +7,7 @@ public class DBConnection {
 
     private static final String URL      = "jdbc:mysql://localhost:3306/service_module_db";
     private static final String USERNAME = "root";
-    private static final String PASSWORD = "7447Swati@";
+    private static final String PASSWORD = "BIRTH@2005";
 
     // Returns a fresh connection every time — avoids stale cached connection issues
     public static Connection getConnection() {
