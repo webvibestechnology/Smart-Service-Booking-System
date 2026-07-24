@@ -13,15 +13,18 @@ import javax.servlet.http.HttpServletResponse;
 import javax.servlet.http.HttpSession;
 
 @WebServlet("/provider/bookings")
-public class ProviderBookingsServlet extends HttpServlet {
+public class ProviderBookingsServlet extends HttpServlet 
+{
     private final BookingDAO bookingDAO = new BookingDAO();
 
     @Override
     protected void doGet(HttpServletRequest request, HttpServletResponse response) 
-            throws ServletException, IOException {
+            throws ServletException, IOException
+    {
         
         HttpSession session = request.getSession(false);
-        if (session == null || !"PROVIDER".equals(session.getAttribute("role"))) {
+        if (session == null || !"PROVIDER".equals(session.getAttribute("role"))) 
+        {
             response.sendRedirect(request.getContextPath() + "/login.jsp");
             return;
         }
@@ -45,10 +48,12 @@ public class ProviderBookingsServlet
 
     @Override
     protected void doPost(HttpServletRequest request, HttpServletResponse response) 
-            throws ServletException, IOException {
+            throws ServletException, IOException 
+    {
         
         HttpSession session = request.getSession(false);
-        if (session == null || !"PROVIDER".equals(session.getAttribute("role"))) {
+        if (session == null || !"PROVIDER".equals(session.getAttribute("role"))) 
+        {
             response.sendError(HttpServletResponse.SC_FORBIDDEN);
             return;
         }
@@ -56,7 +61,8 @@ public class ProviderBookingsServlet
         int bookingId = Integer.parseInt(request.getParameter("bookingId"));
         boolean success = bookingDAO.updateBookingStatus(bookingId, "Completed");
 
-        if (success) {
+        if (success) 
+        {
             request.getSession().setAttribute("message", "Booking marked as completed successfully!");
         } else {
             request.getSession().setAttribute("error", "Failed to update booking status.");
