@@ -1,4 +1,5 @@
 <<<<<<< HEAD
+<<<<<<< HEAD
 package com.webvibes.booking;
 
 
@@ -10,70 +11,75 @@ public class ProviderBookingsServlet  {
 
 =======
 package javaController;
+=======
+package com.webvibes.booking;
+>>>>>>> 5ae139cc3a190f51136fbb7e7269b55c2064bb88
 
-import javaDAO.BookingDAO;
-import javaModel.Booking;
 import java.io.IOException;
 import java.util.List;
-import java.util.stream.Collectors;
-import javax.servlet.ServletException;
-import javax.servlet.annotation.WebServlet;
-import javax.servlet.http.HttpServlet;
-import javax.servlet.http.HttpServletRequest;
-import javax.servlet.http.HttpServletResponse;
-import javax.servlet.http.HttpSession;
 
-@WebServlet("/provider/bookings")
+import jakarta.servlet.ServletException;
+import jakarta.servlet.annotation.WebServlet;
+import jakarta.servlet.http.HttpServlet;
+import jakarta.servlet.http.HttpServletRequest;
+import jakarta.servlet.http.HttpServletResponse;
+import jakarta.servlet.http.HttpSession;
+
+/**
+ * BOOK-06: Provider — view and complete assigned bookings
+ * GET  /providerBookings → list bookings
+ * POST /providerBookings → mark booking as Completed
+ */
+@WebServlet("/providerBookings")
 public class ProviderBookingsServlet extends HttpServlet {
-    private final BookingDAO bookingDAO = new BookingDAO();
+
+    private static final long serialVersionUID = 1L;
 
     @Override
-    protected void doGet(HttpServletRequest request, HttpServletResponse response) 
+    protected void doGet(HttpServletRequest request, HttpServletResponse response)
             throws ServletException, IOException {
-        
+
         HttpSession session = request.getSession(false);
         if (session == null || !"PROVIDER".equals(session.getAttribute("role"))) {
-            response.sendRedirect(request.getContextPath() + "/login.jsp");
+            response.sendRedirect("http://localhost:8080/Maven-Authentication/pages/login.jsp");
             return;
         }
-public class ProviderBookingsServlet  
-{
 
-        String providerService = (String) session.getAttribute("serviceType"); 
-        List<Booking> allBookings = bookingDAO.getBookingsByService(providerService);
+        // Providers see ALL bookings (provider assignment is Sprint 4 feature)
+        BookingDAO dao = new BookingDAO();
+        List<Booking> bookingList = dao.getAllBookings();
 
-        long totalBookings = allBookings.size();
-        long completedBookings = allBookings.stream().filter(b -> "Completed".equalsIgnoreCase(b.getStatus())).count();
-        long pendingBookings = allBookings.stream().filter(b -> "Pending".equalsIgnoreCase(b.getStatus())).count();
+        long total     = bookingList.size();
+        long completed = bookingList.stream().filter(b -> "Completed".equals(b.getStatus())).count();
+        long pending   = bookingList.stream().filter(b -> "Pending".equals(b.getStatus())).count();
 
-        request.setAttribute("bookings", allBookings);
-        request.setAttribute("totalBookings", totalBookings);
-        request.setAttribute("completedBookings", completedBookings);
-        request.setAttribute("pendingBookings", pendingBookings);
+        request.setAttribute("bookingList",      bookingList);
+        request.setAttribute("totalBookings",    total);
+        request.setAttribute("completedBookings",completed);
+        request.setAttribute("pendingBookings",  pending);
 
-        request.getRequestDispatcher("/providerBookings.jsp").forward(request, response);
+        request.getRequestDispatcher("/pages/providerBookings.jsp").forward(request, response);
     }
 
     @Override
-    protected void doPost(HttpServletRequest request, HttpServletResponse response) 
+    protected void doPost(HttpServletRequest request, HttpServletResponse response)
             throws ServletException, IOException {
-        
+
         HttpSession session = request.getSession(false);
         if (session == null || !"PROVIDER".equals(session.getAttribute("role"))) {
-            response.sendError(HttpServletResponse.SC_FORBIDDEN);
+            response.sendRedirect("http://localhost:8080/Maven-Authentication/pages/login.jsp");
             return;
         }
 
-        int bookingId = Integer.parseInt(request.getParameter("bookingId"));
-        boolean success = bookingDAO.updateBookingStatus(bookingId, "Completed");
-
-        if (success) {
-            request.getSession().setAttribute("message", "Booking marked as completed successfully!");
-        } else {
-            request.getSession().setAttribute("error", "Failed to update booking status.");
+        try {
+            int bookingId = Integer.parseInt(request.getParameter("bookingId"));
+            BookingDAO dao = new BookingDAO();
+            dao.updateBookingStatus(bookingId, "Completed");
+        } catch (Exception e) {
+            e.printStackTrace();
         }
 
-        response.sendRedirect(request.getContextPath() + "/provider/bookings");
+        response.sendRedirect(request.getContextPath() + "/providerBookings?msg=updated");
     }
 >>>>>>> c686a1086cb7f136d49bf6fcb9c36af1183213cf
 }

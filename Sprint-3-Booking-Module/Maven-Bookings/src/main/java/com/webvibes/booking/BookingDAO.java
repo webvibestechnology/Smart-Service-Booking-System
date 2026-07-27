@@ -1,4 +1,5 @@
 <<<<<<< HEAD
+<<<<<<< HEAD
 package com.webvibes.booking;
 
 
@@ -7,49 +8,45 @@ package com.webvibes.booking;
 public class BookingDAO {
 =======
 
+=======
+>>>>>>> 5ae139cc3a190f51136fbb7e7269b55c2064bb88
 package com.webvibes.booking;
 
 import java.sql.*;
 import java.util.ArrayList;
 import java.util.List;
 
-public class BookingDAO 
-{
+public class BookingDAO {
 
-    // 1. createBooking(Booking booking)
-    public boolean createBooking(Booking booking) 
-    {
-        String sql = "INSERT INTO bookings (user_id, service_id, service_name, booking_date, time_slot, address, amount, status) VALUES (?, ?, ?, ?, ?, ?, ?, ?)";
+    // ── Create ─────────────────────────────────────────────────────────────────
+    public boolean createBooking(Booking booking) {
+        String sql = "INSERT INTO bookings (user_id, service_id, service_name, booking_date, time_slot, address, amount, status) "
+                   + "VALUES (?, ?, ?, ?, ?, ?, ?, 'Pending')";
         try (Connection conn = DBConnection.getConnection();
-             PreparedStatement pstmt = conn.prepareStatement(sql)) {
-            pstmt.setInt(1, booking.getUserId());
-            pstmt.setInt(2, booking.getServiceId());
-            pstmt.setString(3, booking.getServiceName());
-            pstmt.setDate(4, booking.getBookingDate());
-            pstmt.setString(5, booking.getTimeSlot());
-            pstmt.setString(6, booking.getAddress());
-            pstmt.setString(7, booking.getAmount());
-            pstmt.setString(8, booking.getStatus() != null ? booking.getStatus() : "Pending");
-            
-            return pstmt.executeUpdate() > 0;
+             PreparedStatement ps = conn.prepareStatement(sql)) {
+            ps.setInt(1, booking.getUserId());
+            ps.setInt(2, booking.getServiceId());
+            ps.setString(3, booking.getServiceName());
+            ps.setDate(4, booking.getBookingDate());
+            ps.setString(5, booking.getTimeSlot());
+            ps.setString(6, booking.getAddress());
+            ps.setDouble(7, booking.getAmount());
+            return ps.executeUpdate() > 0;
         } catch (SQLException e) {
             e.printStackTrace();
         }
         return false;
     }
 
-    // 2. getBookingsByUser(int userId)
+    // ── Get by user ────────────────────────────────────────────────────────────
     public List<Booking> getBookingsByUser(int userId) {
         List<Booking> list = new ArrayList<>();
-        String sql = "SELECT * FROM bookings WHERE user_id = ?";
+        String sql = "SELECT * FROM bookings WHERE user_id = ? ORDER BY created_at DESC";
         try (Connection conn = DBConnection.getConnection();
-             PreparedStatement pstmt = conn.prepareStatement(sql)) {
-            pstmt.setInt(1, userId);
-            try (ResultSet rs = pstmt.executeQuery()) {
-                while (rs.next()) {
-                    Booking b = mapResultSetToBooking(rs);
-                    list.add(b);
-                }
+             PreparedStatement ps = conn.prepareStatement(sql)) {
+            ps.setInt(1, userId);
+            try (ResultSet rs = ps.executeQuery()) {
+                while (rs.next()) list.add(map(rs));
             }
         } catch (SQLException e) {
             e.printStackTrace();
@@ -57,52 +54,49 @@ public class BookingDAO
         return list;
     }
 
-    // 3. cancelBooking(int bookingId)
-    public boolean cancelBooking(int bookingId) {
-        String sql = "UPDATE bookings SET status = 'Cancelled' WHERE booking_id = ?";
+    // ── Get all (admin) ────────────────────────────────────────────────────────
+    public List<Booking> getAllBookings() {
+        List<Booking> list = new ArrayList<>();
+        String sql = "SELECT * FROM bookings ORDER BY created_at DESC";
         try (Connection conn = DBConnection.getConnection();
-             PreparedStatement pstmt = conn.prepareStatement(sql)) {
-            pstmt.setInt(1, bookingId);
-            return pstmt.executeUpdate() > 0;
+             Statement st = conn.createStatement();
+             ResultSet rs = st.executeQuery(sql)) {
+            while (rs.next()) list.add(map(rs));
+        } catch (SQLException e) {
+            e.printStackTrace();
+        }
+        return list;
+    }
+
+    // ── Cancel (only if Pending) ───────────────────────────────────────────────
+    public boolean cancelBooking(int bookingId) {
+        String sql = "UPDATE bookings SET status = 'Cancelled' WHERE booking_id = ? AND status = 'Pending'";
+        try (Connection conn = DBConnection.getConnection();
+             PreparedStatement ps = conn.prepareStatement(sql)) {
+            ps.setInt(1, bookingId);
+            return ps.executeUpdate() > 0;
         } catch (SQLException e) {
             e.printStackTrace();
         }
         return false;
     }
 
-    // 4. getAllBookings()
-    public List<Booking> getAllBookings() {
-        List<Booking> list = new ArrayList<>();
-        String sql = "SELECT * FROM bookings";
-        try (Connection conn = DBConnection.getConnection();
-             Statement stmt = conn.createStatement();
-             ResultSet rs = stmt.executeQuery(sql)) {
-            while (rs.next()) {
-                Booking b = mapResultSetToBooking(rs);
-                list.add(b);
-            }
-        } catch (SQLException e) {
-            e.printStackTrace();
-        }
-        return list;
-    }
-
-    // 5. updateBookingStatus(int bookingId, String status)
+    // ── Update status ──────────────────────────────────────────────────────────
     public boolean updateBookingStatus(int bookingId, String status) {
         String sql = "UPDATE bookings SET status = ? WHERE booking_id = ?";
         try (Connection conn = DBConnection.getConnection();
-             PreparedStatement pstmt = conn.prepareStatement(sql)) {
-            pstmt.setString(1, status);
-            pstmt.setInt(2, bookingId);
-            return pstmt.executeUpdate() > 0;
+             PreparedStatement ps = conn.prepareStatement(sql)) {
+            ps.setString(1, status);
+            ps.setInt(2, bookingId);
+            return ps.executeUpdate() > 0;
         } catch (SQLException e) {
             e.printStackTrace();
         }
         return false;
     }
 
-    // Helper method to map ResultSet to Booking object
-    private Booking mapResultSetToBooking(ResultSet rs) throws SQLException {
+    // ── Map ResultSet → Booking ────────────────────────────────────────────────
+    private Booking map(ResultSet rs) throws SQLException {
         Booking b = new Booking();
         b.setBookingId(rs.getInt("booking_id"));
         b.setUserId(rs.getInt("user_id"));
@@ -111,10 +105,14 @@ public class BookingDAO
         b.setBookingDate(rs.getDate("booking_date"));
         b.setTimeSlot(rs.getString("time_slot"));
         b.setAddress(rs.getString("address"));
-        b.setAmount(rs.getString("amount"));
+        b.setAmount(rs.getDouble("amount"));
         b.setStatus(rs.getString("status"));
         b.setCreatedAt(rs.getTimestamp("created_at"));
         return b;
     }
+<<<<<<< HEAD
 >>>>>>> c686a1086cb7f136d49bf6fcb9c36af1183213cf
 }
+=======
+}
+>>>>>>> 5ae139cc3a190f51136fbb7e7269b55c2064bb88

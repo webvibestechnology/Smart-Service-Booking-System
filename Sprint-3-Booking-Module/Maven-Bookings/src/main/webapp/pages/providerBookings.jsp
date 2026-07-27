@@ -1,4 +1,5 @@
 <<<<<<< HEAD
+<<<<<<< HEAD
 <%@ page language="java" contentType="text/html; charset=UTF-8" pageEncoding="UTF-8" %>
 <%@ page import="com.webvibes.booking.Booking, java.util.List" %>
 <%-- BOOK-06: Provider Bookings Page (Screen 15 in mockup)
@@ -13,10 +14,24 @@
 <%@ taglib prefix="c" uri="http://sun.com" %>
 <%@ taglib prefix="fmt" uri="http://sun.com" %>
 >>>>>>> c686a1086cb7f136d49bf6fcb9c36af1183213cf
+=======
+<%@ page language="java" contentType="text/html; charset=UTF-8" pageEncoding="UTF-8" %>
+<%@ page import="com.webvibes.booking.Booking, java.util.List" %>
+<%
+    List<Booking> bookingList = (List<Booking>) request.getAttribute("bookingList");
+    Long totalBookings     = (Long) request.getAttribute("totalBookings");
+    Long completedBookings = (Long) request.getAttribute("completedBookings");
+    Long pendingBookings   = (Long) request.getAttribute("pendingBookings");
+    String userName = (String) request.getSession(false) != null
+                     ? (String) request.getSession(false).getAttribute("userName") : "Provider";
+    String msgParam = request.getParameter("msg");
+%>
+>>>>>>> 5ae139cc3a190f51136fbb7e7269b55c2064bb88
 <!DOCTYPE html>
 <html lang="en">
 <head>
     <meta charset="UTF-8">
+<<<<<<< HEAD
 <<<<<<< HEAD
     <title>My Assigned Bookings - Smart Service</title>
     <!-- TODO: Add CSS styling matching the project theme -->
@@ -27,105 +42,182 @@
 
 =======
     <title>Provider Dashboard - Bookings</title>
+=======
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Provider Bookings - Smart Service</title>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+>>>>>>> 5ae139cc3a190f51136fbb7e7269b55c2064bb88
     <style>
-        body { font-family: Arial, sans-serif; margin: 30px; background-color: #f4f6f9; color: #333; }
-        .container { max-width: 1100px; margin: 0 auto; }
-        .welcome-box { background: #fff; padding: 20px; border-radius: 8px; box-shadow: 0 2px 4px rgba(0,0,0,0.05); margin-bottom: 25px; }
-        .stats-container { display: flex; gap: 20px; margin-bottom: 30px; }
-        .card { flex: 1; padding: 20px; border-radius: 8px; color: white; box-shadow: 0 4px 6px rgba(0,0,0,0.1); }
-        .card-blue { background: #007bff; } .card-green { background: #28a745; } .card-orange { background: #fd7e14; }
-        .card h3 { margin: 0 0 10px 0; font-size: 1.1rem; opacity: 0.9; }
-        .card .value { font-size: 1.8rem; font-weight: bold; }
-        .table-section { background: #fff; padding: 25px; border-radius: 8px; box-shadow: 0 2px 4px rgba(0,0,0,0.05); }
-        table { width: 100%; border-collapse: collapse; margin-top: 15px; }
-        th, td { padding: 12px 15px; text-align: left; border-bottom: 1px solid #ddd; }
-        th { background-color: #f8f9fa; color: #555; }
-        .status { padding: 5px 10px; border-radius: 4px; font-size: 0.85rem; font-weight: bold; }
-        .status-pending { background: #ffeeba; color: #856404; }
-        .status-completed { background: #d4edda; color: #155724; }
-        .btn-complete { background: #28a745; color: white; border: none; padding: 6px 12px; border-radius: 4px; cursor: pointer; font-size: 0.85rem; }
-        .btn-complete:hover { background: #218838; }
-        .alert { padding: 10px 15px; margin-bottom: 20px; border-radius: 4px; }
-        .alert-success { background: #d4edda; color: #155724; }
+        * { box-sizing: border-box; margin: 0; padding: 0; font-family: 'Segoe UI', system-ui, sans-serif; }
+        body { background: #f4f6f9; min-height: 100vh; display: flex; flex-direction: column; }
+
+        /* Navbar */
+        header { background: #0f172a; padding: 14px 50px; display: flex; justify-content: space-between; align-items: center; }
+        .brand { display: flex; align-items: center; gap: 12px; text-decoration: none; color: white; }
+        .logo-icon { background: linear-gradient(135deg,#059669,#047857); width: 38px; height: 38px; border-radius: 8px; display: flex; align-items: center; justify-content: center; font-size: 16px; color: white; }
+        .brand-name { font-size: 17px; font-weight: 700; }
+        .brand-sub  { font-size: 10px; color: #34d399; letter-spacing: 1px; }
+        .provider-badge { background: rgba(52,211,153,0.15); border: 1px solid rgba(52,211,153,0.3); color: #34d399; padding: 4px 12px; border-radius: 50px; font-size: 12px; font-weight: 600; }
+        .logout-btn { background: #ef4444; color: white; text-decoration: none; padding: 8px 18px; border-radius: 7px; font-size: 13px; font-weight: 600; display: flex; align-items: center; gap: 6px; }
+        .logout-btn:hover { background: #dc2626; }
+
+        /* Main */
+        .main { flex: 1; padding: 32px 50px; }
+
+        /* Welcome */
+        .welcome-card { background: linear-gradient(135deg,#022c22,#064e3b); color: white; padding: 28px 36px; border-radius: 16px; margin-bottom: 28px; box-shadow: 0 8px 24px rgba(6,78,59,0.25); }
+        .welcome-card h2 { font-size: 22px; font-weight: 800; margin-bottom: 4px; }
+        .welcome-card h2 span { color: #34d399; }
+        .welcome-card p { color: #6ee7b7; font-size: 14px; }
+
+        /* Stats */
+        .stats-row { display: grid; grid-template-columns: repeat(3, 1fr); gap: 16px; margin-bottom: 28px; }
+        .stat-card { background: white; border-radius: 12px; padding: 22px 24px; border: 1px solid #e2e8f0; box-shadow: 0 2px 8px rgba(0,0,0,0.04); }
+        .stat-label { font-size: 12px; font-weight: 700; color: #64748b; text-transform: uppercase; letter-spacing: 0.8px; margin-bottom: 8px; }
+        .stat-value { font-size: 32px; font-weight: 900; }
+        .stat-blue   .stat-value { color: #2563eb; }
+        .stat-green  .stat-value { color: #16a34a; }
+        .stat-orange .stat-value { color: #d97706; }
+
+        /* Alert */
+        .alert-success { background: #f0fdf4; border: 1px solid #bbf7d0; color: #16a34a; padding: 12px 18px; border-radius: 8px; font-size: 13px; font-weight: 500; margin-bottom: 20px; display: flex; align-items: center; gap: 8px; }
+
+        /* Table */
+        .table-card { background: white; border-radius: 16px; border: 1px solid #e2e8f0; box-shadow: 0 4px 12px rgba(0,0,0,0.04); overflow: hidden; }
+        .table-header { padding: 20px 24px; border-bottom: 1px solid #f1f5f9; }
+        .table-header h3 { font-size: 17px; font-weight: 700; color: #0f172a; }
+
+        table { width: 100%; border-collapse: collapse; }
+        thead th { background: #f8fafc; font-size: 11.5px; font-weight: 700; color: #64748b; letter-spacing: 0.8px; text-transform: uppercase; padding: 13px 20px; border-bottom: 1px solid #e2e8f0; text-align: left; }
+        tbody td { padding: 14px 20px; border-bottom: 1px solid #f1f5f9; font-size: 13.5px; color: #1e293b; vertical-align: middle; }
+        tbody tr:last-child td { border-bottom: none; }
+        tbody tr:hover { background: #fafbfc; }
+
+        .booking-id { color: #94a3b8; font-size: 12px; font-weight: 600; }
+
+        .badge { padding: 4px 12px; border-radius: 50px; font-size: 12px; font-weight: 600; }
+        .badge-pending   { background: #fffbeb; color: #d97706; border: 1px solid #fde68a; }
+        .badge-completed { background: #f0fdf4; color: #16a34a; border: 1px solid #bbf7d0; }
+        .badge-cancelled { background: #fef2f2; color: #dc2626; border: 1px solid #fecaca; }
+        .badge-confirmed { background: #eff6ff; color: #2563eb; border: 1px solid #bfdbfe; }
+
+        .btn-complete { background: #16a34a; color: white; border: none; padding: 7px 16px; border-radius: 7px; font-size: 12.5px; font-weight: 600; cursor: pointer; transition: background 0.15s; }
+        .btn-complete:hover { background: #15803d; }
+
+        .empty-state { text-align: center; padding: 60px 20px; color: #94a3b8; }
+        .empty-state i { font-size: 42px; margin-bottom: 12px; display: block; }
+
+        footer { background: #0f172a; color: #64748b; text-align: center; padding: 14px; font-size: 13px; }
     </style>
 </head>
 <body>
-<div class="container">
 
-    <!-- Welcome Message -->
-    <div class="welcome-box">
-        <h2>Welcome back, ${sessionScope.username}!</h2>
-        <p>Service Type Portfolio: <strong>${sessionScope.serviceType}</strong></p>
+<header>
+    <div style="display:flex;align-items:center;gap:20px;">
+        <a href="${pageContext.request.contextPath}/providerBookings" class="brand">
+            <div class="logo-icon"><i class="fa-solid fa-screwdriver-wrench"></i></div>
+            <div>
+                <div class="brand-name">Smart Service</div>
+                <div class="brand-sub">PROVIDER PORTAL</div>
+            </div>
+        </a>
+        <span class="provider-badge"><i class="fa-solid fa-hard-hat"></i> Provider</span>
+    </div>
+    <a href="http://localhost:8080/Maven-Authentication/logout" class="logout-btn">
+        <i class="fa-solid fa-right-from-bracket"></i> Logout
+    </a>
+</header>
+
+<main class="main">
+
+    <div class="welcome-card">
+        <h2>Welcome, <span><%= userName %></span>!</h2>
+        <p>Manage your assigned jobs and update booking statuses below.</p>
     </div>
 
-    <!-- Alert Notifications -->
-    <c:if test="${not empty sessionScope.message}">
-        <div class="alert alert-success">${sessionScope.message}</div>
-        <c:remove var="message" scope="session"/>
-    </c:if>
+    <% if ("updated".equals(msgParam)) { %>
+        <div class="alert-success"><i class="fa-solid fa-circle-check"></i> Booking marked as completed successfully.</div>
+    <% } %>
 
-    <!-- Statistics Cards -->
-    <div class="stats-container">
-        <div class="card card-blue">
-            <h3>Total Assignments</h3>
-            <div class="value">${totalBookings}</div>
+    <!-- Stats -->
+    <div class="stats-row">
+        <div class="stat-card stat-blue">
+            <div class="stat-label">Total Bookings</div>
+            <div class="stat-value"><%= totalBookings != null ? totalBookings : 0 %></div>
         </div>
-        <div class="card card-green">
-            <h3>Completed Jobs</h3>
-            <div class="value">${completedBookings}</div>
+        <div class="stat-card stat-green">
+            <div class="stat-label">Completed Jobs</div>
+            <div class="stat-value"><%= completedBookings != null ? completedBookings : 0 %></div>
         </div>
-        <div class="card card-orange">
-            <h3>Pending Tasks</h3>
-            <div class="value">${pendingBookings}</div>
+        <div class="stat-card stat-orange">
+            <div class="stat-label">Pending Tasks</div>
+            <div class="stat-value"><%= pendingBookings != null ? pendingBookings : 0 %></div>
         </div>
     </div>
 
-    <!-- Booking Table -->
-    <div class="table-section">
-        <h3>Assigned Bookings Schedule</h3>
+    <!-- Bookings Table -->
+    <div class="table-card">
+        <div class="table-header">
+            <h3>Assigned Bookings</h3>
+        </div>
+
+        <% if (bookingList == null || bookingList.isEmpty()) { %>
+            <div class="empty-state">
+                <i class="fa-solid fa-calendar-xmark"></i>
+                <p>No bookings assigned yet.</p>
+            </div>
+        <% } else { %>
         <table>
             <thead>
                 <tr>
-                    <th>ID</th>
-                    <th>Customer Name</th>
-                    <th>Appointment Date</th>
-                    <th>Current Status</th>
-                    <th>Actions</th>
+                    <th>Booking ID</th>
+                    <th>Service</th>
+                    <th>Date</th>
+                    <th>Time Slot</th>
+                    <th>Status</th>
+                    <th style="text-align:center;">Action</th>
                 </tr>
             </thead>
             <tbody>
-                <c:forEach var="booking" items="${bookings}">
-                    <tr>
-                        <td>#${booking.id}</td>
-                        <td><c:out value="${booking.customerName}"/></td>
-                        <td><fmt:formatDate value="${booking.bookingDate}" pattern="yyyy-MM-dd HH:mm"/></td>
-                        <td>
-                            <span class="status ${booking.status == 'Pending' ? 'status-pending' : 'status-completed'}">
-                                ${booking.status}
-                            </span>
-                        </td>
-                        <td>
-                            <c:if test="${booking.status == 'Pending'}">
-                                <form action="${pageContext.request.contextPath}/provider/bookings" method="POST" style="margin:0;">
-                                    <input type="hidden" name="bookingId" value="${booking.id}">
-                                    <button type="submit" class="btn-complete">Mark Complete</button>
-                                </form>
-                            </c:if>
-                            <c:if test="${booking.status != 'Pending'}">
-                                <span style="color: #6c757d; font-size: 0.85rem;">No actions</span>
-                            </c:if>
-                        </td>
-                    </tr>
-                </c:forEach>
-                <c:if test="${empty bookings}">
-                    <tr>
-                        <td colspan="5" style="text-align: center; color: #888;">No job bookings found for your service profile.</td>
-                    </tr>
-                </c:if>
+                <% for (Booking b : bookingList) { %>
+                <tr>
+                    <td class="booking-id">#<%= b.getBookingId() %></td>
+                    <td style="font-weight:600;"><%= b.getServiceName() %></td>
+                    <td><%= b.getBookingDate() %></td>
+                    <td><%= b.getTimeSlot() != null ? b.getTimeSlot() : "—" %></td>
+                    <td>
+                        <% String st = b.getStatus(); %>
+                        <% if ("Pending".equals(st))   { %><span class="badge badge-pending">Pending</span>
+                        <% } else if ("Completed".equals(st)) { %><span class="badge badge-completed">Completed</span>
+                        <% } else if ("Cancelled".equals(st)) { %><span class="badge badge-cancelled">Cancelled</span>
+                        <% } else { %><span class="badge badge-confirmed"><%= st %></span><% } %>
+                    </td>
+                    <td style="text-align:center;">
+                        <% if ("Pending".equals(b.getStatus()) || "Confirmed".equals(b.getStatus())) { %>
+                            <form action="${pageContext.request.contextPath}/providerBookings" method="POST" style="margin:0;">
+                                <input type="hidden" name="bookingId" value="<%= b.getBookingId() %>">
+                                <button type="submit" class="btn-complete"
+                                        onclick="return confirm('Mark booking #<%= b.getBookingId() %> as Completed?')">
+                                    <i class="fa-solid fa-check"></i> Mark Complete
+                                </button>
+                            </form>
+                        <% } else { %>
+                            <span style="color:#94a3b8;font-size:12px;">—</span>
+                        <% } %>
+                    </td>
+                </tr>
+                <% } %>
             </tbody>
         </table>
+        <% } %>
     </div>
+<<<<<<< HEAD
 </div>
 >>>>>>> c686a1086cb7f136d49bf6fcb9c36af1183213cf
+=======
+</main>
+
+<footer>&copy; 2026 Smart Service Booking System. All rights reserved.</footer>
+>>>>>>> 5ae139cc3a190f51136fbb7e7269b55c2064bb88
 </body>
 </html>
