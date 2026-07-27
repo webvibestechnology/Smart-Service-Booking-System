@@ -1,4 +1,4 @@
-package com.webvibes;
+package com.webvibes.booking;
 
 import java.io.IOException;
 
@@ -10,11 +10,10 @@ import jakarta.servlet.http.HttpServletResponse;
 import jakarta.servlet.http.HttpSession;
 
 /**
- * Receives role + name from Sprint-1 via URL params,
- * stores them in Sprint-2's own session, then redirects
- * to the appropriate page.
+ * Receives role + userId + name from Sprint-1 via URL params,
+ * stores them in Sprint-3 session, then redirects to the target page.
  *
- * URL: /auth?role=ADMIN&name=Swati&redirect=manageServices
+ * URL: /auth?role=USER&userId=3&name=Swati&redirect=myBookings
  */
 @WebServlet("/auth")
 public class AuthHandoffServlet extends HttpServlet {
@@ -30,8 +29,8 @@ public class AuthHandoffServlet extends HttpServlet {
         String userIdStr= request.getParameter("userId");
         String redirect = request.getParameter("redirect");
 
-        // Store in Sprint-2 session
         HttpSession session = request.getSession(true);
+
         if (role != null && !role.trim().isEmpty()) {
             session.setAttribute("role", role.toUpperCase());
         }
@@ -39,15 +38,24 @@ public class AuthHandoffServlet extends HttpServlet {
             session.setAttribute("userName", name);
         }
         if (userIdStr != null && !userIdStr.trim().isEmpty()) {
-            try { session.setAttribute("userId", Integer.parseInt(userIdStr)); }
-            catch (NumberFormatException ignored) {}
+            try {
+                session.setAttribute("userId", Integer.parseInt(userIdStr));
+            } catch (NumberFormatException ignored) {}
         }
 
-        // Redirect to requested page (default: viewServices)
-        if ("manageServices".equals(redirect)) {
-            response.sendRedirect(request.getContextPath() + "/manageServices");
-        } else {
-            response.sendRedirect(request.getContextPath() + "/viewServices");
+        // Route to the right page
+        switch (redirect != null ? redirect : "") {
+            case "myBookings":
+                response.sendRedirect(request.getContextPath() + "/myBookings");
+                break;
+            case "manageBookings":
+                response.sendRedirect(request.getContextPath() + "/manageBookings");
+                break;
+            case "providerBookings":
+                response.sendRedirect(request.getContextPath() + "/providerBookings");
+                break;
+            default:
+                response.sendRedirect(request.getContextPath() + "/myBookings");
         }
     }
 }

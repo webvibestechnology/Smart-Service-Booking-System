@@ -28,9 +28,13 @@
         <h1>Welcome, <%= loggedInUser.getName() %>!</h1>
         <p>Provider dashboard will be built in the dashboard sprint.</p>
         <div style="display:flex;gap:12px;justify-content:center;flex-wrap:wrap;margin-bottom:16px;">
-            <a href="http://localhost:8080/Maven-Services/auth?role=PROVIDER&name=<%= java.net.URLEncoder.encode(loggedInUser.getName(), "UTF-8") %>&redirect=viewServices"
+            <a href="http://localhost:8080/Maven-Services/auth?role=PROVIDER&userId=<%= loggedInUser.getUserId() %>&name=<%= java.net.URLEncoder.encode(loggedInUser.getName(), "UTF-8") %>&redirect=viewServices"
                style="display:inline-block;background:linear-gradient(135deg,#059669,#047857);color:white;text-decoration:none;padding:11px 28px;border-radius:8px;font-size:14px;font-weight:600;">
                 View Services
+            </a>
+            <a href="http://localhost:8080/Maven-Bookings/auth?role=PROVIDER&userId=<%= loggedInUser.getUserId() %>&name=<%= java.net.URLEncoder.encode(loggedInUser.getName(), "UTF-8") %>&redirect=providerBookings"
+               style="display:inline-block;background:linear-gradient(135deg,#0891b2,#0e7490);color:white;text-decoration:none;padding:11px 28px;border-radius:8px;font-size:14px;font-weight:600;">
+                My Jobs
             </a>
             <a href="${pageContext.request.contextPath}/logout"
                style="display:inline-block;background:#ef4444;color:white;text-decoration:none;padding:11px 28px;border-radius:8px;font-size:14px;font-weight:600;">

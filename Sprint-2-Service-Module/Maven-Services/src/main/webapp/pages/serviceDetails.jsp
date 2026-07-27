@@ -211,9 +211,9 @@
                 <% } %>
             </div>
 
-            <%-- Book Now — Sprint 3 will implement booking --%>
-            <a href="#" class="book-now-btn"
-               onclick="alert('Booking functionality coming in Sprint 3!'); return false;">
+            <%-- Book Now — wired to Sprint 3 booking servlet --%>
+            <a href="http://localhost:8080/Maven-Bookings/bookService?serviceId=<%= s.getServiceId() %>&serviceName=<%= java.net.URLEncoder.encode(s.getServiceName(), "UTF-8") %>&amount=<%= s.getPrice() %>"
+               class="book-now-btn">
                 <i class="fa-solid fa-calendar-check" style="margin-right:8px;"></i> Book Now
             </a>
 

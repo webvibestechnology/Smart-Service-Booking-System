@@ -1,17 +1,24 @@
--- BOOK-01: Booking Module Database
--- Run this script in MySQL Workbench before starting Sprint 3
+-- Sprint 3 - Booking Module Database
+-- Run this entire script in MySQL Workbench
+
 CREATE DATABASE IF NOT EXISTS booking_module_db;
 USE booking_module_db;
 
-CREATE TABLE IF NOT EXISTS bookings (
-    booking_id INT AUTO_INCREMENT PRIMARY KEY,
-    user_id INT NOT NULL,
-    service_id INT NOT NULL,
+DROP TABLE IF EXISTS bookings;
+
+CREATE TABLE bookings (
+    booking_id   INT          PRIMARY KEY AUTO_INCREMENT,
+    user_id      INT          NOT NULL,
+    service_id   INT          NOT NULL DEFAULT 0,
     service_name VARCHAR(100) NOT NULL,
-    booking_date DATE NOT NULL,
-    time_slot VARCHAR(50) NOT NULL,
-    address TEXT NOT NULL,
-    amount VARCHAR(50) NOT NULL,
-    status VARCHAR(50) DEFAULT 'Pending',
-    created_at TIMESTAMP DEFAULT CURRENT_TIMESTAMP
+    booking_date DATE         NOT NULL,
+    time_slot    VARCHAR(50),
+    address      TEXT,
+    amount       DECIMAL(10,2) DEFAULT 0.00,
+    status       VARCHAR(20)  DEFAULT 'Pending',
+    created_at   TIMESTAMP    DEFAULT CURRENT_TIMESTAMP
 );
+
+-- Verify
+SELECT 'booking_module_db created successfully' AS result;
+SELECT * FROM bookings;

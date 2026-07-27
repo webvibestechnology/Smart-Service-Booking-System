@@ -28,9 +28,13 @@
         <h1>Welcome, <%= loggedInUser.getName() %>!</h1>
         <p>Admin dashboard will be built in the dashboard sprint.</p>
         <div style="display:flex;gap:12px;justify-content:center;flex-wrap:wrap;margin-bottom:16px;">
-            <a href="http://localhost:8080/Maven-Services/auth?role=ADMIN&name=<%= java.net.URLEncoder.encode(loggedInUser.getName(), "UTF-8") %>&redirect=manageServices"
+            <a href="http://localhost:8080/Maven-Services/auth?role=ADMIN&userId=<%= loggedInUser.getUserId() %>&name=<%= java.net.URLEncoder.encode(loggedInUser.getName(), "UTF-8") %>&redirect=manageServices"
                style="display:inline-block;background:linear-gradient(135deg,#7c3aed,#5b21b6);color:white;text-decoration:none;padding:11px 28px;border-radius:8px;font-size:14px;font-weight:600;">
                 Manage Services
+            </a>
+            <a href="http://localhost:8080/Maven-Bookings/auth?role=ADMIN&userId=<%= loggedInUser.getUserId() %>&name=<%= java.net.URLEncoder.encode(loggedInUser.getName(), "UTF-8") %>&redirect=manageBookings"
+               style="display:inline-block;background:linear-gradient(135deg,#2563eb,#1d4ed8);color:white;text-decoration:none;padding:11px 28px;border-radius:8px;font-size:14px;font-weight:600;">
+                Manage Bookings
             </a>
             <a href="${pageContext.request.contextPath}/logout"
                style="display:inline-block;background:#ef4444;color:white;text-decoration:none;padding:11px 28px;border-radius:8px;font-size:14px;font-weight:600;">

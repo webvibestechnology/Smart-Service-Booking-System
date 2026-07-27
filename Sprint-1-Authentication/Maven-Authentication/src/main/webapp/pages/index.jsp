@@ -215,14 +215,9 @@ padding:20px;">
     }
 
     function openService(serviceName){
-
-        // Sprint-2
-        // Redirect to Service Details page
-
+        // Go to Sprint 2 services listing page
         window.location.href =
-                "serviceDetails.jsp?service=" +
-                encodeURIComponent(serviceName);
-
+                "http://localhost:8080/Maven-Services/viewServices";
     }
     </script>
 </body>
