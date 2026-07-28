@@ -27,8 +27,10 @@
         .nav-links a::after { content: ''; position: absolute; width: 0; height: 2px; bottom: -6px; left: 0; background-color: #3b82f6; transition: width 0.2s ease; }
         .nav-links a:hover::after { width: 100%; }
 
-        .admin-profile { display: flex; align-items: center; gap: 12px; color: white; font-weight: 600; font-size: 14px; }
-        .admin-profile img { width: 36px; height: 36px; border-radius: 50%; object-fit: cover; border: 2px solid #3b82f6; }
+        /* Clickable Admin Profile Button */
+        .admin-profile-btn { display: flex; align-items: center; gap: 12px; background: rgba(255, 255, 255, 0.08); border: 1px solid rgba(255, 255, 255, 0.12); padding: 6px 14px; border-radius: 30px; color: white; font-weight: 600; font-size: 14px; text-decoration: none; transition: all 0.2s ease; cursor: pointer; }
+        .admin-profile-btn:hover { background: rgba(255, 255, 255, 0.15); border-color: #3b82f6; }
+        .admin-profile-btn img { width: 34px; height: 34px; border-radius: 50%; object-fit: cover; border: 2px solid #3b82f6; }
 
         /* MAIN LAYOUT */
         .main-container { display: flex; flex: 1; width: 100%; }
@@ -39,31 +41,29 @@
         .sidebar a:hover, .sidebar a.active { background-color: #eff6ff; color: #2563eb; }
         .sidebar a i { font-size: 18px; }
 
-        /* CONTENT AREA - Centered & Fixed Width */
-        .content-area { flex: 1; padding: 40px; background-color: #f8fafc; display: flex; justify-content: center; }
-        .content-wrapper { width: 100%; max-width: 1000px; display: flex; flex-direction: column; }
+        /* CONTENT AREA - Properly Centered */
+        .content-area { flex: 1; padding: 40px; background-color: #f8fafc; display: flex; justify-content: center; align-items: flex-start; }
+        .content-wrapper { width: 100%; max-width: 1100px; display: flex; flex-direction: column; align-items: center; }
         
-        .page-header { display: flex; justify-content: space-between; align-items: center; margin-bottom: 20px; width: 100%; }
-        .page-header h2 { font-size: 24px; font-weight: 800; color: #0f172a; }
+        /* Top Bar for Total Users & Wide Search Bar side by side layout */
+        .top-action-bar { display: flex; justify-content: space-between; align-items: center; width: 100%; margin-bottom: 25px; gap: 20px; flex-wrap: wrap; }
 
         /* TOTAL USERS CARD */
-        .stats-container { margin-bottom: 20px; width: 100%; }
-        .stat-card { background: white; padding: 16px 20px; border-radius: 12px; border: 1px solid #e2e8f0; display: inline-flex; align-items: center; gap: 16px; box-shadow: 0 2px 4px rgba(0,0,0,0.02); }
-        .stat-icon { background-color: #eff6ff; color: #2563eb; width: 42px; height: 42px; border-radius: 10px; display: flex; align-items: center; justify-content: center; font-size: 18px; }
-        .stat-info h3 { font-size: 12px; color: #64748b; font-weight: 600; text-transform: uppercase; letter-spacing: 0.5px; }
-        .stat-info p { font-size: 20px; color: #0f172a; font-weight: 700; margin-top: 2px; }
+        .stat-card { background: white; padding: 14px 22px; border-radius: 12px; border: 1px solid #e2e8f0; display: inline-flex; align-items: center; gap: 16px; box-shadow: 0 2px 4px rgba(0,0,0,0.02); }
+        .stat-icon { background-color: #eff6ff; color: #2563eb; width: 40px; height: 40px; border-radius: 10px; display: flex; align-items: center; justify-content: center; font-size: 16px; }
+        .stat-info h3 { font-size: 11px; color: #64748b; font-weight: 600; text-transform: uppercase; letter-spacing: 0.5px; }
+        .stat-info p { font-size: 18px; color: #0f172a; font-weight: 700; margin-top: 1px; }
 
-        /* SEARCH BAR */
-        .search-container { margin-bottom: 20px; width: 100%; }
-        .search-box { display: flex; background: white; padding: 8px 14px; border-radius: 10px; width: 100%; max-width: 350px; border: 1px solid #cbd5e1; box-shadow: 0 2px 4px rgba(0,0,0,0.02); }
-        .search-box input { flex: 1; border: none; padding: 6px; outline: none; font-size: 14px; color: #0f172a; background: transparent; }
-        .search-box i { color: #94a3b8; align-self: center; padding-right: 8px; }
+        /* LARGER SEARCH BAR */
+        .search-box { display: flex; background: white; padding: 10px 16px; border-radius: 12px; width: 100%; max-width: 450px; border: 1px solid #cbd5e1; box-shadow: 0 2px 4px rgba(0,0,0,0.02); }
+        .search-box input { flex: 1; border: none; padding: 4px; outline: none; font-size: 14px; color: #0f172a; background: transparent; }
+        .search-box i { color: #94a3b8; align-self: center; padding-right: 10px; font-size: 16px; }
 
         /* TABLE DESIGN - Centered & Clean */
         .table-card { background: white; border-radius: 16px; border: 1px solid #e2e8f0; overflow: hidden; box-shadow: 0 4px 6px -1px rgba(0,0,0,0.02); width: 100%; }
         table { width: 100%; border-collapse: collapse; text-align: left; }
-        th { background-color: #f8fafc; color: #475569; font-size: 13px; font-weight: 700; text-transform: uppercase; padding: 14px 20px; border-bottom: 1px solid #e2e8f0; letter-spacing: 0.5px; }
-        td { padding: 14px 20px; color: #334155; font-size: 14px; border-bottom: 1px solid #f1f5f9; }
+        th { background-color: #f8fafc; color: #475569; font-size: 13px; font-weight: 700; text-transform: uppercase; padding: 16px 24px; border-bottom: 1px solid #e2e8f0; letter-spacing: 0.5px; }
+        td { padding: 16px 24px; color: #334155; font-size: 14px; border-bottom: 1px solid #f1f5f9; }
         tr:last-child td { border-bottom: none; }
         tr:hover { background-color: #f8fafc; }
 
@@ -74,7 +74,7 @@
         .role-badge { background-color: #f1f5f9; color: #475569; padding: 4px 10px; border-radius: 6px; font-size: 12px; font-weight: 600; text-transform: uppercase; }
 
         /* VIEW BUTTON */
-        .view-btn { background-color: #3b82f6; color: white; padding: 6px 16px; border-radius: 6px; text-decoration: none; font-size: 13px; font-weight: 600; transition: background 0.2s; display: inline-block; box-shadow: 0 2px 4px rgba(59, 130, 246, 0.2); }
+        .view-btn { background-color: #3b82f6; color: white; padding: 6px 18px; border-radius: 6px; text-decoration: none; font-size: 13px; font-weight: 600; transition: background 0.2s; display: inline-block; box-shadow: 0 2px 4px rgba(59, 130, 246, 0.2); }
         .view-btn:hover { background-color: #2563eb; }
 
         /* FOOTER */
@@ -102,10 +102,11 @@
             <li><a href="${pageContext.request.contextPath}/pages/index.jsp#contact">Contact Us</a></li>
         </ul>
 
-        <div class="admin-profile">
+        <!-- Clickable Admin Profile Link/Button -->
+        <a href="${pageContext.request.contextPath}/pages/adminDashboard.jsp" class="admin-profile-btn">
             <img src="https://images.unsplash.com/photo-1472099645785-5658abf4ff4e?auto=format&fit=crop&w=100&q=80" alt="Admin">
             <span>Admin</span>
-        </div>
+        </a>
     </nav>
 
     <!-- MAIN BODY CONTAINER -->
@@ -119,32 +120,28 @@
         <!-- CONTENT SECTION -->
         <main class="content-area">
             <div class="content-wrapper">
-                <div class="page-header">
-                    <h2>Manage Users</h2>
-                </div>
-
-                <!-- Total Users Card -->
-                <div class="stats-container">
+                
+                <!-- Top Action Bar (Total Users & Larger Search Bar) -->
+                <div class="top-action-bar">
+                    <!-- Total Users Card -->
                     <div class="stat-card">
                         <div class="stat-icon">
                             <i class="fa-solid fa-users"></i>
                         </div>
                         <div class="stat-info">
                             <h3>Total Users</h3>
-                            <p></p>
+                            <p>${not empty userList ? userList.size() : '0'}</p>
                         </div>
                     </div>
-                </div>
 
-                <!-- Search Bar -->
-                <div class="search-container">
+                    <!-- Larger Search Bar -->
                     <div class="search-box">
                         <i class="fa-solid fa-magnifying-glass"></i>
                         <input type="text" id="userSearchInput" placeholder="Search by ID, email, name..." onkeyup="searchAndHighlightTable()">
                     </div>
                 </div>
 
-                <!-- Users Table Card -->
+                <!-- Users Table Card (Centered & Clean) -->
                 <div class="table-card">
                     <table id="userTable">
                         <thead>
@@ -159,23 +156,23 @@
                             </tr>
                         </thead>
                         <tbody>
-                            <!-- Iterating over actual database records fetched by ManageUsersServlet -->
+                            <!-- Iterating over actual database records fetched by servlet -->
                             <c:forEach var="user" items="${userList}">
                                 <tr>
-                                    <td>{user.id}</td>
-                                    <td>{user.fullName}</td>
-                                    <td>{user.email}</td>
-                                    <td>{user.mobile}</td>
-                                    <td><span class="role-badge">{user.role}</span></td>
-                                    <td>{user.createdAt}</td>
+                                    <td>${user.id}</td>
+                                    <td>${user.fullName}</td>
+                                    <td>${user.email}</td>
+                                    <td>${user.mobile}</td>
+                                    <td><span class="role-badge">${user.role}</span></td>
+                                    <td>${user.createdAt}</td>
                                     <td>
                                         <a href="${pageContext.request.contextPath}/pages/adminSidebar.jsp?id=${user.id}" class="view-btn">View</a>
                                     </td>
                                 </tr>
                             </c:forEach>
                             
-                            
-                            <c:if test="{empty userList}">
+                            <!-- Message if no records found -->
+                            <c:if test="${empty userList}">
                                 <tr>
                                     <td colspan="7" style="text-align: center; color: #94a3b8; padding: 30px;">No users found in database.</td>
                                 </tr>
