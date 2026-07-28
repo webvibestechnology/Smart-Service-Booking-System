@@ -16,7 +16,7 @@ public class ChangePasswordServlet extends HttpServlet {
 
     private static final long serialVersionUID = 1L;
 
-    UserDAO dao = new UserDAO();
+    private UserDAO dao = new UserDAO();
 
     @Override
     protected void doGet(HttpServletRequest request,
@@ -24,7 +24,7 @@ public class ChangePasswordServlet extends HttpServlet {
             throws ServletException, IOException {
 
         request.getRequestDispatcher("changePassword.jsp")
-                .forward(request, response);
+               .forward(request, response);
     }
 
     @Override
@@ -32,7 +32,12 @@ public class ChangePasswordServlet extends HttpServlet {
             HttpServletResponse response)
             throws ServletException, IOException {
 
-        HttpSession session = request.getSession();
+        HttpSession session = request.getSession(false);
+
+        if (session == null || session.getAttribute("userId") == null) {
+            response.sendRedirect("login.jsp");
+            return;
+        }
 
         Integer userId = (Integer) session.getAttribute("userId");
 
@@ -40,49 +45,97 @@ public class ChangePasswordServlet extends HttpServlet {
         String newPassword = request.getParameter("newPassword");
         String confirmPassword = request.getParameter("confirmPassword");
 
+        // Empty field validation
+        if (currentPassword == null || currentPassword.trim().isEmpty()
+                || newPassword == null || newPassword.trim().isEmpty()
+                || confirmPassword == null || confirmPassword.trim().isEmpty()) {
+
+            request.setAttribute("error", "All fields are required.");
+
+            request.getRequestDispatcher("changePassword.jsp")
+                   .forward(request, response);
+
+            return;
+        }
+
+        // Password length validation
+        if (newPassword.length() < 8) {
+
+            request.setAttribute("error",
+                    "Password must be at least 8 characters.");
+
+            request.getRequestDispatcher("changePassword.jsp")
+                   .forward(request, response);
+
+            return;
+        }
+
+        // Confirm password validation
         if (!newPassword.equals(confirmPassword)) {
 
             request.setAttribute("error",
                     "New Password and Confirm Password do not match.");
 
             request.getRequestDispatcher("changePassword.jsp")
-                    .forward(request, response);
+                   .forward(request, response);
 
             return;
         }
 
-        boolean valid = dao.validatePassword(userId, currentPassword);
-
-        if (!valid) {
+        // Prevent same password
+        if (currentPassword.equals(newPassword)) {
 
             request.setAttribute("error",
-                    "Current Password is incorrect.");
+                    "New password cannot be the same as the current password.");
 
             request.getRequestDispatcher("changePassword.jsp")
-                    .forward(request, response);
+                   .forward(request, response);
 
             return;
         }
 
-        boolean updated = dao.updatePassword(userId, newPassword);
+        try {
 
-        if (updated) {
+            boolean valid = dao.validatePassword(userId, currentPassword);
 
-            session.setAttribute("success",
-                    "Password Updated Successfully.");
+            if (!valid) {
 
-            response.sendRedirect("dashboard");
+                request.setAttribute("error",
+                        "Current password is incorrect.");
 
-        } else {
+                request.getRequestDispatcher("changePassword.jsp")
+                       .forward(request, response);
+
+                return;
+            }
+
+            boolean updated = dao.updatePassword(userId, newPassword);
+
+            if (updated) {
+
+                session.setAttribute("success",
+                        "Password updated successfully.");
+
+                response.sendRedirect("dashboard");
+
+            } else {
+
+                request.setAttribute("error",
+                        "Unable to update password.");
+
+                request.getRequestDispatcher("changePassword.jsp")
+                       .forward(request, response);
+            }
+
+        } catch (Exception e) {
+
+            e.printStackTrace();
 
             request.setAttribute("error",
-                    "Unable to update password.");
+                    "Something went wrong. Please try again.");
 
             request.getRequestDispatcher("changePassword.jsp")
-                    .forward(request, response);
-
+                   .forward(request, response);
         }
-
     }
-
 }
