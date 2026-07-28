@@ -1,5 +1,6 @@
 package com.webvibes;
 
+import com.webvibes.User;
 import java.io.IOException;
 import java.util.List;
 
