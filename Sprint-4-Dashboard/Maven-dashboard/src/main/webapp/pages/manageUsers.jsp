@@ -189,7 +189,7 @@
         © 2026 Smart Service Booking System | All Rights Reserved.
     </footer>
 
-    <!-- JavaScript for Live Search, Highlighting, and Auto-Scrolling -->
+    
     <script>
         function searchAndHighlightTable() {
             let input = document.getElementById("userSearchInput").value.trim().toLowerCase();
