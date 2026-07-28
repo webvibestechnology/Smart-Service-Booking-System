@@ -7,9 +7,7 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Provider Dashboard - Smart Service</title>
 
-  
     <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css" rel="stylesheet">
-    
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.6.0/css/all.min.css">
 
     <style>
@@ -28,7 +26,6 @@
             flex-direction: column;
         }
 
-  
         .navbar { 
             background-color: #0f172a; 
             color: white; 
@@ -100,11 +97,21 @@
             font-size: 13px;
         }
 
+        .dashboard-body-wrapper {
+            display: flex;
+            flex: 1;
+        }
+      
+        .sidebar-space {
+            width: 260px;
+            flex-shrink: 0;
+            background-color: #ffffff;
+            border-right: 1px solid #e2e8f0;
+        }
+
         .main-container {
             flex: 1;
             padding: 40px 60px;
-            max-width: 1300px;
-            margin: 0 auto;
             width: 100%;
         }
 
@@ -151,7 +158,7 @@
             color: #0f172a;
             margin: 0;
             line-height: 1.2;
-       }
+        }
         .table-section {
             background: white;
             border-radius: 20px;
@@ -246,7 +253,7 @@
             color: white;
         }
 
-        /* ---  FOOTER  --- */
+        /* --- FOOTER --- */
         .contact-section {
             padding: 60px 60px; 
             text-align: center; 
@@ -276,7 +283,6 @@
         List todaysBookings = (List) request.getAttribute("todaysBookings");
     %>
 
-    
     <nav class="navbar">
         <div class="brand-section">
             <div class="logo-icon">
@@ -295,157 +301,157 @@
             </div>
         </div>
     </nav>
+  
+    <div class="dashboard-body-wrapper">
 
-   
-    <main class="main-container">
-        
-        <div class="mb-4">
-            <h3 class="fw-bold mb-1" style="color: #0f172a;">Welcome, Provider!</h3>
-            <p class="text-muted mb-0">Overview of your recent bookings and service statistics</p>
-        </div>
+        <aside class="sidebar-space"> </aside>
 
-        <!-- 4 Statistic Cards -->
-        <div class="row g-4">
-            <div class="col-md-3">
-                <div class="stat-card">
-                    <div class="icon-box bg-icon-blue"><i class="fa-solid fa-clipboard-list"></i></div>
-                    <div>
-                        <p class="stat-title">Assigned Bookings</p>
-                        <h4 class="stat-value"><%= (totalJobs != null) ? totalJobs : "10" %></h4>
+        <main class="main-container">
+            
+            <div class="mb-4">
+                <h3 class="fw-bold mb-1" style="color: #0f172a;">Welcome, Provider!</h3>
+                <p class="text-muted mb-0">Overview of your recent bookings and service statistics</p>
+            </div>
+
+            <!-- 4 Statistic Cards -->
+            <div class="row g-4">
+                <div class="col-md-3">
+                    <div class="stat-card">
+                        <div class="icon-box bg-icon-blue"><i class="fa-solid fa-clipboard-list"></i></div>
+                        <div>
+                            <p class="stat-title">Assigned Bookings</p>
+                            <h4 class="stat-value"><%= (totalJobs != null) ? totalJobs : "10" %></h4>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="col-md-3">
+                    <div class="stat-card">
+                        <div class="icon-box bg-icon-green"><i class="fa-solid fa-circle-check"></i></div>
+                        <div>
+                            <p class="stat-title">Completed</p>
+                            <h4 class="stat-value"><%= (completedJobs != null) ? completedJobs : "6" %></h4>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="col-md-3">
+                    <div class="stat-card">
+                        <div class="icon-box bg-icon-orange"><i class="fa-solid fa-clock"></i></div>
+                        <div>
+                            <p class="stat-title">Pending</p>
+                            <h4 class="stat-value"><%= (pendingJobs != null) ? pendingJobs : "3" %></h4>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="col-md-3">
+                    <div class="stat-card">
+                        <div class="icon-box bg-icon-red"><i class="fa-solid fa-circle-xmark"></i></div>
+                        <div>
+                            <p class="stat-title">Cancelled</p>
+                            <h4 class="stat-value"><%= (cancelledJobs != null) ? cancelledJobs : "1" %></h4>
+                        </div>
                     </div>
                 </div>
             </div>
 
-            <div class="col-md-3">
-                <div class="stat-card">
-                    <div class="icon-box bg-icon-green"><i class="fa-solid fa-circle-check"></i></div>
-                    <div>
-                        <p class="stat-title">Completed</p>
-                        <h4 class="stat-value"><%= (completedJobs != null) ? completedJobs : "6" %></h4>
-                    </div>
+            <!-- Today's Bookings Table -->
+            <div class="table-section">
+                <div class="table-header">
+                    <h5>Today's Bookings</h5>
+                    <a href="${pageContext.request.contextPath}/provider/allBookings" class="view-all-link">View All <i class="fa-solid fa-arrow-right ms-1"></i></a>
                 </div>
-            </div>
 
-            <div class="col-md-3">
-                <div class="stat-card">
-                    <div class="icon-box bg-icon-orange"><i class="fa-solid fa-clock"></i></div>
-                    <div>
-                        <p class="stat-title">Pending</p>
-                        <h4 class="stat-value"><%= (pendingJobs != null) ? pendingJobs : "3" %></h4>
-                    </div>
-                </div>
-            </div>
-
-            <div class="col-md-3">
-                <div class="stat-card">
-                    <div class="icon-box bg-icon-red"><i class="fa-solid fa-circle-xmark"></i></div>
-                    <div>
-                        <p class="stat-title">Cancelled</p>
-                        <h4 class="stat-value"><%= (cancelledJobs != null) ? cancelledJobs : "1" %></h4>
-                    </div>
-                </div>
-            </div>
-        </div>
-
-        <!-- Today's Bookings Table -->
-        <div class="table-section">
-            <div class="table-header">
-                <h5>Today's Bookings</h5>
-                <!-- RESTORED: View All Link -->
-                <a href="${pageContext.request.contextPath}/provider/allBookings" class="view-all-link">View All <i class="fa-solid fa-arrow-right ms-1"></i></a>
-            </div>
-
-            <div class="table-responsive">
-                <table class="custom-table">
-                    <thead>
-                        <tr>
-                            <th>Booking ID</th>
-                            <th>Service</th>
-                            <th>Date Time</th>
-                            <th>Time Slot</th>
-                            <th>Action</th>
-                        </tr>
-                    </thead>
-                    <tbody>
-                        <%
-                            if (todaysBookings != null && !todaysBookings.isEmpty()) {
-                                for (Object item : todaysBookings) {
-                                    String bookingId = "", serviceName = "", bookingDate = "", timeSlot = "", status = "";
-                                    try {
-                                        bookingId = String.valueOf(item.getClass().getMethod("getBookingId").invoke(item));
-                                        serviceName = String.valueOf(item.getClass().getMethod("getServiceName").invoke(item));
-                                        bookingDate = String.valueOf(item.getClass().getMethod("getBookingDate").invoke(item));
-                                        timeSlot = String.valueOf(item.getClass().getMethod("getTimeSlot").invoke(item));
-                                        status = String.valueOf(item.getClass().getMethod("getStatus").invoke(item));
-                                    } catch (Exception e) {
-                                        bookingId = item.toString();
+                <div class="table-responsive">
+                    <table class="custom-table">
+                        <thead>
+                            <tr>
+                                <th>Booking ID</th>
+                                <th>Service</th>
+                                <th>Date Time</th>
+                                <th>Time Slot</th>
+                                <th>Action</th>
+                            </tr>
+                        </thead>
+                        <tbody>
+                            <%
+                                if (todaysBookings != null && !todaysBookings.isEmpty()) {
+                                    for (Object item : todaysBookings) {
+                                        String bookingId = "", serviceName = "", bookingDate = "", timeSlot = "", status = "";
+                                        try {
+                                            bookingId = String.valueOf(item.getClass().getMethod("getBookingId").invoke(item));
+                                            serviceName = String.valueOf(item.getClass().getMethod("getServiceName").invoke(item));
+                                            bookingDate = String.valueOf(item.getClass().getMethod("getBookingDate").invoke(item));
+                                            timeSlot = String.valueOf(item.getClass().getMethod("getTimeSlot").invoke(item));
+                                            status = String.valueOf(item.getClass().getMethod("getStatus").invoke(item));
+                                        } catch (Exception e) {
+                                            bookingId = item.toString();
+                                        }
+                            %>
+                                            <tr>
+                                                <td>#<%= bookingId %></td>
+                                                <td><%= serviceName %></td>
+                                                <td><%= bookingDate %></td>
+                                                <td><%= timeSlot %></td>
+                                                <td>
+                                                    <div class="action-cell">
+                                                        <span class="<%= "Completed".equalsIgnoreCase(status) ? "badge-completed" : "badge-pending" %>">
+                                                            <%= status %>
+                                                        </span>
+                                                        <a href="#" class="btn-view-action">View</a>
+                                                    </div>
+                                                </td>
+                                            </tr>
+                            <%          
                                     }
-                        %>
-                                        <tr>
-                                            <td>#<%= bookingId %></td>
-                                            <td><%= serviceName %></td>
-                                            <td><%= bookingDate %></td>
-                                            <td><%= timeSlot %></td>
-                                            <td>
-                                                <div class="action-cell">
-                                                    <span class="<%= "Completed".equalsIgnoreCase(status) ? "badge-completed" : "badge-pending" %>">
-                                                        <%= status %>
-                                                    </span>
-                                                    <a href="#" class="btn-view-action">View</a>
-                                                </div>
-                                            </td>
-                                        </tr>
-                        <%          
-                                }
-                            } else { 
-                        %>
-                                <!-- Fallback Data -->
-                                <tr>
-                                    <td>#101</td>
-                                    <td>AC Repair</td>
-                                    <td>20 May 2024</td>
-                                    <td>10:00 AM - 12:00 PM</td>
-                                    <td>
-                                        <div class="action-cell">
-                                            <span class="badge-pending">Pending</span>
-                                            <a href="#" class="btn-view-action">View</a>
-                                        </div>
-                                    </td>
-                                </tr>
-                                <tr>
-                                    <td>#102</td>
-                                    <td>Plumbing</td>
-                                    <td>20 May 2024</td>
-                                    <td>02:00 PM - 04:00 PM</td>
-                                    <td>
-                                        <div class="action-cell">
-                                            <span class="badge-pending">Pending</span>
-                                            <a href="#" class="btn-view-action">View</a>
-                                        </div>
-                                    </td>
-                                </tr>
-                        <% 
-                            } 
-                        %>
-                    </tbody>
-                </table>
+                                } else { 
+                            %>
+                                    <!-- Fallback Data -->
+                                    <tr>
+                                        <td>#101</td>
+                                        <td>AC Repair</td>
+                                        <td>20 May 2024</td>
+                                        <td>10:00 AM - 12:00 PM</td>
+                                        <td>
+                                            <div class="action-cell">
+                                                <span class="badge-pending">Pending</span>
+                                                <a href="#" class="btn-view-action">View</a>
+                                            </div>
+                                        </td>
+                                    </tr>
+                                    <tr>
+                                        <td>#102</td>
+                                        <td>Plumbing</td>
+                                        <td>20 May 2024</td>
+                                        <td>02:00 PM - 04:00 PM</td>
+                                        <td>
+                                            <div class="action-cell">
+                                                <span class="badge-pending">Pending</span>
+                                                <a href="#" class="btn-view-action">View</a>
+                                            </div>
+                                        </td>
+                                    </tr>
+                            <% 
+                                } 
+                            %>
+                        </tbody>
+                    </table>
+                </div>
             </div>
-        </div>
-    </main>
+        </main>
+    </div>
 
- 
     <section id="contact" class="contact-section">
         <h2>Contact Us</h2>
         <p style="margin-top: 15px; color: #94a3b8;">Email: support@smartservice.com | Phone: +91 98765 43210</p>
         <p style="margin-top: 10px; color: #94a3b8;">Address: Office No. 201, Tech Hub Building, Hinjewadi, Pune - 411057</p>
     </section>
 
-
     <footer>
         © 2026 Smart Service Booking System | All Rights Reserved.
     </footer>
 
-   
     <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/js/bootstrap.bundle.min.js"></script>
 </body>
 </html>
