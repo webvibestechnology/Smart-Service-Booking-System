@@ -17,7 +17,7 @@
             flex-direction: column;
             min-height: 100vh;
         }
-        /* Fixed Footer sathi Wrapper */
+        /* Fixed Footer  Wrapper */
         .content-wrapper {
             flex: 1;
         }
@@ -161,7 +161,7 @@
 <body>
 
     <div class="content-wrapper">
-        <!-- 1.Header Bar -->
+        <!-- 1.  Header Bar -->
         <header class="navbar navbar-top sticky-top flex-md-nowrap p-0 shadow-sm">
             <div class="container-fluid px-4 d-flex justify-content-between align-items-center" style="height: 60px;">
                 <div class="logo-section">
@@ -302,7 +302,7 @@
     <!-- 5. Added Clean Footer -->
     <footer class="mt-auto">
         <div class="container-fluid px-4">
-            <div class="d-flex flex-column flex-sm-row justify-content-between align-items-center gap-2">
+            <div class="d-flex flex-column justify-content-center align-items-center text-center gap-2">
                 <div>
                     <span>&copy; 2026 Smart Service Booking System. All rights reserved.</span>
                 </div>
