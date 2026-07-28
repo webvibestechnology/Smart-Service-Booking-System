@@ -1,3 +1,20 @@
+<<<<<<< HEAD
+<<<<<<< HEAD
+<%@ page language="java" contentType="text/html; charset=UTF-8" pageEncoding="UTF-8" %>
+<%@ page import="com.webvibes.booking.Booking, java.util.List" %>
+<%-- BOOK-06: Provider Bookings Page (Screen 15 in mockup)
+     Shows bookings assigned to this provider's service category.
+     Data comes from request attribute "bookingList" (List<Booking>)
+     Columns: Booking ID, Service, Customer, Date, Time Slot, Status, Action
+     Provider can mark booking as "Completed" via Update button
+     Reference: mockup screen 15
+--%>
+=======
+<%@ page contentType="text/html;charset=UTF-8" language="java" %>
+<%@ taglib prefix="c" uri="http://sun.com" %>
+<%@ taglib prefix="fmt" uri="http://sun.com" %>
+>>>>>>> c686a1086cb7f136d49bf6fcb9c36af1183213cf
+=======
 <%@ page language="java" contentType="text/html; charset=UTF-8" pageEncoding="UTF-8" %>
 <%@ page import="com.webvibes.booking.Booking, java.util.List" %>
 <%
@@ -9,13 +26,27 @@
                      ? (String) request.getSession(false).getAttribute("userName") : "Provider";
     String msgParam = request.getParameter("msg");
 %>
+>>>>>>> 5ae139cc3a190f51136fbb7e7269b55c2064bb88
 <!DOCTYPE html>
 <html lang="en">
 <head>
     <meta charset="UTF-8">
+<<<<<<< HEAD
+<<<<<<< HEAD
+    <title>My Assigned Bookings - Smart Service</title>
+    <!-- TODO: Add CSS styling matching the project theme -->
+</head>
+<body>
+
+    
+
+=======
+    <title>Provider Dashboard - Bookings</title>
+=======
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Provider Bookings - Smart Service</title>
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+>>>>>>> 5ae139cc3a190f51136fbb7e7269b55c2064bb88
     <style>
         * { box-sizing: border-box; margin: 0; padding: 0; font-family: 'Segoe UI', system-ui, sans-serif; }
         body { background: #f4f6f9; min-height: 100vh; display: flex; flex-direction: column; }
@@ -180,8 +211,13 @@
         </table>
         <% } %>
     </div>
+<<<<<<< HEAD
+</div>
+>>>>>>> c686a1086cb7f136d49bf6fcb9c36af1183213cf
+=======
 </main>
 
 <footer>&copy; 2026 Smart Service Booking System. All rights reserved.</footer>
+>>>>>>> 5ae139cc3a190f51136fbb7e7269b55c2064bb88
 </body>
 </html>

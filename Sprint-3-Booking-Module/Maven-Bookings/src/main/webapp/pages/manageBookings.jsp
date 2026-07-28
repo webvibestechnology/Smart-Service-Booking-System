@@ -9,8 +9,17 @@
     <meta charset="UTF-8">
     <title>Manage Bookings (Admin) - Smart Service</title>
     <!-- TODO: Add CSS styling matching the project theme -->
+<<<<<<< HEAD
+<<<<<<< HEAD
+</head>
+<body>
+
+   
+=======
+=======
     <style type="text/css">
     
+>>>>>>> 5ae139cc3a190f51136fbb7e7269b55c2064bb88
      body{
     margin:0;
     padding:0;
@@ -208,6 +217,7 @@ Booking Status Updated Successfully!
 %>
 
 </div>
+>>>>>>> c686a1086cb7f136d49bf6fcb9c36af1183213cf
     
 </body>
 </html>
