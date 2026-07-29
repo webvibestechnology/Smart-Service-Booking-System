@@ -5,7 +5,7 @@
 
 <style>
 
-.admin-sidebar{
+.user-sidebar{
 
     width:260px;
     height:100%;
@@ -63,7 +63,7 @@
 }
 
 
-.admin-sidebar a{
+.user-sidebar a{
 
     display:flex;
 
@@ -93,7 +93,7 @@
 
 /* Icon */
 
-.admin-sidebar a i{
+.user-sidebar a i{
 
     width:35px;
 
@@ -115,7 +115,7 @@
 
 /* Hover */
 
-.admin-sidebar a:hover{
+.user-sidebar a:hover{
 
     background:rgba(56,189,248,.15);
 
@@ -126,7 +126,7 @@
 }
 
 
-.admin-sidebar a:hover i{
+.user-sidebar a:hover i{
 
     background:#38bdf8;
 
@@ -138,7 +138,7 @@
 
 /* Active */
 
-.admin-sidebar a.active{
+.user-sidebar a.active{
 
     background:linear-gradient(90deg,#2563eb,#06b6d4);
 
@@ -149,7 +149,7 @@
 }
 
 
-.admin-sidebar a.active i{
+.user-sidebar a.active i{
 
     background:white;
 
@@ -187,7 +187,7 @@
 
 
 
-.admin-sidebar::-webkit-scrollbar{
+.user-sidebar::-webkit-scrollbar{
 
     display:none;
 
@@ -197,7 +197,7 @@
 
 
 
-<div class="admin-sidebar">
+<div class="user-sidebar">
 
 
 <div>
@@ -205,9 +205,9 @@
 
 <div class="sidebar-title">
 
-<i class="fa-solid fa-shield-halved"></i>
+<i class="fa-solid fa-user"></i>
 
-Admin Panel
+User Panel
 
 </div>
 
@@ -216,7 +216,7 @@ Admin Panel
 <div class="top-menu">
 
 
-<a href="adminDashboard.jsp" class="active">
+<a href="userDashboard.jsp" class="active">
 
 <i class="fa-solid fa-house"></i>
 
@@ -226,31 +226,21 @@ Dashboard
 
 
 
-<a href="serviceDetails.jsp">
-
-<i class="fa-solid fa-list-check"></i>
-
-Services
-
-</a>
-
-
-
-<a href="manageBookings.jsp">
+<a href="myBooking.jsp">
 
 <i class="fa-solid fa-calendar-check"></i>
 
-Manage Booking
+My Booking
 
 </a>
 
 
 
-<a href="manageUsers.jsp">
+<a href="services.jsp">
 
-<i class="fa-solid fa-users"></i>
+<i class="fa-solid fa-list"></i>
 
-Users
+Services
 
 </a>
 
