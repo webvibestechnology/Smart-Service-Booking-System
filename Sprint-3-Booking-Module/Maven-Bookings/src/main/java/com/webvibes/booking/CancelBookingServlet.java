@@ -1,5 +1,15 @@
 package com.webvibes.booking;
 
+<<<<<<< HEAD
+
+// BOOK-04: Cancels a booking (only if status is Pending)
+// GET /cancelBooking?id=X → update status to Cancelled → redirect to /myBookings
+
+public class CancelBookingServlet  {
+
+   
+}
+=======
 import java.io.IOException;
 
 import jakarta.servlet.ServletException;
@@ -40,7 +50,15 @@ public class CancelBookingServlet extends HttpServlet {
 
         } catch (Exception e) {
             e.printStackTrace();
+<<<<<<< HEAD
+            response.sendRedirect("myBookings?error=cannotcancel");
+     }
+   }
+}                
+>>>>>>> c686a1086cb7f136d49bf6fcb9c36af1183213cf
+=======
             response.sendRedirect(request.getContextPath() + "/myBookings?error=cannotcancel");
         }
     }
 }
+>>>>>>> 5ae139cc3a190f51136fbb7e7269b55c2064bb88
