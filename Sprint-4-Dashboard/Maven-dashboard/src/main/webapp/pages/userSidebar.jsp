@@ -1,65 +1,292 @@
-<%@ page language="java" contentType="text/html; charset=UTF-8"
-    pageEncoding="UTF-8"%>
+<%@ page contentType="text/html;charset=UTF-8" language="java" %>
 
-<link rel="stylesheet" href="https://cloudflare.com">
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.6.0/css/all.min.css">
 
-<div style="width: 250px; height: 100vh; background-color: #0f172a; color: #ffffff; display: flex; 
-flex-direction: column; font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif; position: fixed; 
-left: 0; top: 0; box-shadow: 2px 0 8px rgba(0,0,0,0.15); z-index: 1000;">
-    
 
-    <div style="padding: 20px 24px; font-size: 18px; font-weight: 700; border-bottom: 1px solid #1e293b; 
-    display: flex; align-items: center; gap: 10px; color: #38bdf8;">
-        <i class="fa-solid fa-circle-user" style="font-size: 20px;"></i>
-        <span>Smart Service</span>
-    </div>
+<style>
 
-    <nav style="flex: 1; padding: 24px 0; overflow-y: auto;">
-        <ul style="list-style: none; padding: 0; margin: 0;">
-            <!-- Section Title -->
-            <li style="padding: 0 24px 10px 24px; font-size: 11px; text-transform: uppercase; 
-            color: #475569; font-weight: bold; letter-spacing: 1px;">Links</li>
-            
-    
-            <li style="margin-bottom: 4px; padding: 0 12px;">
-                <a href="userDashboard.jsp" style="display: flex; align-items: center; 
-                gap: 12px; padding: 12px 16px; color: #ffffff; background-color: #1e293b; 
-                text-decoration: none; border-radius: 8px; font-weight: 600; border-left: 4px solid #38bdf8;">
-                    <i class="fa-solid fa-gauge" style="width: 20px; font-size: 16px; color: #38bdf8;"></i> Dashboard
-                </a>
-            </li>
-            
-           
-            <li style="margin-bottom: 4px; padding: 0 12px;">
-                <a href="myBookings.jsp" style="display: flex; align-items: center; gap: 12px; 
-                padding: 12px 16px; color: #94a3b8; text-decoration: none; border-radius: 8px; 
-                transition: all 0.2s ease;" onmouseover="this.style.backgroundColor='#1e293b';
-                this.style.color='#ffffff';" onmouseout="this.style.backgroundColor='transparent'; 
-                this.style.color='#94a3b8';">
-                    <i class="fa-solid fa-bookmark" style="width: 20px; font-size: 16px;"></i> My Bookings
-                </a>
-            </li>
-            
-        
-            <li style="margin-bottom: 4px; padding: 0 12px;">
-                <a href="changePassword.jsp" style="display: flex; align-items: center; gap: 12px; 
-                padding: 12px 16px; color: #94a3b8; text-decoration: none; border-radius: 8px; 
-                transition: all 0.2s ease;" onmouseover="this.style.backgroundColor='#1e293b';
-                 this.style.color='#ffffff';" onmouseout="this.style.backgroundColor='transparent';
-                  this.style.color='#94a3b8';">
-                    <i class="fa-solid fa-lock" style="width: 20px; font-size: 16px;"></i> Change Password
-                </a>
-            </li>
-        </ul>
-    </nav>
-    
-   
-    <div style="padding: 16px; border-top: 1px solid #1e293b;">
-        <a href="logout" style="display: flex; align-items: center; justify-content: center;
-         gap: 8px; background-color: #ef4444; color: #ffffff; padding: 12px; border-radius: 8px; 
-         text-decoration: none; font-weight: 600; transition: background 0.2s;
-         " onmouseover="this.style.backgroundColor='#dc2626'" onmouseout="this.style.backgroundColor='#ef4444'">
-            <i class="fa-solid fa-right-from-bracket"></i> Logout
-        </a>
-    </div>
+.admin-sidebar{
+
+    width:260px;
+    height:100%;
+
+    background:linear-gradient(180deg,#0f172a,#020617);
+
+    display:flex;
+    flex-direction:column;
+    justify-content:space-between;
+
+    padding:18px 12px;
+
+    overflow:hidden;
+
+    font-family:'Segoe UI',sans-serif;
+
+}
+
+
+/* Title */
+
+.sidebar-title{
+
+    color:white;
+
+    text-align:center;
+
+    font-size:20px;
+
+    font-weight:700;
+
+    padding:15px 0 25px;
+
+    border-bottom:1px solid rgba(255,255,255,.15);
+
+}
+
+
+.sidebar-title i{
+
+    color:#38bdf8;
+
+    margin-right:8px;
+
+}
+
+
+
+/* Menu */
+
+.top-menu{
+
+    margin-top:20px;
+
+}
+
+
+.admin-sidebar a{
+
+    display:flex;
+
+    align-items:center;
+
+    gap:15px;
+
+    padding:13px 15px;
+
+    margin:8px 0;
+
+    color:#cbd5e1;
+
+    text-decoration:none;
+
+    border-radius:12px;
+
+    font-size:15px;
+
+    font-weight:500;
+
+    transition:.3s;
+
+}
+
+
+
+/* Icon */
+
+.admin-sidebar a i{
+
+    width:35px;
+
+    height:35px;
+
+    display:flex;
+
+    align-items:center;
+
+    justify-content:center;
+
+    background:rgba(255,255,255,.08);
+
+    border-radius:10px;
+
+}
+
+
+
+/* Hover */
+
+.admin-sidebar a:hover{
+
+    background:rgba(56,189,248,.15);
+
+    color:#38bdf8;
+
+    transform:translateX(5px);
+
+}
+
+
+.admin-sidebar a:hover i{
+
+    background:#38bdf8;
+
+    color:#0f172a;
+
+}
+
+
+
+/* Active */
+
+.admin-sidebar a.active{
+
+    background:linear-gradient(90deg,#2563eb,#06b6d4);
+
+    color:white;
+
+    box-shadow:0 5px 15px rgba(37,99,235,.4);
+
+}
+
+
+.admin-sidebar a.active i{
+
+    background:white;
+
+    color:#2563eb;
+
+}
+
+
+
+/* Logout */
+
+.bottom-menu{
+
+    border-top:1px solid rgba(255,255,255,.15);
+
+    padding-top:15px;
+
+}
+
+
+.logout{
+
+    color:#fb7185 !important;
+
+}
+
+
+.logout:hover{
+
+    background:#dc2626 !important;
+
+    color:white !important;
+
+}
+
+
+
+.admin-sidebar::-webkit-scrollbar{
+
+    display:none;
+
+}
+
+</style>
+
+
+
+<div class="admin-sidebar">
+
+
+<div>
+
+
+<div class="sidebar-title">
+
+<i class="fa-solid fa-shield-halved"></i>
+
+Admin Panel
+
+</div>
+
+
+
+<div class="top-menu">
+
+
+<a href="adminDashboard.jsp" class="active">
+
+<i class="fa-solid fa-house"></i>
+
+Dashboard
+
+</a>
+
+
+
+<a href="serviceDetails.jsp">
+
+<i class="fa-solid fa-list-check"></i>
+
+Services
+
+</a>
+
+
+
+<a href="manageBookings.jsp">
+
+<i class="fa-solid fa-calendar-check"></i>
+
+Manage Booking
+
+</a>
+
+
+
+<a href="manageUsers.jsp">
+
+<i class="fa-solid fa-users"></i>
+
+Users
+
+</a>
+
+
+
+<a href="changePassword.jsp">
+
+<i class="fa-solid fa-key"></i>
+
+Change Password
+
+</a>
+
+
+
+</div>
+
+
+</div>
+
+
+
+
+<div class="bottom-menu">
+
+
+<a href="../index.jsp" class="logout">
+
+<i class="fa-solid fa-right-from-bracket"></i>
+
+Logout
+
+</a>
+
+
+</div>
+
+
 </div>
