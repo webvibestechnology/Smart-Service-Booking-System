@@ -1,5 +1,17 @@
 package com.webvibes.booking;
 
+<<<<<<< HEAD
+
+
+// BOOK-05: Admin view of a=ll bookings with status update
+// GET  /manageBookings → show all bookings in manageBookings.jsp
+// POST /manageBookings → update booking status, redirect back
+
+public class ManageBookingsServlet  {
+
+    
+}
+=======
 import java.io.IOException;
 import java.util.List;
 
@@ -63,3 +75,7 @@ public class ManageBookingsServlet extends HttpServlet {
         response.sendRedirect(request.getContextPath() + "/manageBookings?msg=updated");
     }
 }
+<<<<<<< HEAD
+>>>>>>> c686a1086cb7f136d49bf6fcb9c36af1183213cf
+=======
+>>>>>>> 5ae139cc3a190f51136fbb7e7269b55c2064bb88

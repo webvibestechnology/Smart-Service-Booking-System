@@ -1,5 +1,23 @@
 package com.webvibes.booking;
+<<<<<<< HEAD
+<<<<<<< HEAD
 
+
+
+// BOOK-02: Handles GET (show form) and POST (submit booking)
+// GET  /bookService?serviceId=X  → show bookService.jsp
+// POST /bookService               → insert booking, redirect to /myBookings
+
+public class BookServiceServlet  {
+
+  
+=======
+// BOOK-02: Handles GET (show form) and POST (submit booking)
+// GET  /bookService?serviceId=X  → show bookService.jsp
+// POST /bookService               → insert booking, redirect to /myBookings
+=======
+
+>>>>>>> 5ae139cc3a190f51136fbb7e7269b55c2064bb88
 import java.io.IOException;
 import java.sql.Date;
 import jakarta.servlet.ServletException;
@@ -95,4 +113,5 @@ public class BookServiceServlet extends HttpServlet {
             request.getRequestDispatcher("/pages/bookService.jsp").forward(request, response);
         }
     }
+>>>>>>> c686a1086cb7f136d49bf6fcb9c36af1183213cf
 }

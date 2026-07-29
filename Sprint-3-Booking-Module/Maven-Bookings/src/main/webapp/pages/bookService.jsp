@@ -1,3 +1,15 @@
+<<<<<<< HEAD
+<<<<<<< HEAD
+<%@ page language="java" contentType="text/html; charset=UTF-8" pageEncoding="UTF-8" %>
+<%-- BOOK-02: Book Service Page (Screen 7 in mockup)
+     This page shows a booking form for a selected service.
+     Fields: Service Date, Time Slot (dropdown), Address, Additional Notes
+     On submit → POST to /bookService servlet
+     Reference: mockup screen 7
+--%>
+=======
+>>>>>>> c686a1086cb7f136d49bf6fcb9c36af1183213cf
+=======
 <%@ page language="java" contentType="text/html; charset=UTF-8" pageEncoding="UTF-8" %>
 <%
     // Read service info from URL params passed by Sprint 2 serviceDetails page
@@ -27,10 +39,22 @@
     else if (lcName.contains("paint"))
         imgUrl = "https://images.unsplash.com/photo-1562259949-e8e7689d7828?w=400&q=80";
 %>
+>>>>>>> 5ae139cc3a190f51136fbb7e7269b55c2064bb88
 <!DOCTYPE html>
 <html lang="en">
 <head>
     <meta charset="UTF-8">
+<<<<<<< HEAD
+    <title>Book Service - Smart Service</title>
+    <!-- TODO: Add CSS styling matching the project theme -->
+</head>
+<body>
+
+   
+
+</body>
+</html>
+=======
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Book <%= serviceName %> - Smart Service</title>
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
@@ -218,3 +242,7 @@
 </script>
 </body>
 </html>
+<<<<<<< HEAD
+>>>>>>> c686a1086cb7f136d49bf6fcb9c36af1183213cf
+=======
+>>>>>>> 5ae139cc3a190f51136fbb7e7269b55c2064bb88

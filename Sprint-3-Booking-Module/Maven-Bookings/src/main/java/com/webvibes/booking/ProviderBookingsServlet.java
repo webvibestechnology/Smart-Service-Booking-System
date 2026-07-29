@@ -1,4 +1,19 @@
+<<<<<<< HEAD
+<<<<<<< HEAD
 package com.webvibes.booking;
+
+
+// BOOK-06: Provider view of assigned bookings
+// GET  /providerBookings → show bookings for this provider's services
+// POST /providerBookings → mark booking as Completed
+
+public class ProviderBookingsServlet  {
+
+=======
+package javaController;
+=======
+package com.webvibes.booking;
+>>>>>>> 5ae139cc3a190f51136fbb7e7269b55c2064bb88
 
 import java.io.IOException;
 import java.util.List;
@@ -66,4 +81,5 @@ public class ProviderBookingsServlet extends HttpServlet {
 
         response.sendRedirect(request.getContextPath() + "/providerBookings?msg=updated");
     }
+>>>>>>> c686a1086cb7f136d49bf6fcb9c36af1183213cf
 }
