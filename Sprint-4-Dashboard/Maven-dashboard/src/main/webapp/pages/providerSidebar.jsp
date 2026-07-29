@@ -92,7 +92,7 @@
 
 
 
-/* Icon box */
+/* Icon */
 
 .provider-sidebar a i{
 
@@ -188,8 +188,6 @@
 
 
 
-/* No scrollbar */
-
 .provider-sidebar::-webkit-scrollbar{
 
     display:none;
@@ -228,28 +226,32 @@ Dashboard
 </a>
 
 
-<a href="manageBookings.jsp">
 
-<i class="fa-solid fa-calendar-check"></i>
+<a href="myJobs.jsp">
 
-Manage Bookings
+<i class="fa-solid fa-briefcase"></i>
+
+My Jobs
+
+</a>
+
+
+
+<a href="changePassword.jsp">
+
+<i class="fa-solid fa-key"></i>
+
+Change Password
 
 </a>
 
-
-<a href="manageService.jsp">
-
-<i class="fa-solid fa-screwdriver-wrench"></i>
-
-Manage Service
-
-</a>
 
 
 </div>
 
 
 </div>
+
 
 
 
