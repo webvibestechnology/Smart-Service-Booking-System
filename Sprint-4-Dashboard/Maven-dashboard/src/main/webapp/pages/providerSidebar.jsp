@@ -1,132 +1,271 @@
-<%@ page language="java" contentType="text/html; charset=UTF-8"
-    pageEncoding="UTF-8"%>
+<%@ page contentType="text/html;charset=UTF-8" language="java" %>
 
-<link rel="stylesheet"
-href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.6.0/css/all.min.css">
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.6.0/css/all.min.css">
+
 
 <style>
 
-*{
-    margin:0;
-    padding:0;
-    box-sizing:border-box;
-}
-
 .provider-sidebar{
+
     width:260px;
-    min-height:calc(100vh - 80px);
-    background:#0f172a;
-    color:white;
+    height:100%;
+
+    background:linear-gradient(180deg,#0f172a,#020617);
+
     display:flex;
     flex-direction:column;
+    justify-content:space-between;
+
+    padding:18px 12px;
+
+    overflow:hidden;
+
+    font-family:'Segoe UI',sans-serif;
+
 }
 
-.sidebar-header{
-    padding:20px;
-    border-bottom:1px solid #1e293b;
-}
 
-.sidebar-header h3{
-    font-size:22px;
-    margin:0;
-    color:#38bdf8;
-}
 
-.sidebar-header p{
-    font-size:12px;
-    color:#94a3b8;
-    margin-top:5px;
-}
+/* Title */
 
-.menu{
-    flex:1;
-    padding-top:15px;
-}
+.sidebar-title{
 
-.menu-title{
-    color:#94a3b8;
-    font-size:12px;
-    padding:0 20px 10px;
-    text-transform:uppercase;
-}
-
-.menu a{
-    display:block;
-    text-decoration:none;
     color:white;
-    padding:15px 20px;
+
+    text-align:center;
+
+    font-size:20px;
+
+    font-weight:700;
+
+    padding:15px 0 25px;
+
+    border-bottom:1px solid rgba(255,255,255,.15);
+
+}
+
+
+.sidebar-title i{
+
+    color:#38bdf8;
+
+    margin-right:8px;
+
+}
+
+
+
+/* Menu */
+
+.top-menu{
+
+    margin-top:20px;
+
+}
+
+
+.provider-sidebar a{
+
+    display:flex;
+
+    align-items:center;
+
+    gap:15px;
+
+    padding:13px 15px;
+
+    margin:8px 0;
+
+    color:#cbd5e1;
+
+    text-decoration:none;
+
+    border-radius:12px;
+
     font-size:15px;
+
+    font-weight:500;
+
     transition:.3s;
+
 }
 
-.menu a i{
-    width:22px;
+
+
+/* Icon box */
+
+.provider-sidebar a i{
+
+    width:35px;
+
+    height:35px;
+
+    display:flex;
+
+    align-items:center;
+
+    justify-content:center;
+
+    background:rgba(255,255,255,.08);
+
+    border-radius:10px;
+
 }
 
-.menu a:hover{
-    background:#1e293b;
+
+
+/* Hover */
+
+.provider-sidebar a:hover{
+
+    background:rgba(56,189,248,.15);
+
+    color:#38bdf8;
+
+    transform:translateX(5px);
+
 }
 
-.menu a.active{
-    background:#2563eb;
+
+.provider-sidebar a:hover i{
+
+    background:#38bdf8;
+
+    color:#0f172a;
+
 }
+
+
+
+/* Active */
+
+.provider-sidebar a.active{
+
+    background:linear-gradient(90deg,#2563eb,#06b6d4);
+
+    color:white;
+
+    box-shadow:0 5px 15px rgba(37,99,235,.4);
+
+}
+
+
+.provider-sidebar a.active i{
+
+    background:white;
+
+    color:#2563eb;
+
+}
+
+
+
+/* Logout */
+
+.bottom-menu{
+
+    border-top:1px solid rgba(255,255,255,.15);
+
+    padding-top:15px;
+
+}
+
 
 .logout{
-    border-top:1px solid #1e293b;
+
+    color:#fb7185 !important;
+
 }
 
-.logout a{
-    display:block;
-    color:#ff6b6b;
-    text-decoration:none;
-    padding:18px 20px;
-    font-size:15px;
+
+.logout:hover{
+
+    background:#dc2626 !important;
+
+    color:white !important;
+
 }
 
-.logout a:hover{
-    background:#1e293b;
+
+
+/* No scrollbar */
+
+.provider-sidebar::-webkit-scrollbar{
+
+    display:none;
+
 }
 
 </style>
 
+
+
 <div class="provider-sidebar">
 
-    <div class="sidebar-header">
-        <h3>Smart Service</h3>
-        <p>Provider Panel</p>
-    </div>
 
-    <div class="menu">
+<div>
 
-        <div class="menu-title">Links</div>
 
-        <a href="providerDashboard.jsp" class="active">
-            <i class="fa-solid fa-house"></i>
-            Dashboard
-        </a>
+<div class="sidebar-title">
 
-        <a href="manageServices.jsp">
-            <i class="fa-solid fa-screwdriver-wrench"></i>
-            Services
-        </a>
+<i class="fa-solid fa-bolt"></i>
 
-        <a href="manageBookings.jsp">
-            <i class="fa-solid fa-calendar-check"></i>
-            Manage Bookings
-        </a>
+Provider Panel
 
-        <a href="changePassword.jsp">
-            <i class="fa-solid fa-key"></i>
-            Change Password
-        </a>
+</div>
 
-    </div>
 
-    <div class="logout">
-        <a href="../index.jsp">
-            <i class="fa-solid fa-right-from-bracket"></i>
-            Logout
-        </a>
-    </div>
+
+<div class="top-menu">
+
+
+<a href="providerDashboard.jsp" class="active">
+
+<i class="fa-solid fa-house"></i>
+
+Dashboard
+
+</a>
+
+
+<a href="manageBookings.jsp">
+
+<i class="fa-solid fa-calendar-check"></i>
+
+Manage Bookings
+
+</a>
+
+
+<a href="manageService.jsp">
+
+<i class="fa-solid fa-screwdriver-wrench"></i>
+
+Manage Service
+
+</a>
+
+
+</div>
+
+
+</div>
+
+
+
+<div class="bottom-menu">
+
+
+<a href="../index.jsp" class="logout">
+
+<i class="fa-solid fa-right-from-bracket"></i>
+
+Logout
+
+</a>
+
+
+</div>
+
 
 </div>
