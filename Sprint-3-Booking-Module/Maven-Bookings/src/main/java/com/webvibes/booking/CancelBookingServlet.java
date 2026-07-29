@@ -11,7 +11,8 @@ import jakarta.servlet.http.HttpServletResponse;
 //GET /cancelBooking?id=X → update status to Cancelled → redirect to /myBookings
 
 @WebServlet("/cancelBooking")
-public class CancelBookingServlet extends HttpServlet {
+public class CancelBookingServlet extends HttpServlet 
+{
 
     private static final long serialVersionUID = 1L;
 

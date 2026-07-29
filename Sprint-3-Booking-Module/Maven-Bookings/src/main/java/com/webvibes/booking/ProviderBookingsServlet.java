@@ -1,10 +1,9 @@
-package javaController;
+package com.controller;
 
-import javaDAO.BookingDAO;
-import javaModel.Booking;
+import com.dao.BookingDAO;
+import com.model.Booking;
 import java.io.IOException;
 import java.util.List;
-import java.util.stream.Collectors;
 import javax.servlet.ServletException;
 import javax.servlet.annotation.WebServlet;
 import javax.servlet.http.HttpServlet;
@@ -21,6 +20,8 @@ public class ProviderBookingsServlet extends HttpServlet {
             throws ServletException, IOException {
         
         HttpSession session = request.getSession(false);
+        
+        // Strict Role Verification Check
         if (session == null || !"PROVIDER".equals(session.getAttribute("role"))) {
             response.sendRedirect(request.getContextPath() + "/login.jsp");
             return;
@@ -29,6 +30,7 @@ public class ProviderBookingsServlet extends HttpServlet {
         String providerService = (String) session.getAttribute("serviceType"); 
         List<Booking> allBookings = bookingDAO.getBookingsByService(providerService);
 
+        // Computing Metrics for dashboard cards
         long totalBookings = allBookings.size();
         long completedBookings = allBookings.stream().filter(b -> "Completed".equalsIgnoreCase(b.getStatus())).count();
         long pendingBookings = allBookings.stream().filter(b -> "Pending".equalsIgnoreCase(b.getStatus())).count();
@@ -55,9 +57,9 @@ public class ProviderBookingsServlet extends HttpServlet {
         boolean success = bookingDAO.updateBookingStatus(bookingId, "Completed");
 
         if (success) {
-            request.getSession().setAttribute("message", "Booking marked as completed successfully!");
+            request.getSession().setAttribute("message", "Booking updated successfully!");
         } else {
-            request.getSession().setAttribute("error", "Failed to update booking status.");
+            request.getSession().setAttribute("error", "Action execution error occurred.");
         }
 
         response.sendRedirect(request.getContextPath() + "/provider/bookings");
