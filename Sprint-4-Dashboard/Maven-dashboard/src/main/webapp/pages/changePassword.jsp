@@ -16,7 +16,7 @@
     <style>
     
        body {
-            background: #f4f7fb;
+            background: #DBEAFE;
             font-family: 'Segoe UI', sans-serif;
             min-height: 100vh;
             display: flex;
@@ -89,8 +89,7 @@
             border: 1px solid #e2e8f0;
             max-width: 900px;
             margin-left: auto;
-            margin-right: auto;
-        }
+          }
         
 
 		.main-card:hover{
