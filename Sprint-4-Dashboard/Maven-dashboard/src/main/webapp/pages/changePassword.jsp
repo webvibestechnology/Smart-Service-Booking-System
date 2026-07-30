@@ -16,7 +16,7 @@
     <style>
     
        body {
-            background: #DBEAFE;
+            background: linear-gradient(135deg,#eef5ff,#d9e8ff,#f7fbff);
             font-family: 'Segoe UI', sans-serif;
             min-height: 100vh;
             display: flex;
@@ -95,13 +95,6 @@
 		.main-card:hover{
 		    transform: translateY(-3px);
 		    box-shadow:0 20px 45px rgba(15,23,42,.12);
-		}
-        
-		 .card-side-image {
-		    width: 100%;
-		    height: 100%;
-		    object-fit: cover;
-		    border-radius: 12px;
 		}
 
 		.form-control{
