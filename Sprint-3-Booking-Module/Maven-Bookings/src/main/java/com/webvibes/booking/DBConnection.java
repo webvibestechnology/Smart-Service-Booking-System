@@ -15,7 +15,7 @@ public class DBConnection {
 
     private static final String URL      = "jdbc:mysql://localhost:3306/booking_module_db";
     private static final String USER     = "root";
-    private static final String PASSWORD = "7447Swati@";
+    private static final String PASSWORD = "unnati@2005";
 
     public static Connection getConnection() {
         Connection conn = null;
