@@ -21,27 +21,27 @@ public class AdminDashboardServlet extends HttpServlet {
         
         HttpSession session = request.getSession(false);
         
-        // Session validation for ADMIN role
+        
         if (session == null || !"ADMIN".equals(session.getAttribute("role"))) {
             response.sendRedirect(request.getContextPath() + "/login.jsp");
             return;
         }
 
-        // Fetching metrics data
+        
         int totalServices = dashboardDAO.getTotalServices();
         int totalBookings = dashboardDAO.getTotalBookings();
         int pendingBookings = dashboardDAO.getBookingCountByStatus("PENDING");
         double totalRevenue = dashboardDAO.getTotalRevenue();
         List<Map<String, Object>> recentBookings = dashboardDAO.getRecentBookings(5);
 
-        // Setting request scope attributes
+
         request.setAttribute("totalServices", totalServices);
         request.setAttribute("totalBookings", totalBookings);
         request.setAttribute("pendingBookings", pendingBookings);
         request.setAttribute("totalRevenue", totalRevenue);
         request.setAttribute("recentBookings", recentBookings);
 
-        // Routing to view
+
         request.getRequestDispatcher("/WEB-INF/views/adminDashboard.jsp").forward(request, response);
     }
 }
