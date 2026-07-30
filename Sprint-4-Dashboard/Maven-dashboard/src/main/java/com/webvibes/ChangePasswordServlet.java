@@ -35,8 +35,8 @@ public class ChangePasswordServlet extends HttpServlet {
         HttpSession session = request.getSession(false);
 
         if (session == null || session.getAttribute("userId") == null) {
-            response.sendRedirect("login.jsp");
-            return;
+            response.sendRedirect(request.getContextPath() + "/login.jsp");
+           return;
         }
 
         Integer userId = (Integer) session.getAttribute("userId");
@@ -116,7 +116,7 @@ public class ChangePasswordServlet extends HttpServlet {
                 session.setAttribute("success",
                         "Password updated successfully.");
 
-                response.sendRedirect("dashboard");
+                response.sendRedirect(request.getContextPath() + "/userDashboard.jsp");
 
             } else {
 
