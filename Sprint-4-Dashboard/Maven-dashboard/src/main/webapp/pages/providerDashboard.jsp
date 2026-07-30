@@ -17,7 +17,8 @@
             padding: 0;
             font-family: 'Segoe UI', system-ui, -apple-system, sans-serif;
         }
-        body {
+        body 
+        {
             background-color: #f8fafc;
             color: #1e293b;
             line-height: 1.5;
@@ -26,7 +27,8 @@
             flex-direction: column;
         }
 
-        .navbar { 
+        .navbar 
+        { 
             background-color: #0f172a; 
             color: white; 
             padding: 16px 60px; 
@@ -39,12 +41,14 @@
             z-index: 1000; 
             border-bottom: 1px solid rgba(255, 255, 255, 0.05); 
         }
-        .brand-section { 
+        .brand-section 
+        { 
             display: flex; 
             align-items: center; 
             gap: 14px; 
         }
-        .logo-icon { 
+        .logo-icon 
+        { 
             background: linear-gradient(135deg, #3b82f6 0%, #1d4ed8 100%); 
             color: white; 
             width: 44px; 
@@ -56,12 +60,14 @@
             font-size: 22px; 
             box-shadow: 0 4px 12px rgba(37, 99, 235, 0.25); 
         }
-        .brand-name { 
+        .brand-name 
+        { 
             font-size: 19px; 
             font-weight: 700; 
             color: white; 
         }
-        .brand-sub { 
+        .brand-sub 
+        { 
             font-size: 11px; 
             color: #38bdf8; 
             font-weight: 600; 
@@ -69,12 +75,14 @@
         }
 
         /* Profile Button in Header */
-        .header-actions {
+        .header-actions 
+        {
             display: flex;
             align-items: center;
             gap: 15px;
         }
-        .header-user-profile {
+        .header-user-profile 
+        {
             background: rgba(255, 255, 255, 0.08);
             padding: 8px 18px;
             border-radius: 30px;
@@ -86,7 +94,8 @@
             align-items: center;
             gap: 10px;
         }
-        .header-user-profile i.avatar-icon {
+        .header-user-profile i.avatar-icon 
+        {
             background: #3b82f6;
             width: 28px;
             height: 28px;
@@ -97,25 +106,29 @@
             font-size: 13px;
         }
 
-        .dashboard-body-wrapper {
+        .dashboard-body-wrapper 
+        {
             display: flex;
             flex: 1;
         }
       
-        .sidebar-space {
+        .sidebar-space 
+        {
             width: 260px;
             flex-shrink: 0;
             background-color: #ffffff;
             border-right: 1px solid #e2e8f0;
         }
 
-        .main-container {
+        .main-container 
+        {
             flex: 1;
             padding: 40px 60px;
             width: 100%;
         }
 
-        .stat-card {
+        .stat-card 
+        {
             background: white;
             border-radius: 16px;
             padding: 22px;
@@ -126,11 +139,13 @@
             box-shadow: 0 4px 6px -1px rgba(0, 0, 0, 0.03);
             transition: all 0.2s ease;
         }
-        .stat-card:hover {
+        .stat-card:hover 
+        {
             transform: translateY(-3px);
             box-shadow: 0 10px 15px -3px rgba(0, 0, 0, 0.05);
         }
-        .icon-box {
+        .icon-box 
+        {
             width: 52px;
             height: 52px;
             border-radius: 14px;
@@ -146,20 +161,23 @@
         .bg-icon-orange { background-color: #ea580c; }
         .bg-icon-red { background-color: #dc2626; }
 
-        .stat-title {
+        .stat-title 
+        {
             font-size: 0.85rem;
             color: #64748b;
             margin: 0;
             font-weight: 600;
         }
-        .stat-value {
+        .stat-value 
+        {
             font-size: 1.6rem;
             font-weight: 700;
             color: #0f172a;
             margin: 0;
             line-height: 1.2;
         }
-        .table-section {
+        .table-section 
+        {
             background: white;
             border-radius: 20px;
             padding: 30px;
@@ -167,35 +185,41 @@
             border: 1px solid #e2e8f0;
             box-shadow: 0 4px 6px -1px rgba(0, 0, 0, 0.03);
         }
-        .table-header {
+        .table-header 
+        {
             display: flex;
             justify-content: space-between;
             align-items: center;
             margin-bottom: 24px;
         }
-        .table-header h5 {
+        .table-header h5 
+        {
             font-weight: 700;
             color: #0f172a;
             margin: 0;
             font-size: 1.25rem;
         }
-        .view-all-link {
+        .view-all-link 
+        {
             color: #2563eb;
             text-decoration: none;
             font-weight: 600;
             font-size: 0.9rem;
             transition: color 0.2s ease;
         }
-        .view-all-link:hover {
+        .view-all-link:hover 
+        {
             color: #1d4ed8;
             text-decoration: underline;
         }
 
-        .custom-table {
+        .custom-table 
+        {
             width: 100%;
             border-collapse: collapse;
         }
-        .custom-table th {
+        .custom-table th 
+        {
             color: #475569;
             font-weight: 700;
             font-size: 0.9rem;
@@ -203,7 +227,8 @@
             border-bottom: 2px solid #f1f5f9;
             text-align: left;
         }
-        .custom-table td {
+        .custom-table td 
+        {
             background: #ffffff;
             padding: 18px 16px;
             font-size: 0.95rem;
@@ -212,13 +237,9 @@
             border-bottom: 1px solid #f1f5f9;
         }
 
-        .action-cell {
-            display: flex;
-            align-items: center;
-            gap: 12px;
-        }
         /* Status Badges */
-        .badge-pending {
+        .badge-pending 
+        {
             background-color: #fff7ed;
             color: #ea580c;
             border: 1px solid #ffedd5;
@@ -226,8 +247,10 @@
             border-radius: 8px;
             font-weight: 600;
             font-size: 0.82rem;
+            display: inline-block;
         }
-        .badge-completed {
+        .badge-completed 
+        {
             background-color: #f0fdf4;
             color: #16a34a;
             border: 1px solid #dcfce7;
@@ -235,9 +258,11 @@
             border-radius: 8px;
             font-weight: 600;
             font-size: 0.82rem;
+            display: inline-block;
         }
 
-        .btn-view-action {
+        .btn-view-action 
+        {
             border: 1px solid #3b82f6;
             background: white;
             color: #2563eb;
@@ -247,21 +272,25 @@
             font-weight: 600;
             text-decoration: none;
             transition: all 0.2s ease;
+            display: inline-block;
         }
-        .btn-view-action:hover {
+        .btn-view-action:hover 
+        {
             background-color: #2563eb;
             color: white;
         }
 
         /* --- FOOTER --- */
-        .contact-section {
+        .contact-section 
+        {
             padding: 60px 60px; 
             text-align: center; 
             background: #0f172a; 
             color: white;
             margin-top: 60px;
         }
-        footer {
+        footer 
+        {
             background: #020617;
             color: #94a3b8;
             text-align: center;
@@ -360,7 +389,7 @@
             <div class="table-section">
                 <div class="table-header">
                     <h5>Today's Bookings</h5>
-                    <a href="${pageContext.request.contextPath}/provider/allBookings" class="view-all-link">View All <i class="fa-solid fa-arrow-right ms-1"></i></a>
+                    <a href="${pageContext.request.contextPath}/pages/providerBookings.jsp" class="view-all-link">View All <i class="fa-solid fa-arrow-right ms-1"></i></a>
                 </div>
 
                 <div class="table-responsive">
@@ -371,21 +400,27 @@
                                 <th>Service</th>
                                 <th>Date Time</th>
                                 <th>Time Slot</th>
+                                <th>Status</th>
                                 <th>Action</th>
                             </tr>
                         </thead>
                         <tbody>
                             <%
-                                if (todaysBookings != null && !todaysBookings.isEmpty()) {
-                                    for (Object item : todaysBookings) {
+                                if (todaysBookings != null && !todaysBookings.isEmpty()) 
+                                {
+                                    for (Object item : todaysBookings) 
+                                    {
                                         String bookingId = "", serviceName = "", bookingDate = "", timeSlot = "", status = "";
-                                        try {
+                                        try 
+                                        {
                                             bookingId = String.valueOf(item.getClass().getMethod("getBookingId").invoke(item));
                                             serviceName = String.valueOf(item.getClass().getMethod("getServiceName").invoke(item));
                                             bookingDate = String.valueOf(item.getClass().getMethod("getBookingDate").invoke(item));
                                             timeSlot = String.valueOf(item.getClass().getMethod("getTimeSlot").invoke(item));
                                             status = String.valueOf(item.getClass().getMethod("getStatus").invoke(item));
-                                        } catch (Exception e) {
+                                        } 
+                                        catch (Exception e) 
+                                        {
                                             bookingId = item.toString();
                                         }
                             %>
@@ -395,17 +430,19 @@
                                                 <td><%= bookingDate %></td>
                                                 <td><%= timeSlot %></td>
                                                 <td>
-                                                    <div class="action-cell">
-                                                        <span class="<%= "Completed".equalsIgnoreCase(status) ? "badge-completed" : "badge-pending" %>">
-                                                            <%= status %>
-                                                        </span>
-                                                        <a href="#" class="btn-view-action">View</a>
-                                                    </div>
+                                                    <span class="<%= "Completed".equalsIgnoreCase(status) ? "badge-completed" : "badge-pending" %>">
+                                                        <%= status %>
+                                                    </span>
+                                                </td>
+                                                <td>
+                                                    <a href="#" class="btn-view-action">View</a>
                                                 </td>
                                             </tr>
                             <%          
                                     }
-                                } else { 
+                                } 
+                                else 
+                                { 
                             %>
                                     <!-- Fallback Data -->
                                     <tr>
@@ -413,24 +450,16 @@
                                         <td>AC Repair</td>
                                         <td>20 May 2024</td>
                                         <td>10:00 AM - 12:00 PM</td>
-                                        <td>
-                                            <div class="action-cell">
-                                                <span class="badge-pending">Pending</span>
-                                                <a href="#" class="btn-view-action">View</a>
-                                            </div>
-                                        </td>
+                                        <td><span class="badge-pending">Pending</span></td>
+                                        <td><a href="#" class="btn-view-action">View</a></td>
                                     </tr>
                                     <tr>
                                         <td>#102</td>
                                         <td>Plumbing</td>
                                         <td>20 May 2024</td>
                                         <td>02:00 PM - 04:00 PM</td>
-                                        <td>
-                                            <div class="action-cell">
-                                                <span class="badge-pending">Pending</span>
-                                                <a href="#" class="btn-view-action">View</a>
-                                            </div>
-                                        </td>
+                                        <td><span class="badge-pending">Pending</span></td>
+                                        <td><a href="#" class="btn-view-action">View</a></td>
                                     </tr>
                             <% 
                                 } 
@@ -454,4 +483,4 @@
 
     <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/js/bootstrap.bundle.min.js"></script>
 </body>
-</html>
+</html>  
