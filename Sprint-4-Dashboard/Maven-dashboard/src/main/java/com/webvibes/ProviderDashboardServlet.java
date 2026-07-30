@@ -56,12 +56,12 @@ public class ProviderDashboardServlet extends HttpServlet
             request.setAttribute("cancelledJobs", cancelledJobs);
             request.setAttribute("todaysBookings", todaysBookings);
 
-            request.getRequestDispatcher("/providerDashboard.jsp").forward(request, response);
+            request.getRequestDispatcher("/pages/providerDashboard.jsp").forward(request, response);
         }
         catch (Exception e) 
         {
             e.printStackTrace();
-            request.getRequestDispatcher("/providerDashboard.jsp").forward(request, response);
+            request.getRequestDispatcher("/pages/providerDashboard.jsp").forward(request, response);
         }
     }
     @Override
