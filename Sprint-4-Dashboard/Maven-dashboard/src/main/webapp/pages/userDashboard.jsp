@@ -1,4 +1,6 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8" pageEncoding="UTF-8"%>
+<%@ taglib uri="http://java.sun.com/jsp/jstl/core" prefix="c" %>
+<%@ taglib uri="http://java.sun.com/jsp/jstl/fmt" prefix="fmt" %>
 <!DOCTYPE html>
 <html lang="mr">
 <head>
@@ -17,14 +19,11 @@
             flex-direction: column;
             min-height: 100vh;
         }
-        /* Fixed Footer  Wrapper */
         .content-wrapper {
             flex: 1;
         }
-        /* Top Navigation Navbar Fixes */
         .navbar-top {
             background-color: #0b1c3f;
-            color: white;
             padding: 10px 24px;
         }
         .logo-section {
@@ -57,16 +56,41 @@
             text-transform: uppercase;
             letter-spacing: 0.5px;
         }
-        .user-profile-top img {
-            width: 35px;
-            height: 35px;
-            border-radius: 50%;
-            object-fit: cover;
+        
+        /* Nav Links Custom Styling */
+        .navbar-dark .navbar-nav .nav-link {
+            color: #cbd5e1;
+            font-weight: 500;
+            padding: 8px 16px;
+            transition: color 0.3s ease;
         }
+        .navbar-dark .navbar-nav .nav-link:hover {
+            color: #3b82f6;
+        }
+        
+        /* Profile Dropdown Custom Styling */
+        .profile-dropdown .dropdown-toggle {
+            background-color: rgba(255, 255, 255, 0.1);
+            color: white !important;
+            border: 1px solid rgba(255, 255, 255, 0.2);
+            padding: 6px 14px;
+            border-radius: 50px;
+        }
+        .profile-dropdown .dropdown-toggle:hover {
+            background-color: #2563eb;
+            border-color: #2563eb;
+        }
+        .profile-dropdown .dropdown-menu {
+            border: none;
+            box-shadow: 0 4px 12px rgba(0,0,0,0.1);
+            border-radius: 8px;
+            min-width: 200px;
+        }
+
         /* Sidebar Navigation */
         .sidebar {
             background-color: white;
-            min-height: calc(100vh - 60px);
+            min-height: calc(100vh - 70px);
             box-shadow: 2px 0 5px rgba(0,0,0,0.05);
             padding-top: 20px;
         }
@@ -74,11 +98,11 @@
             color: #64748b;
             font-weight: 500;
             padding: 12px 20px;
-            border-radius: 0px;
             display: flex;
             align-items: center;
             gap: 12px;
             border-left: 4px solid transparent;
+            text-decoration: none;
         }
         .sidebar .nav-link:hover {
             background-color: #f1f5f9;
@@ -90,6 +114,7 @@
             border-left: 4px solid #2563eb;
             font-weight: 600;
         }
+
         /* Stats Dashboard Cards */
         .stat-card {
             border: 1px solid #e2e8f0;
@@ -122,6 +147,7 @@
             color: #1e293b;
             line-height: 1;
         }
+
         /* Custom Table Styling */
         .table-container {
             background: white;
@@ -143,12 +169,12 @@
             font-size: 14px;
             vertical-align: middle;
         }
-        /* Badges for Status */
+        
+        /* Dynamic Status Badges */
         .badge-pending { background-color: #fef3c7; color: #d97706; }
         .badge-completed { background-color: #dcfce7; color: #15803d; }
         .badge-cancelled { background-color: #fee2e2; color: #b91c1c; }
 
-        /* Footer Styling */
         footer {
             background-color: #0b1c3f;
             color: #94a3b8;
@@ -161,35 +187,67 @@
 <body>
 
     <div class="content-wrapper">
-        <!-- 1.  Header Bar -->
-        <header class="navbar navbar-top sticky-top flex-md-nowrap p-0 shadow-sm">
-            <div class="container-fluid px-4 d-flex justify-content-between align-items-center" style="height: 60px;">
-                <div class="logo-section">
+        <!-- Header Bar with Navigation -->
+        <nav class="navbar navbar-expand-lg navbar-dark navbar-top sticky-top shadow-sm">
+            <div class="container-fluid px-4">
+                <a class="navbar-brand logo-section" href="dashboard">
                     <div class="logo-icon"><i class="fa-solid fa-bolt-lightning"></i></div>
                     <div class="logo-text">
                         <h2>Smart Service</h2>
                         <p>Booking System</p>
                     </div>
-                </div>
+                </a>
                 
-                <div class="d-flex align-items-center gap-3">
-                    
-                    
+                <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNav" aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation">
+                    <span class="navbar-toggler-icon"></span>
+                </button>
+                
+                <div class="collapse navbar-collapse justify-content-end" id="navbarNav">
+                    <ul class="navbar-nav align-items-lg-center gap-2 my-2 my-lg-0">
+                        <li class="nav-item">
+                            <a class="nav-link" href="home"></i> Home</a>
+                        </li>
+                        <li class="nav-item">
+                            <a class="nav-link" href="services"></i> Services</a>
+                        </li>
+                        <li class="nav-item">
+                            <a class="nav-link" href="about"></i> About Us</a>
+                        </li>
+                        <li class="nav-item">
+                            <a class="nav-link" href="contact"></i> Contact Us</a>
+                        </li>
+                        
+                        <!-- Contact Us Profile Dropdown -->
+                        <li class="nav-item dropdown profile-dropdown ms-lg-2">
+                            <a class="nav-link dropdown-toggle d-flex align-items-center gap-2" href="#" id="profileDropdown" role="button" data-bs-toggle="dropdown" aria-expanded="false">
+                                <i class="fa-solid fa-circle-user fs-5"></i> Profile
+                            </a>
+                            <ul class="dropdown-menu dropdown-menu-end" aria-labelledby="profileDropdown">
+                                <li><h6 class="dropdown-header">Welcome, User</h6></li>
+                                <li><hr class="dropdown-divider"></li>
+                                <!-- dashboard joind the link-->
+                                <li><a class="dropdown-menu-item dropdown-item" href="admin/dashboard"><i class="fa-solid fa-gauge-high me-2 text-primary"></i> Admin Dashboard</a></li>
+                                <li><a class="dropdown-menu-item dropdown-item" href="Provider/dashboard"><i class="fa-solid fa-shop me-2 text-success"></i> Provider Dashboard</a></li>
+                                <li><a class="dropdown-menu-item dropdown-item" href="user/dSashboard"><i class="fa-solid fa-user me-2 text-secondary"></i> User Dashboard</a></li>
+                                <li><hr class="dropdown-divider"></li>
+                                <li><a class="dropdown-item text-danger" href="logout"><i class="fa-solid fa-right-from-bracket me-2"></i> Logout</a></li>
+                            </ul>
+                        </li>
+                    </ul>
                 </div>
             </div>
-        </header>
+        </nav>
 
         <div class="container-fluid">
             <div class="row">
                 
                
 
-                <!-- 3. Main Dashboard Content -->
+                <!-- Main Dashboard Content Area -->
                 <main class="col-md-9 ms-sm-auto col-lg-10 px-md-4 py-4">
                     
-                    <!-- Stat Cards Row -->
+                    <!-- Dynamic Stats Row -->
                     <div class="row g-3 mb-4">
-                        <!-- Total Bookings -->
                         <div class="col-12 col-sm-6 col-xl-3">
                             <div class="stat-card shadow-sm">
                                 <div class="stat-icon-wrapper" style="background-color: #eff6ff; color: #2563eb;">
@@ -197,12 +255,11 @@
                                 </div>
                                 <div>
                                     <div class="stat-label">Total Bookings</div>
-                                    <div class="stat-value">12</div>
+                                    <div class="stat-value"><c:out value="${not empty totalBookings ? totalBookings : '0'}" /></div>
                                 </div>
                             </div>
                         </div>
 
-                        <!-- Completed -->
                         <div class="col-12 col-sm-6 col-xl-3">
                             <div class="stat-card shadow-sm">
                                 <div class="stat-icon-wrapper" style="background-color: #dcfce7; color: #16a34a;">
@@ -210,12 +267,11 @@
                                 </div>
                                 <div>
                                     <div class="stat-label">Completed</div>
-                                    <div class="stat-value">6</div>
+                                    <div class="stat-value"><c:out value="${not empty completedBookings ? completedBookings : '0'}" /></div>
                                 </div>
                             </div>
                         </div>
 
-                        <!-- Pending -->
                         <div class="col-12 col-sm-6 col-xl-3">
                             <div class="stat-card shadow-sm">
                                 <div class="stat-icon-wrapper" style="background-color: #fef3c7; color: #d97706;">
@@ -223,12 +279,11 @@
                                 </div>
                                 <div>
                                     <div class="stat-label">Pending</div>
-                                    <div class="stat-value">5</div>
+                                    <div class="stat-value"><c:out value="${not empty pendingBookings ? pendingBookings : '0'}" /></div>
                                 </div>
                             </div>
                         </div>
 
-                        <!-- Cancelled -->
                         <div class="col-12 col-sm-6 col-xl-3">
                             <div class="stat-card shadow-sm">
                                 <div class="stat-icon-wrapper" style="background-color: #fee2e2; color: #dc2626;">
@@ -236,17 +291,17 @@
                                 </div>
                                 <div>
                                     <div class="stat-label">Cancelled</div>
-                                    <div class="stat-value">1</div>
+                                    <div class="stat-value"><c:out value="${not empty cancelledBookings ? cancelledBookings : '0'}" /></div>
                                 </div>
                             </div>
                         </div>
                     </div>
 
-                    <!-- 4. Recent Bookings Table -->
+                    <!-- Dynamic Bookings Table Container -->
                     <div class="table-container shadow-sm mb-4">
                         <div class="d-flex justify-content-between align-items-center mb-3">
                             <h5 class="mb-0 text-dark" style="font-weight: 600;">Recent Bookings</h5>
-                            <a href="#" class="text-primary text-decoration-none fw-semibold" style="font-size: 14px;">View All</a>
+                            <a href="bookings" class="text-primary text-decoration-none fw-semibold" style="font-size: 14px;">View All</a>
                         </div>
                         
                         <div class="table-responsive">
@@ -261,34 +316,36 @@
                                     </tr>
                                 </thead>
                                 <tbody>
-                                    <tr>
-                                        <td class="fw-semibold">#101</td>
-                                        <td>AC Repair</td>
-                                        <td>20 May 2024</td>
-                                        <td><span class="badge badge-pending px-2.5 py-1.5 rounded">Pending</span></td>
-                                        <td><a href="#" class="btn btn-sm btn-outline-primary px-3">View</a></td>
-                                    </tr>
-                                    <tr>
-                                        <td class="fw-semibold">#102</td>
-                                        <td>Plumbing</td>
-                                        <td>18 May 2024</td>
-                                        <td><span class="badge badge-completed px-2.5 py-1.5 rounded">Completed</span></td>
-                                        <td><a href="#" class="btn btn-sm btn-outline-primary px-3">View</a></td>
-                                    </tr>
-                                    <tr>
-                                        <td class="fw-semibold">#103</td>
-                                        <td>Electrician</td>
-                                        <td>15 May 2024</td>
-                                        <td><span class="badge badge-pending px-2.5 py-1.5 rounded">Pending</span></td>
-                                        <td><a href="#" class="btn btn-sm btn-outline-primary px-3">View</a></td>
-                                    </tr>
-                                    <tr>
-                                        <td class="fw-semibold">#104</td>
-                                        <td>Cleaning</td>
-                                        <td>10 May 2024</td>
-                                        <td><span class="badge badge-cancelled px-2.5 py-1.5 rounded">Cancelled</span></td>
-                                        <td><a href="#" class="btn btn-sm btn-outline-primary px-3">View</a></td>
-                                    </tr>
+                                    <c:choose>
+                                        <c:when test="${not empty bookingList}">
+                                            <c:forEach var="booking" items="${bookingList}">
+                                                <tr>
+                                                    <td class="fw-semibold">#<c:out value="${booking.id}"/></td>
+                                                    <td><c:out value="${booking.serviceName}"/></td>
+                                                    <td><c:out value="${booking.date}"/></td>
+                                                    <td>
+                                                        <span class="badge px-3 py-1 rounded 
+                                                            <c:choose>
+                                                                <c:when test="${booking.status == 'Pending'}">badge-pending</c:when>
+                                                                <c:when test="${booking.status == 'Completed'}">badge-completed</c:when>
+                                                                <c:when test="${booking.status == 'Cancelled'}">badge-cancelled</c:when>
+                                                                <c:otherwise>bg-secondary text-white</c:otherwise>
+                                                            </c:choose>">
+                                                            <c:out value="${booking.status}"/>
+                                                        </span>
+                                                    </td>
+                                                    <td>
+                                                        <a href="view-booking?id=${booking.id}" class="btn btn-sm btn-outline-primary px-3">View</a>
+                                                    </td>
+                                                </tr>
+                                            </c:forEach>
+                                        </c:when>
+                                        <c:otherwise>
+                                            <tr>
+                                                <td colspan="5" class="text-center py-4 text-muted"></td>
+                                            </tr>
+                                        </c:otherwise>
+                                    </c:choose>
                                 </tbody>
                             </table>
                         </div>
@@ -299,7 +356,7 @@
         </div>
     </div>
 
-    <!-- 5. Added Clean Footer -->
+    <!-- Layout Footer -->
     <footer class="mt-auto">
         <div class="container-fluid px-4">
             <div class="d-flex flex-column justify-content-center align-items-center text-center gap-2">
