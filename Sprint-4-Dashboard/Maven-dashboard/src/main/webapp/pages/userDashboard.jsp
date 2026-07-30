@@ -1,6 +1,5 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8" pageEncoding="UTF-8"%>
-<%@ taglib uri="http://java.sun.com/jsp/jstl/core" prefix="c" %>
-<%@ taglib uri="http://java.sun.com/jsp/jstl/fmt" prefix="fmt" %>
+<%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
 <!DOCTYPE html>
 <html lang="mr">
 <head>
@@ -205,19 +204,19 @@
                 <div class="collapse navbar-collapse justify-content-end" id="navbarNav">
                     <ul class="navbar-nav align-items-lg-center gap-2 my-2 my-lg-0">
                         <li class="nav-item">
-                            <a class="nav-link" href="home"></i> Home</a>
+                            <a class="nav-link" href="home"> Home</a>
                         </li>
                         <li class="nav-item">
-                            <a class="nav-link" href="services"></i> Services</a>
+                            <a class="nav-link" href="services"> Services</a>
                         </li>
                         <li class="nav-item">
-                            <a class="nav-link" href="about"></i> About Us</a>
+                            <a class="nav-link" href="about"> About Us</a>
                         </li>
                         <li class="nav-item">
-                            <a class="nav-link" href="contact"></i> Contact Us</a>
+                            <a class="nav-link" href="contact"> Contact Us</a>
                         </li>
                         
-                        <!-- Contact Us Profile Dropdown -->
+                        <!-- Profile Dropdown -->
                         <li class="nav-item dropdown profile-dropdown ms-lg-2">
                             <a class="nav-link dropdown-toggle d-flex align-items-center gap-2" href="#" id="profileDropdown" role="button" data-bs-toggle="dropdown" aria-expanded="false">
                                 <i class="fa-solid fa-circle-user fs-5"></i> Profile
@@ -225,12 +224,12 @@
                             <ul class="dropdown-menu dropdown-menu-end" aria-labelledby="profileDropdown">
                                 <li><h6 class="dropdown-header">Welcome, User</h6></li>
                                 <li><hr class="dropdown-divider"></li>
-                                <!-- dashboard joind the link-->
                                 <li><a class="dropdown-menu-item dropdown-item" href="admin/dashboard"><i class="fa-solid fa-gauge-high me-2 text-primary"></i> Admin Dashboard</a></li>
                                 <li><a class="dropdown-menu-item dropdown-item" href="Provider/dashboard"><i class="fa-solid fa-shop me-2 text-success"></i> Provider Dashboard</a></li>
-                                <li><a class="dropdown-menu-item dropdown-item" href="user/dSashboard"><i class="fa-solid fa-user me-2 text-secondary"></i> User Dashboard</a></li>
+                                <li><a class="dropdown-menu-item dropdown-item" href="user/dashboard"><i class="fa-solid fa-user me-2 text-secondary"></i> User Dashboard</a></li>
                                 <li><hr class="dropdown-divider"></li>
-                                <li><a class="dropdown-item text-danger" href="logout"><i class="fa-solid fa-right-from-bracket me-2"></i> Logout</a></li>
+                                <!-- local login page-->
+                                <li><a class="dropdown-item text-danger" href="file:///C:/html/smart%20service/loging%20page.html"><i class="fa-solid fa-right-from-bracket me-2"></i> Logout</a></li>
                             </ul>
                         </li>
                     </ul>
@@ -241,8 +240,6 @@
         <div class="container-fluid">
             <div class="row">
                 
-               
-
                 <!-- Main Dashboard Content Area -->
                 <main class="col-md-9 ms-sm-auto col-lg-10 px-md-4 py-4">
                     
@@ -342,7 +339,7 @@
                                         </c:when>
                                         <c:otherwise>
                                             <tr>
-                                                <td colspan="5" class="text-center py-4 text-muted"></td>
+                                                <td colspan="5" class="text-center py-4 text-muted">No bookings found.</td>
                                             </tr>
                                         </c:otherwise>
                                     </c:choose>
@@ -373,14 +370,5 @@
 
     <!-- Bootstrap Bundle with Popper JS -->
     <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/js/bootstrap.bundle.min.js"></script>
-<!DOCTYPE html>
-<html lang="en">
-<head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Document</title>
-</head>
-<body>
-    
 </body>
 </html>
