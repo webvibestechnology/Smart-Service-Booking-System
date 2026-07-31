@@ -82,7 +82,7 @@ href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.6.0/css/all.min.css"
     </div>
 
     <ul class="nav-links">
-        <li><a href="#home">Home</a></li>
+        <li><a href="#Home">Home</a></li>
         <li><a href="#services">Services</a></li>
         <li><a href="#about">About Us</a></li>
         <li><a href="#contact">Contact Us</a></li>
