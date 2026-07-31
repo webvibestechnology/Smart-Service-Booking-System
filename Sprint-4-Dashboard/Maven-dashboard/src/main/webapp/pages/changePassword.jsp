@@ -231,26 +231,23 @@
 					<p class="text-muted">
 							Update your password to keep your account secure.
 					</p>
+                    
+                     <% 
+				    
+				    String errorMsg = (String) request.getAttribute("error");
+				    if (errorMsg != null && !errorMsg.isEmpty()) {
+					%>
+					    <div class="alert alert-danger alert-dismissible fade show small mb-3" role="alert">
+					        <i class="fa-solid fa-circle-exclamation me-2"></i><%= errorMsg %>
+					        <button type="button" class="btn-close" data-bs-dismiss="alert" aria-label="Close"></button>
+					    </div>
+					<% 
+					    } 
+				     %>
+				     
+				      <form action="${pageContext.request.contextPath}/changePassword" method="post" id="passwordForm">
+	                        
                    
-                    <% 
-                        String status = request.getParameter("status");
-                        if ("success".equals(status)) {
-                    %>
-                        <div class="alert alert-success alert-dismissible fade show small" role="alert">
-                            <i class="fa-solid fa-circle-check me-2"></i>Password changed successfully!
-                            <button type="button" class="btn-close" data-bs-dismiss="alert" aria-label="Close"></button>
-                        </div>
-                    <% 
-                        } else if ("error".equals(status)) {
-                    %>
-                        <div class="alert alert-danger alert-dismissible fade show small" role="alert">
-                            <i class="fa-solid fa-circle-exclamation me-2"></i>Current password is incorrect or process failed.
-                            <button type="button" class="btn-close" data-bs-dismiss="alert" aria-label="Close"></button>
-                        </div>
-                    <% } %>
-
-                    <form action="changePassword" method="post" id="passwordForm" novalidate>
-                        
                         <!-- Current Password -->
                         <div class="mb-3">
                             <label for="currentPassword" class="form-label">Current Password</label>
