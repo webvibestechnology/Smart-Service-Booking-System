@@ -232,7 +232,7 @@
 							Update your password to keep your account secure.
 					</p>
                     
-                     <% 
+                    <% 
 				    
 				    String errorMsg = (String) request.getAttribute("error");
 				    if (errorMsg != null && !errorMsg.isEmpty()) {
@@ -245,10 +245,7 @@
 					    } 
 				     %>
 				     
-				     
-				      <form action="/Maven-dashboard/changePassword" method="post" id="passwordForm">
-	                        
-                   
+				     <form action="<%=request.getContextPath()%>/changePassword" method="post" id="passwordForm">
                         <!-- Current Password -->
                         <div class="mb-3">
                             <label for="currentPassword" class="form-label">Current Password</label>
