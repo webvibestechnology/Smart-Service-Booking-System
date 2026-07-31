@@ -1,64 +1,47 @@
 package com.webvibes.booking;
 
-<<<<<<< HEAD
-
-// BOOK-04: Cancels a booking (only if status is Pending)
-// GET /cancelBooking?id=X → update status to Cancelled → redirect to /myBookings
-
-public class CancelBookingServlet  {
-
-   
-}
-=======
 import java.io.IOException;
-
+// Tomcat 11 requirements (Strictly Jakarta)
 import jakarta.servlet.ServletException;
 import jakarta.servlet.annotation.WebServlet;
 import jakarta.servlet.http.HttpServlet;
 import jakarta.servlet.http.HttpServletRequest;
 import jakarta.servlet.http.HttpServletResponse;
 
-/**
- * BOOK-04: Cancel a booking (only if status is Pending)
- * GET /cancelBooking?id=X
- */
-@WebServlet("/cancelBooking")
+@WebServlet("/CancelBookingServlet")
 public class CancelBookingServlet extends HttpServlet {
-
     private static final long serialVersionUID = 1L;
+    private BookingDAO bookingDAO;
 
     @Override
-    protected void doGet(HttpServletRequest request, HttpServletResponse response)
-            throws ServletException, IOException {
+    public void init() throws ServletException {
+        bookingDAO = new BookingDAO();
+    }
 
-        String idParam = request.getParameter("id");
-        if (idParam == null) {
-            response.sendRedirect(request.getContextPath() + "/myBookings");
-            return;
-        }
-
+    @Override
+    protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
         try {
-            int bookingId = Integer.parseInt(idParam);
-            BookingDAO dao = new BookingDAO();
-            boolean cancelled = dao.cancelBooking(bookingId);
-
-            if (cancelled) {
-                response.sendRedirect(request.getContextPath() + "/myBookings?msg=cancelled");
-            } else {
-                response.sendRedirect(request.getContextPath() + "/myBookings?error=cannotcancel");
+            String bookingIdParam = request.getParameter("bookingId");
+            if (bookingIdParam != null && !bookingIdParam.trim().isEmpty()) {
+                int bookingId = Integer.parseInt(bookingIdParam);
+                
+                // DAO layer call karke status 'Cancelled' karna
+                boolean isCancelled = bookingDAO.cancelBooking(bookingId);
+                
+                if (isCancelled) {
+                    response.sendRedirect("MyBookingsServlet?cancel=success");
+                    return;
+                }
             }
-
+            response.sendRedirect("MyBookingsServlet?cancel=failed");
         } catch (Exception e) {
-            e.printStackTrace();
-<<<<<<< HEAD
-            response.sendRedirect("myBookings?error=cannotcancel");
-     }
-   }
-}                
->>>>>>> c686a1086cb7f136d49bf6fcb9c36af1183213cf
-=======
-            response.sendRedirect(request.getContextPath() + "/myBookings?error=cannotcancel");
+            System.err.println("Error in CancelBookingServlet: " + e.getMessage());
+            response.sendRedirect("MyBookingsServlet?error=invalid_id");
         }
     }
+
+    @Override
+    protected void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
+        doGet(request, response);
+    }
 }
->>>>>>> 5ae139cc3a190f51136fbb7e7269b55c2064bb88

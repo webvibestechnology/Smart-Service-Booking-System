@@ -1,81 +1,89 @@
-<<<<<<< HEAD
-<<<<<<< HEAD
 package com.webvibes.booking;
 
-// BOOK-01: Model class for Booking table
-// booking_id, user_id, service_id, service_name, booking_date,
-// time_slot, address, amount, status, created_at
-public class Booking {
-
-    // TODO: Add private fields matching the database columns
-    // TODO: Add default constructor
-    // TODO: Add getters and setters for all fields
-
-}
-=======
-// BOOK-01: Model class for Booking table
-// booking_id, user_id, service_id, service_name, booking_date,
-// time_slot, address, amount, status, created_at
-// TODO: Add private fields matching the database columns
-// TODO: Add default constructor
-// TODO: Add getters and setters for all fields
-=======
->>>>>>> 5ae139cc3a190f51136fbb7e7269b55c2064bb88
-package com.webvibes.booking;
-
-import java.sql.Date;
-import java.sql.Timestamp;
+import java.time.LocalDate;
 
 public class Booking {
+    private int bookingId;
+    private String userName;
+    private int userId;
+    private int serviceId;
+    private String serviceName;
+    private LocalDate bookingDate;
+    private String timeSlot;
+    private String address;
+    private String notes;
+    private double amount;
+    private String status;
 
-    private int       bookingId;
-    private int       userId;
-    private int       serviceId;
-    private String    serviceName;
-    private Date      bookingDate;
-    private String    timeSlot;
-    private String    address;
-    private double    amount;      // double — consistent with DB DECIMAL and JSP formatting
-    private String    status;
-    private Timestamp createdAt;
-
+   
     public Booking() {}
 
-    // Getters and Setters
-    public int       getBookingId()                { return bookingId; }
-    public void      setBookingId(int bookingId)   { this.bookingId = bookingId; }
+    
+    public Booking(int userId,String userName,   int serviceId, String serviceName, LocalDate bookingDate, String timeSlot, String address, String notes, double amount, String status) {
+        this.userId = userId;
+        this.userName = userName;
+        this.serviceId = serviceId;
+        this.serviceName = serviceName;
+        this.bookingDate = bookingDate;
+        this.timeSlot = timeSlot;
+        this.address = address;
+        this.notes = notes;
+        this.amount = amount;
+        this.status = status;
+        
+    }
 
-    public int       getUserId()                   { return userId; }
-    public void      setUserId(int userId)         { this.userId = userId; }
 
-    public int       getServiceId()                { return serviceId; }
-    public void      setServiceId(int serviceId)   { this.serviceId = serviceId; }
+    public Booking(int bookingId,String userName, int userId, int serviceId, String serviceName, LocalDate bookingDate, String timeSlot, String address, String notes, double amount, String status) {
+        this.bookingId = bookingId;
+        this.userId = userId;
+        this.userName = userName;
+        this.serviceId = serviceId;
+        this.serviceName = serviceName;
+        this.bookingDate = bookingDate;
+        this.timeSlot = timeSlot;
+        this.address = address;
+        this.notes = notes;
+        this.amount = amount;
+        this.status = status;
+    }
 
-    public String    getServiceName()                      { return serviceName; }
-    public void      setServiceName(String serviceName)    { this.serviceName = serviceName; }
+  
+    public int getBookingId() { return bookingId; }
+    public void setBookingId(int bookingId) { this.bookingId = bookingId; }
 
-    public Date      getBookingDate()              { return bookingDate; }
-    public void      setBookingDate(Date date)     { this.bookingDate = date; }
+    public String getUserName() {
+        return userName;
+    }
 
-    public String    getTimeSlot()                 { return timeSlot; }
-    public void      setTimeSlot(String timeSlot)  { this.timeSlot = timeSlot; }
+    public void setUserName(String userName) {
+        this.userName = userName;
+    }
 
-    public String    getAddress()                  { return address; }
-    public void      setAddress(String address)    { this.address = address; }
+    public int getUserId() { return userId; }
+    public void setUserId(int userId) { this.userId = userId; }
 
-    public double    getAmount()                   { return amount; }
-    public void      setAmount(double amount)      { this.amount = amount; }
+    public int getServiceId() { return serviceId; }
+    public void setServiceId(int serviceId) { this.serviceId = serviceId; }
 
-    public String    getStatus()                   { return status; }
-    public void      setStatus(String status)      { this.status = status; }
+    public String getServiceName() { return serviceName; }
+    public void setServiceName(String serviceName) { this.serviceName = serviceName; }
 
-<<<<<<< HEAD
-    public Timestamp getCreatedAt() { return createdAt; }
-    public void setCreatedAt(Timestamp createdAt) { this.createdAt = createdAt; }
+    public LocalDate getBookingDate() { return bookingDate; }
+    public void setBookingDate(LocalDate bookingDate) { this.bookingDate = bookingDate; }
+
+    public String getTimeSlot() { return timeSlot; }
+    public void setTimeSlot(String timeSlot) { this.timeSlot = timeSlot; }
+
+    public String getAddress() { return address; }
+    public void setAddress(String address) { this.address = address; }
+
+    public String getNotes() { return notes; }
+    public void setNotes(String notes) { this.notes = notes; }
+
+    public double getAmount() { return amount; }
+    public void setAmount(double amount) { this.amount = amount; }
+
+    public String getStatus() { return status; }
+    public void setStatus(String status) { this.status = status; }
 }
->>>>>>> c686a1086cb7f136d49bf6fcb9c36af1183213cf
-=======
-    public Timestamp getCreatedAt()                { return createdAt; }
-    public void      setCreatedAt(Timestamp ts)    { this.createdAt = ts; }
-}
->>>>>>> 5ae139cc3a190f51136fbb7e7269b55c2064bb88

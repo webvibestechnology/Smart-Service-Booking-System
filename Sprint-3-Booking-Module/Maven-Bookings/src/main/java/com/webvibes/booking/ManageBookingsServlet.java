@@ -1,81 +1,47 @@
 package com.webvibes.booking;
 
-<<<<<<< HEAD
-
-
-// BOOK-05: Admin view of a=ll bookings with status update
-// GET  /manageBookings → show all bookings in manageBookings.jsp
-// POST /manageBookings → update booking status, redirect back
-
-public class ManageBookingsServlet  {
-
-    
-}
-=======
 import java.io.IOException;
 import java.util.List;
-
 import jakarta.servlet.ServletException;
 import jakarta.servlet.annotation.WebServlet;
 import jakarta.servlet.http.HttpServlet;
 import jakarta.servlet.http.HttpServletRequest;
 import jakarta.servlet.http.HttpServletResponse;
-import jakarta.servlet.http.HttpSession;
 
-/**
- * BOOK-05: Admin — Manage all bookings
- * GET  /manageBookings → list all bookings
- * POST /manageBookings → update booking status
- */
-@WebServlet("/manageBookings")
+@WebServlet("/ManageBookingsServlet")
 public class ManageBookingsServlet extends HttpServlet {
-
     private static final long serialVersionUID = 1L;
+    private BookingDAO bookingDAO;
 
-    private boolean isAdmin(HttpServletRequest request) {
-        HttpSession session = request.getSession(false);
-        return session != null && "ADMIN".equals(session.getAttribute("role"));
+    @Override
+    public void init() throws ServletException {
+        bookingDAO = new BookingDAO();
     }
 
     @Override
-    protected void doGet(HttpServletRequest request, HttpServletResponse response)
-            throws ServletException, IOException {
-
-        if (!isAdmin(request)) {
-            response.sendRedirect(request.getContextPath() + "/myBookings");
-            return;
-        }
-
-        BookingDAO dao = new BookingDAO();
-        List<Booking> bookingList = dao.getAllBookings();
-        request.setAttribute("bookingList", bookingList);
-        request.getRequestDispatcher("/pages/manageBookings.jsp").forward(request, response);
+    protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
+    	List<Booking> allBookings = bookingDAO.getAllBookings();
+    	request.setAttribute("bookings", allBookings);
+    	request.getRequestDispatcher("/manageBookings.jsp").forward(request, response);
     }
 
+
     @Override
-    protected void doPost(HttpServletRequest request, HttpServletResponse response)
-            throws ServletException, IOException {
-
-        if (!isAdmin(request)) {
-            response.sendRedirect(request.getContextPath() + "/myBookings");
-            return;
-        }
-
+    protected void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
         try {
-            int    bookingId = Integer.parseInt(request.getParameter("bookingId"));
-            String newStatus = request.getParameter("newStatus");
-
-            BookingDAO dao = new BookingDAO();
-            dao.updateBookingStatus(bookingId, newStatus);
-
+            int bookingId = Integer.parseInt(request.getParameter("bookingId"));
+            String status = request.getParameter("status");
+            
+            boolean isUpdated = bookingDAO.updateBookingStatus(bookingId, status);
+            
+            if (isUpdated) {
+                response.sendRedirect("ManageBookingsServlet?update=success");
+            } else {
+                response.sendRedirect("ManageBookingsServlet?update=failed");
+            }
         } catch (Exception e) {
-            e.printStackTrace();
+            System.err.println("Error in ManageBookingsServlet doPost: " + e.getMessage());
+            response.sendRedirect("ManageBookingsServlet?error=invalid_data");
         }
-
-        response.sendRedirect(request.getContextPath() + "/manageBookings?msg=updated");
     }
 }
-<<<<<<< HEAD
->>>>>>> c686a1086cb7f136d49bf6fcb9c36af1183213cf
-=======
->>>>>>> 5ae139cc3a190f51136fbb7e7269b55c2064bb88

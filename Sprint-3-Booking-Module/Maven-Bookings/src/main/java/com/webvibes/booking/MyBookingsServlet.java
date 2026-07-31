@@ -1,14 +1,7 @@
 package com.webvibes.booking;
 
-<<<<<<< HEAD
-<<<<<<< HEAD
 import java.io.IOException;
 import java.util.List;
-
-import com.dao.BookingDAO;
-import com.model.Booking;
-
-import jakarta.servlet.RequestDispatcher;
 import jakarta.servlet.ServletException;
 import jakarta.servlet.annotation.WebServlet;
 import jakarta.servlet.http.HttpServlet;
@@ -16,88 +9,43 @@ import jakarta.servlet.http.HttpServletRequest;
 import jakarta.servlet.http.HttpServletResponse;
 import jakarta.servlet.http.HttpSession;
 
-
-@WebServlet("/myBookings")
-public class MyBookingsServlet extends HttpServlet 
-{
-
-    private static final long serialVersionUID = 1L;
-
-    BookingDAO bookingDAO = new BookingDAO();
-
-    @Override
-    protected void doGet(HttpServletRequest request,
-            HttpServletResponse response)
-            throws ServletException, IOException {
-
-        HttpSession session = request.getSession(false);
-
-        if (session == null || session.getAttribute("userId") == null) 
-        {
-            response.sendRedirect("login.jsp");
-            return;
-        }
-
-        int userId = (Integer) session.getAttribute("userId");
-
-        List<Booking> bookingList = bookingDAO.getBookingsByUser(userId);
-
-        request.setAttribute("bookingList", bookingList);
-
-        RequestDispatcher rd = request.getRequestDispatcher("myBookings.jsp");
-        rd.forward(request, response);
-    }
-}
-=======
-=======
-import java.io.IOException;
-import java.util.List;
->>>>>>> 5ae139cc3a190f51136fbb7e7269b55c2064bb88
-
-import jakarta.servlet.ServletException;
-import jakarta.servlet.annotation.WebServlet;
-import jakarta.servlet.http.HttpServlet;
-import jakarta.servlet.http.HttpServletRequest;
-import jakarta.servlet.http.HttpServletResponse;
-import jakarta.servlet.http.HttpSession;
-
-/**
- * BOOK-03: My Bookings — shows all bookings for the logged-in user
- * GET /myBookings
- */
-@WebServlet("/myBookings")
+@WebServlet("/MyBookingsServlet")
 public class MyBookingsServlet extends HttpServlet {
-
     private static final long serialVersionUID = 1L;
+    private BookingDAO bookingDAO;
 
     @Override
-    protected void doGet(HttpServletRequest request, HttpServletResponse response)
-            throws ServletException, IOException {
-
-        HttpSession session = request.getSession(false);
-
-        Integer userId = null;
-        if (session != null) {
-            Object userIdObj = session.getAttribute("userId");
-            if (userIdObj instanceof Integer) {
-                userId = (Integer) userIdObj;
-            } else if (userIdObj instanceof String) {
-                try { userId = Integer.parseInt((String) userIdObj); } catch (NumberFormatException ignored) {}
-            }
-        }
-
-        if (userId == null) {
-            response.sendRedirect("http://localhost:8080/Maven-Authentication/pages/login.jsp");
-            return;
-        }
-
-        BookingDAO dao = new BookingDAO();
-        List<Booking> bookingList = dao.getBookingsByUser(userId);
-        request.setAttribute("bookingList", bookingList);
-        request.getRequestDispatcher("/pages/myBookings.jsp").forward(request, response);
+    public void init() throws ServletException {
+        bookingDAO = new BookingDAO();
     }
-<<<<<<< HEAD
->>>>>>> c686a1086cb7f136d49bf6fcb9c36af1183213cf
-=======
+
+    @Override
+    protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
+        try {
+            HttpSession session = request.getSession();
+            Integer userId = (Integer) session.getAttribute("userId");
+            
+          
+            if (userId == null) {
+                userId = 1; 
+            }
+
+           
+            List<Booking> userBookings = bookingDAO.getBookingsByUser(userId);
+            
+         
+            request.setAttribute("bookingsList", userBookings);
+            request.getRequestDispatcher("/myBookings.jsp").forward(request, response);
+            
+        } catch (Exception e) {
+            System.err.println("Exception inside MyBookingsServlet doGet: " + e.getMessage());
+            response.sendRedirect("error.jsp");
+        }
+    }
+
+  
+    @Override
+    protected void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
+        doGet(request, response);
+    }
 }
->>>>>>> 5ae139cc3a190f51136fbb7e7269b55c2064bb88
