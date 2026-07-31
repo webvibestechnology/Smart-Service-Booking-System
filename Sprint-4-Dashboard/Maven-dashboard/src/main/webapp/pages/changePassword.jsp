@@ -245,7 +245,8 @@
 					    } 
 				     %>
 				     
-				      <form action="${pageContext.request.contextPath}/changePassword" method="post" id="passwordForm">
+				     
+				      <form action="/Maven-dashboard/changePassword" method="post" id="passwordForm">
 	                        
                    
                         <!-- Current Password -->
