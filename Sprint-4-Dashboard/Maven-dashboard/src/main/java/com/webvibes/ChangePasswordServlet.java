@@ -23,8 +23,7 @@ public class ChangePasswordServlet extends HttpServlet {
             HttpServletResponse response)
             throws ServletException, IOException {
 
-        request.getRequestDispatcher("changePassword.jsp")
-               .forward(request, response);
+            request.getRequestDispatcher("/pages/changePassword.jsp").forward(request, response);
     }
 
     @Override
@@ -52,8 +51,9 @@ public class ChangePasswordServlet extends HttpServlet {
 
             request.setAttribute("error", "All fields are required.");
 
-            request.getRequestDispatcher("changePassword.jsp")
-                   .forward(request, response);
+            request.getRequestDispatcher("/pages/changePassword.jsp").forward(request, response);
+    }
+
 
             return;
         }
@@ -64,9 +64,7 @@ public class ChangePasswordServlet extends HttpServlet {
             request.setAttribute("error",
                     "Password must be at least 8 characters.");
 
-            request.getRequestDispatcher("changePassword.jsp")
-                   .forward(request, response);
-
+            request.getRequestDispatcher("/pages/changePassword.jsp").forward(request, response);
             return;
         }
 
@@ -76,8 +74,7 @@ public class ChangePasswordServlet extends HttpServlet {
             request.setAttribute("error",
                     "New Password and Confirm Password do not match.");
 
-            request.getRequestDispatcher("changePassword.jsp")
-                   .forward(request, response);
+            request.getRequestDispatcher("/pages/changePassword.jsp").forward(request, response);
 
             return;
         }
@@ -88,9 +85,7 @@ public class ChangePasswordServlet extends HttpServlet {
             request.setAttribute("error",
                     "New password cannot be the same as the current password.");
 
-            request.getRequestDispatcher("changePassword.jsp")
-                   .forward(request, response);
-
+            request.getRequestDispatcher("/pages/changePassword.jsp").forward(request, response);
             return;
         }
 
@@ -101,11 +96,9 @@ public class ChangePasswordServlet extends HttpServlet {
             if (!valid) {
 
                 request.setAttribute("error",
-                        "Current password is incorrect.");
+                    "Current password is incorrect.");
 
-                request.getRequestDispatcher("changePassword.jsp")
-                       .forward(request, response);
-
+                request.getRequestDispatcher("/pages/changePassword.jsp").forward(request, response);
                 return;
             }
 
@@ -116,15 +109,15 @@ public class ChangePasswordServlet extends HttpServlet {
                 session.setAttribute("success",
                         "Password updated successfully.");
 
-                response.sendRedirect(request.getContextPath() + "/userDashboard.jsp");
+                response.sendRedirect(request.getContextPath() + "/pages/userDashboard.jsp");
 
             } else {
 
                 request.setAttribute("error",
                         "Unable to update password.");
 
-                request.getRequestDispatcher("changePassword.jsp")
-                       .forward(request, response);
+                request.getRequestDispatcher("/pages/changePassword.jsp").forward(request, response);
+                
             }
 
         } catch (Exception e) {
@@ -134,8 +127,7 @@ public class ChangePasswordServlet extends HttpServlet {
             request.setAttribute("error",
                     "Something went wrong. Please try again.");
 
-            request.getRequestDispatcher("changePassword.jsp")
-                   .forward(request, response);
+            request.getRequestDispatcher("/pages/changePassword.jsp").forward(request, response);
         }
     }
 }
