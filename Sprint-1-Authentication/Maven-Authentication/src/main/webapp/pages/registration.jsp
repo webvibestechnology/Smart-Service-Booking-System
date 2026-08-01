@@ -273,11 +273,11 @@ button:hover {
     <div class="container">
 
         <div class="left-banner">
-<<<<<<< HEAD
-            <img src="C:\Users\ADMIN\Pictures\Saved Pictures\istockphoto-1468757785-612x612.jpg">
-=======
             <img src="https://images.unsplash.com/photo-1522202176988-66273c2fd55f?w=600" alt="Worker Illustration">
+<<<<<<< HEAD
+=======
 >>>>>>> c484fe1cc8b2d40ef75b0e02b99f1c74ce4925fe
+>>>>>>> c686a1086cb7f136d49bf6fcb9c36af1183213cf
         </div>
 
         <div class="form-side">
@@ -285,8 +285,11 @@ button:hover {
             <h3>Register to get started</h3>
 
 <<<<<<< HEAD
+=======
+<<<<<<< HEAD
             <form id="registrationForm" action="profile" method="post" class="form-grid">
 =======
+>>>>>>> c686a1086cb7f136d49bf6fcb9c36af1183213cf
             <form action="${pageContext.request.contextPath}/profile" method="post" class="form-grid">
 
                 <%-- Show feedback messages from servlet redirect params --%>
@@ -307,17 +310,24 @@ button:hover {
                         A server error occurred. Please try again later.
                     </div>
                 <% } %>
+<<<<<<< HEAD
+=======
 >>>>>>> c484fe1cc8b2d40ef75b0e02b99f1c74ce4925fe
+>>>>>>> c686a1086cb7f136d49bf6fcb9c36af1183213cf
 
                 <div class="form-group">
                     <label for="fullname">Full Name</label>
                     <div class="input-box">
                         <i class="fa-regular fa-user"></i>
 <<<<<<< HEAD
+                        <input type="text" id="fullname" name="name" placeholder="Enter full name" required>
+=======
+<<<<<<< HEAD
                         <input type="text" id="fullname" name="fullname" placeholder="Enter full name" required>
 =======
                         <input type="text" id="fullname" name="name" placeholder="Enter full name" required>
 >>>>>>> c484fe1cc8b2d40ef75b0e02b99f1c74ce4925fe
+>>>>>>> c686a1086cb7f136d49bf6fcb9c36af1183213cf
                     </div>
                 </div>
 
@@ -364,10 +374,14 @@ button:hover {
 
                 <div class="footer-text">
 <<<<<<< HEAD
+                    Already have an account? <a href="${pageContext.request.contextPath}/pages/login.jsp">Login here</a>
+=======
+<<<<<<< HEAD
                     Already have an account? <a href="Login Form.html">Login here</a>
 =======
                     Already have an account? <a href="${pageContext.request.contextPath}/pages/login.jsp">Login here</a>
 >>>>>>> c484fe1cc8b2d40ef75b0e02b99f1c74ce4925fe
+>>>>>>> c686a1086cb7f136d49bf6fcb9c36af1183213cf
                 </div>
 
             </form>
@@ -377,6 +391,8 @@ button:hover {
 </div>
 
 <script>
+<<<<<<< HEAD
+=======
 <<<<<<< HEAD
     const form = document.getElementById('registrationForm');
     const password = document.getElementById('password');
@@ -397,6 +413,7 @@ button:hover {
                 this.classList.remove('fa-eye');
                 this.classList.add('fa-eye-slash');
 =======
+>>>>>>> c686a1086cb7f136d49bf6fcb9c36af1183213cf
 document.addEventListener("DOMContentLoaded", function () {
 
     const form = document.querySelector("form");

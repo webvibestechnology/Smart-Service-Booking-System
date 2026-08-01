@@ -43,8 +43,7 @@ href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.6.0/css/all.min.css"
         .hero-image-frame { width: 100%; max-width: 420px; height: 380px; overflow: hidden; border-radius: 24px; }
         .hero-image-frame img { width: 100%; height: 100%; object-fit: cover; }
 
-        /* SERVICES */
-        .services-section { padding: 80px 60px; background-color: #f8fafc; }
+   services-section { padding: 80px 60px; background-color: #f8fafc; }
         .services-section h2 { font-size: 28px; color: #0f172a; font-weight: 800; text-align: center; margin-bottom: 45px; }
         .services-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(220px, 1fr)); gap: 24px; }
         .service-card { background: white; padding: 35px 24px; border-radius: 20px; border: 1px solid #e2e8f0; display: flex; flex-direction: column; align-items: center; text-align: center; transition: all 0.3s; position: relative; }

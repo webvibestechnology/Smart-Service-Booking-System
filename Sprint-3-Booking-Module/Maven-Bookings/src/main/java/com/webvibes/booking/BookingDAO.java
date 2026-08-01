@@ -1,3 +1,15 @@
+<<<<<<< HEAD
+<<<<<<< HEAD
+package com.webvibes.booking;
+
+
+
+// BOOK-02 to BOOK-06: Data access layer for bookings table
+public class BookingDAO {
+=======
+
+=======
+>>>>>>> 5ae139cc3a190f51136fbb7e7269b55c2064bb88
 package com.webvibes.booking;
 
 import java.sql.*;
@@ -106,4 +118,9 @@ public class BookingDAO
         b.setCreatedAt(rs.getTimestamp("created_at"));
         return b;
     }
+<<<<<<< HEAD
+>>>>>>> c686a1086cb7f136d49bf6fcb9c36af1183213cf
 }
+=======
+}
+>>>>>>> 5ae139cc3a190f51136fbb7e7269b55c2064bb88

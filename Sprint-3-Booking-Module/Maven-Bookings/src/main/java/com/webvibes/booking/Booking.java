@@ -1,3 +1,26 @@
+<<<<<<< HEAD
+<<<<<<< HEAD
+package com.webvibes.booking;
+
+// BOOK-01: Model class for Booking table
+// booking_id, user_id, service_id, service_name, booking_date,
+// time_slot, address, amount, status, created_at
+public class Booking {
+
+    // TODO: Add private fields matching the database columns
+    // TODO: Add default constructor
+    // TODO: Add getters and setters for all fields
+
+}
+=======
+// BOOK-01: Model class for Booking table
+// booking_id, user_id, service_id, service_name, booking_date,
+// time_slot, address, amount, status, created_at
+// TODO: Add private fields matching the database columns
+// TODO: Add default constructor
+// TODO: Add getters and setters for all fields
+=======
+>>>>>>> 5ae139cc3a190f51136fbb7e7269b55c2064bb88
 package com.webvibes.booking;
 
 import java.sql.Date;
@@ -46,6 +69,13 @@ public class Booking {
     public String    getStatus()                   { return status; }
     public void      setStatus(String status)      { this.status = status; }
 
+<<<<<<< HEAD
+    public Timestamp getCreatedAt() { return createdAt; }
+    public void setCreatedAt(Timestamp createdAt) { this.createdAt = createdAt; }
+}
+>>>>>>> c686a1086cb7f136d49bf6fcb9c36af1183213cf
+=======
     public Timestamp getCreatedAt()                { return createdAt; }
     public void      setCreatedAt(Timestamp ts)    { this.createdAt = ts; }
 }
+>>>>>>> 5ae139cc3a190f51136fbb7e7269b55c2064bb88
