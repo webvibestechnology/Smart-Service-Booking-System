@@ -307,10 +307,10 @@
 								<i class="fa-solid fa-arrow-left me-2"></i>
 									Cancel
 						  </a>
-                            <button type="submit" class="btn btn-update w-50 py-2">
+							<a href="<%=request.getContextPath()%>/pages/userDashboard.jsp" class="btn btn-update w-50 py-2 text-center text-white text-decoration-none">
    								 <i class="fa-solid fa-floppy-disk me-2"></i>
-    										Update Password
-							</button>
+   									 Update Password
+							</a>
                         </div>
 
                     </form>

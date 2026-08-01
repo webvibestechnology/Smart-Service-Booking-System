@@ -53,8 +53,6 @@ public class ChangePasswordServlet extends HttpServlet {
 
             request.getRequestDispatcher("/pages/changePassword.jsp").forward(request, response);
     }
-
-
             return;
         }
 
