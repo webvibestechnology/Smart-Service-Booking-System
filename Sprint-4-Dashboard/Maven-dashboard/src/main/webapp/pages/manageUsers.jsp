@@ -96,10 +96,10 @@
         </div>
 
         <ul class="nav-links">
-            <li><a href="${pageContext.request.contextPath}/pages/index.jsp#home">Home</a></li>
-            <li><a href="${pageContext.request.contextPath}/pages/index.jsp#services">Services</a></li>
-            <li><a href="${pageContext.request.contextPath}/pages/index.jsp#about">About Us</a></li>
-            <li><a href="${pageContext.request.contextPath}/pages/index.jsp#contact">Contact Us</a></li>
+            <li><a href="${pageContext.request.contextPath}/index.jsp#home">Home</a></li>
+            <li><a href="${pageContext.request.contextPath}/index.jsp#services">Services</a></li>
+            <li><a href="${pageContext.request.contextPath}/index.jsp#about">About Us</a></li>
+            <li><a href="${pageContext.request.contextPath}/index.jsp#contact">Contact Us</a></li>
         </ul>
 
         <!-- Clickable Admin Profile Link/Button -->
@@ -163,7 +163,11 @@
                                     <td>${user.fullName}</td>
                                     <td>${user.email}</td>
                                     <td>${user.mobile}</td>
-                                    <td><span class="role-badge">${user.role}</span></td>
+                                    <td>
+                                        <c:if test="${not empty user.role}">
+                                            <span class="role-badge">${user.role}</span>
+                                        </c:if>
+                                    </td>
                                     <td>${user.createdAt}</td>
                                     <td>
                                         <a href="${pageContext.request.contextPath}/pages/adminSidebar.jsp?id=${user.id}" class="view-btn">View</a>
@@ -189,7 +193,6 @@
         © 2026 Smart Service Booking System | All Rights Reserved.
     </footer>
 
-    
     <script>
         function searchAndHighlightTable() {
             let input = document.getElementById("userSearchInput").value.trim().toLowerCase();
